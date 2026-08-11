@@ -81,6 +81,19 @@ function Emblem({ compact = false }: { compact?: boolean }) {
   );
 }
 
+function ArrowIcon({
+  direction = "north-east",
+}: {
+  direction?: "north-east" | "south-east" | "down";
+}) {
+  return (
+    <span
+      className={`link-arrow link-arrow--${direction}`}
+      aria-hidden="true"
+    />
+  );
+}
+
 function TranslationTerm({
   id,
   amharic,
@@ -130,7 +143,9 @@ export default function Home() {
   const [filmOpen, setFilmOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const heroVisibleRef = useRef(true);
   const progressRef = useRef<HTMLSpanElement>(null);
+  const ribbonRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -151,38 +166,64 @@ export default function Home() {
     const video = heroVideoRef.current;
     if (!video) return;
 
-    const play = () => {
+    const syncPlayback = () => {
       video.muted = true;
       video.defaultMuted = true;
-      if (video.paused && document.visibilityState === "visible") {
+
+      if (filmOpen || document.visibilityState !== "visible" || !heroVisibleRef.current) {
+        video.pause();
+        return;
+      }
+
+      if (video.paused) {
         void video.play().catch(() => undefined);
       }
     };
-    const onVisibilityChange = () => play();
+    const visibilityObserver = new IntersectionObserver(
+      ([entry]) => {
+        heroVisibleRef.current = entry.isIntersecting;
+        syncPlayback();
+      },
+      { threshold: 0.02 },
+    );
 
-    play();
-    video.addEventListener("loadeddata", play);
-    video.addEventListener("canplay", play);
-    window.addEventListener("focus", play);
-    window.addEventListener("pageshow", play);
-    document.addEventListener("visibilitychange", onVisibilityChange);
+    syncPlayback();
+    visibilityObserver.observe(video);
+    video.addEventListener("canplay", syncPlayback);
+    window.addEventListener("focus", syncPlayback);
+    window.addEventListener("pageshow", syncPlayback);
+    document.addEventListener("visibilitychange", syncPlayback);
     return () => {
-      video.removeEventListener("loadeddata", play);
-      video.removeEventListener("canplay", play);
-      window.removeEventListener("focus", play);
-      window.removeEventListener("pageshow", play);
-      document.removeEventListener("visibilitychange", onVisibilityChange);
+      visibilityObserver.disconnect();
+      video.removeEventListener("canplay", syncPlayback);
+      window.removeEventListener("focus", syncPlayback);
+      window.removeEventListener("pageshow", syncPlayback);
+      document.removeEventListener("visibilitychange", syncPlayback);
     };
-  }, []);
+  }, [filmOpen]);
 
   useEffect(() => {
     let ticking = false;
+    let scrollDistance = 1;
+    let wasScrolled = false;
+
+    const updateMetrics = () => {
+      scrollDistance = Math.max(
+        document.documentElement.scrollHeight - window.innerHeight,
+        1,
+      );
+    };
     const updateScroll = () => {
       const top = window.scrollY;
-      const distance = document.documentElement.scrollHeight - window.innerHeight;
-      setIsScrolled(top > 42);
+      const nextScrolled = top > 42;
+
+      if (nextScrolled !== wasScrolled) {
+        wasScrolled = nextScrolled;
+        setIsScrolled(nextScrolled);
+      }
+
       if (progressRef.current) {
-        const progress = distance > 0 ? Math.min(top / distance, 1) : 0;
+        const progress = Math.min(top / scrollDistance, 1);
         progressRef.current.style.transform = `scaleX(${progress})`;
       }
       ticking = false;
@@ -193,13 +234,34 @@ export default function Home() {
         ticking = true;
       }
     };
+    const onResize = () => {
+      updateMetrics();
+      onScroll();
+    };
+    const resizeObserver = new ResizeObserver(updateMetrics);
+
+    updateMetrics();
     updateScroll();
+    resizeObserver.observe(document.body);
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", onResize, { passive: true });
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", onResize);
+      resizeObserver.disconnect();
     };
+  }, []);
+
+  useEffect(() => {
+    const ribbon = ribbonRef.current;
+    if (!ribbon) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => ribbon.classList.toggle("is-active", entry.isIntersecting),
+      { rootMargin: "120px 0px" },
+    );
+    observer.observe(ribbon);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -230,7 +292,7 @@ export default function Home() {
     <>
       <div className={`announcement${isScrolled ? " is-hidden" : ""}`}>
         <span>Delegation applications open 21 September 2026</span>
-        <a href="#delegations">View key dates <span aria-hidden="true">↗</span></a>
+        <a href="#delegations">View key dates <ArrowIcon /></a>
       </div>
       <span className="page-progress" aria-hidden="true"><span ref={progressRef} /></span>
 
@@ -317,7 +379,7 @@ export default function Home() {
           <p className="hero__scene">Ethiopian Highlands <span>Film · Santhosh Peddi</span></p>
           <a className="scroll-cue" href="#about" aria-label="Continue to about the conference">
             <span>Explore</span>
-            <span aria-hidden="true">↓</span>
+            <ArrowIcon direction="down" />
           </a>
         </section>
 
@@ -343,7 +405,7 @@ export default function Home() {
                 a distinctly African approach to multilateral leadership.
               </p>
               <a className="text-link" href="#programme">
-                Discover the programme <span aria-hidden="true">↘</span>
+                Discover the programme <ArrowIcon direction="south-east" />
               </a>
             </div>
           </div>
@@ -444,7 +506,7 @@ export default function Home() {
               </p>
             </div>
             <a href="https://au.int/en/overview">
-              Read the AU history <span aria-hidden="true">↗</span>
+              Read the AU history <ArrowIcon />
             </a>
           </div>
         </section>
@@ -481,7 +543,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="ribbon" aria-label="Conference theme">
+        <section className="ribbon" aria-label="Conference theme" ref={ribbonRef}>
           <div className="ribbon__track">
             <span>Rooted in Africa</span><i>◆</i><span>Ready for the world</span><i>◆</i>
             <span>Rooted in Africa</span><i>◆</i><span>Ready for the world</span>
@@ -618,7 +680,7 @@ export default function Home() {
                 <div><span>Priority</span><strong>02 NOV</strong></div>
                 <div><span>Final</span><strong>11 JAN</strong></div>
               </div>
-              <a className="button-link" href="#interest">Request the invitation pack <span>↗</span></a>
+              <a className="button-link" href="#interest">Request the invitation pack <ArrowIcon /></a>
             </div>
           </div>
         </section>

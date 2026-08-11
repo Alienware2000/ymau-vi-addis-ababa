@@ -65,7 +65,6 @@ body {
   line-height: 1.6;
   margin: 0;
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
 
 body.no-scroll {
@@ -76,6 +75,42 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.link-arrow {
+  display: inline-block;
+  flex: 0 0 auto;
+  height: 1em;
+  position: relative;
+  transform-origin: center;
+  transition: translate 180ms ease;
+  width: 1em;
+}
+
+.link-arrow::before {
+  background: currentColor;
+  content: "";
+  height: 1px;
+  left: 0.08em;
+  position: absolute;
+  top: calc(50% - 0.5px);
+  width: 0.78em;
+}
+
+.link-arrow::after {
+  border-right: 1px solid currentColor;
+  border-top: 1px solid currentColor;
+  content: "";
+  height: 0.36em;
+  position: absolute;
+  right: 0.08em;
+  top: calc(50% - 0.22em);
+  transform: rotate(45deg);
+  width: 0.36em;
+}
+
+.link-arrow--north-east { transform: rotate(-45deg); }
+.link-arrow--south-east { transform: rotate(45deg); }
+.link-arrow--down { transform: rotate(90deg); }
 
 button,
 a,
@@ -128,16 +163,15 @@ video {
   padding-left: 18px;
 }
 
-.announcement a span {
+.announcement a .link-arrow {
   display: inline-block;
   font-size: 12px;
   margin-left: 4px;
-  transition: transform 180ms ease;
 }
 
-.announcement a:hover span,
-.announcement a:focus-visible span {
-  transform: translate(2px, -2px);
+.announcement a:hover .link-arrow,
+.announcement a:focus-visible .link-arrow {
+  translate: 2px -2px;
 }
 
 .announcement.is-hidden {
@@ -161,6 +195,7 @@ video {
   height: 100%;
   transform: scaleX(0);
   transform-origin: left;
+  will-change: transform;
   width: 100%;
 }
 
@@ -184,12 +219,10 @@ video {
 }
 
 .site-header.is-scrolled {
-  background: rgba(0, 17, 38, 0.9);
+  background: rgba(0, 17, 38, 0.97);
   border-bottom: 1px solid rgba(255, 255, 255, 0.13);
   height: 72px;
   top: 0;
-  -webkit-backdrop-filter: blur(16px) saturate(1.2);
-  backdrop-filter: blur(16px) saturate(1.2);
 }
 
 .brand {
@@ -341,6 +374,8 @@ video {
   overflow: hidden;
   padding: 150px clamp(22px, 4vw, 64px) 105px;
   position: relative;
+  contain: paint;
+  isolation: isolate;
 }
 
 .hero__media,
@@ -353,14 +388,17 @@ video {
 }
 
 .hero__media {
+  backface-visibility: hidden;
   overflow: hidden;
+  transform: translateZ(0);
 }
 
 .hero__media video {
+  backface-visibility: hidden;
   height: 100%;
   max-width: none;
   object-fit: cover;
-  transform: scale(1.004);
+  transform: translateZ(0) scale(1.004);
   width: 100%;
 }
 
@@ -709,7 +747,7 @@ video {
   z-index: 4;
 }
 
-.scroll-cue span:last-child {
+.scroll-cue .link-arrow {
   animation: scroll-pulse 1900ms ease-in-out infinite;
   font-size: 18px;
   line-height: 1;
@@ -721,8 +759,8 @@ video {
 }
 
 @keyframes scroll-pulse {
-  0%, 100% { opacity: 0.45; transform: translateY(-2px); }
-  50% { opacity: 1; transform: translateY(4px); }
+  0%, 100% { opacity: 0.45; transform: translateY(-2px) rotate(90deg); }
+  50% { opacity: 1; transform: translateY(4px) rotate(90deg); }
 }
 
 .manifesto,
@@ -813,14 +851,13 @@ video {
   width: 100%;
 }
 
-.text-link span {
+.text-link .link-arrow {
   font-size: 15px;
-  transition: transform 180ms ease;
 }
 
-.text-link:hover span,
-.text-link:focus-visible span {
-  transform: translate(3px, 3px);
+.text-link:hover .link-arrow,
+.text-link:focus-visible .link-arrow {
+  translate: 3px 3px;
 }
 
 .facts {
@@ -1139,14 +1176,13 @@ video {
   z-index: 1;
 }
 
-.continental-note > a span {
+.continental-note > a .link-arrow {
   font-size: 14px;
-  transition: transform 180ms ease;
 }
 
-.continental-note > a:hover span,
-.continental-note > a:focus-visible span {
-  transform: translate(3px, -3px);
+.continental-note > a:hover .link-arrow,
+.continental-note > a:focus-visible .link-arrow {
+  translate: 3px -3px;
 }
 
 .city-story {
@@ -1239,6 +1275,7 @@ video {
 .ribbon {
   background: var(--red);
   color: #fff;
+  contain: paint;
   overflow: hidden;
   padding: 22px 0 18px;
 }
@@ -1246,6 +1283,7 @@ video {
 .ribbon__track {
   align-items: center;
   animation: marquee 28s linear infinite;
+  animation-play-state: paused;
   display: flex;
   font-family: var(--font-display), Georgia, serif;
   font-size: clamp(46px, 6vw, 88px);
@@ -1254,6 +1292,11 @@ video {
   line-height: 0.9;
   white-space: nowrap;
   width: max-content;
+}
+
+.ribbon.is-active .ribbon__track {
+  animation-play-state: running;
+  will-change: transform;
 }
 
 .ribbon__track i {
@@ -1663,13 +1706,18 @@ video {
   transition: background 180ms ease;
 }
 
-.button-link span {
+.button-link .link-arrow {
   font-size: 16px;
 }
 
 .button-link:hover,
 .button-link:focus-visible {
   background: var(--red);
+}
+
+.button-link:hover .link-arrow,
+.button-link:focus-visible .link-arrow {
+  translate: 2px -2px;
 }
 
 .interest {
@@ -1853,10 +1901,10 @@ video {
 
 .motion-ready [data-reveal] {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(18px);
   transition:
-    opacity 780ms cubic-bezier(0.2, 0.7, 0, 1),
-    transform 780ms cubic-bezier(0.2, 0.7, 0, 1);
+    opacity 620ms cubic-bezier(0.2, 0.7, 0, 1),
+    transform 620ms cubic-bezier(0.2, 0.7, 0, 1);
 }
 
 .motion-ready [data-reveal="delay-1"] {
@@ -2168,6 +2216,12 @@ video {
   .city-story__letter blockquote { font-size: 41px; margin-top: 58px; }
   .ribbon__track { font-size: 50px; }
 
+  .ribbon__track {
+    animation: none;
+    transform: translateX(-18px);
+    will-change: auto;
+  }
+
   .committees__intro { margin: 58px 0 75px; }
 
   .committee summary {
@@ -2228,6 +2282,34 @@ video {
   .footer__bottom p:nth-child(2) { line-height: 1.8; }
   .film-modal { padding-inline: 15px; }
   .film-modal__caption { gap: 20px; }
+
+  .motion-ready [data-reveal] {
+    transform: translateY(12px);
+    transition-duration: 480ms;
+  }
+
+  .motion-ready [data-reveal="delay-1"] {
+    transition-delay: 60ms;
+  }
+}
+
+@media (hover: none) {
+  .city-story__image:hover img,
+  .experience__image:hover img {
+    transform: none;
+  }
+
+  .programme-day:hover {
+    background: transparent;
+  }
+
+  .programme-day:hover .programme-day__top strong {
+    color: var(--gold);
+  }
+
+  .programme-day:hover .programme-day__rule {
+    transform: scaleX(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

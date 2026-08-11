@@ -1,19 +1,6 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
-
-const display = Cormorant_Garamond({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
-
-const sans = Manrope({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
 
 export async function generateMetadata(): Promise<Metadata> {
   const headerList = await headers();
@@ -62,7 +49,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${display.variable} ${sans.variable}`}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

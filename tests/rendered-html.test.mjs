@@ -31,6 +31,7 @@ test("defines the complete YMAU VI conference homepage", async () => {
   assert.match(page, /playsInline/);
   assert.match(page, /Opening 21 September 2026/);
   assert.doesNotMatch(page, /example\.org|codex-preview|Your site is taking shape/i);
+  assert.doesNotMatch(page, /[→←↑↓↗↘➜➝➞➔➤⟶⇢›»]/, "link icons must not render as iOS emoji glyphs");
 
   const internalTargets = [...page.matchAll(/href="#([^"]+)"/g)].map((match) => match[1]);
   assert.ok(internalTargets.length > 0);
@@ -55,6 +56,7 @@ test("ships the local cinematic assets and responsive design system", async () =
   assert.ok(video.size < 15_000_000, "desktop hero film should stay below 15 MB");
   assert.ok(mobileVideo.size < 8_000_000, "mobile hero film should stay below 8 MB");
   assert.match(page, /video\.play\(\)/);
+  assert.match(page, /video\.pause\(\)/);
   assert.match(page, /visibilitychange/);
   assert.match(page, /IntersectionObserver/);
   assert.match(css, /@font-face/);
@@ -62,4 +64,5 @@ test("ships the local cinematic assets and responsive design system", async () =
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
   assert.match(css, /\.programme__days/);
   assert.match(css, /@media \(max-width: 680px\)/);
+  assert.doesNotMatch(css, /backdrop-filter/, "fixed navigation should not force blurred scroll repaints");
 });

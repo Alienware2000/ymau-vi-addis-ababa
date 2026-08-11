@@ -1,0 +1,12 @@
+.git
+.next
+.vercel
+dist
+work
+outputs
+node_modules
+coverage
+.wrangler
+.env
+.env.*
+*.log

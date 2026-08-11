@@ -64,5 +64,8 @@ test("ships the local cinematic assets and responsive design system", async () =
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
   assert.match(css, /\.programme__days/);
   assert.match(css, /@media \(max-width: 680px\)/);
+  assert.match(css, /min-height:\s*100svh/);
+  assert.match(css, /min\(9\.3vw, 18svh\)/);
+  assert.doesNotMatch(css, /min-height:\s*max\(680px/, "the hero must not force short laptop viewports to scroll");
   assert.doesNotMatch(css, /backdrop-filter/, "fixed navigation should not force blurred scroll repaints");
 });

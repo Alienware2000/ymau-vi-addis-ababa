@@ -718,6 +718,8 @@ export default function Home() {
             <Link href="/programme">Programme</Link>
             <Link href="/registration">Registration</Link>
             <Link href="/contact">Contact</Link>
+            <a href="https://www.instagram.com/yalemodelau/" target="_blank" rel="noreferrer">Instagram</a>
+            <a href="https://www.linkedin.com/company/yale-model-african-union-conf/" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
         </div>
         <div className="footer__bottom">

@@ -23,6 +23,7 @@ export function PageFamilyNav({ slug }: { slug: string }) {
           </Link>
         ))}
       </div>
+      <span className="page-family-nav__hint" aria-hidden="true">Swipe to explore</span>
     </nav>
   );
 }
@@ -47,7 +48,12 @@ export function InnerFooter() {
     <footer className="inner-footer">
       <Image src="/ymau-wordmark-white.png" alt="Yale Model African Union" width={752} height={185} />
       <p>Addis Ababa, Ethiopia<br />15–17 March 2027</p>
-      <p><a href="mailto:president@yalemodelau.org">president@yalemodelau.org</a><br />© 2027 YMAU VI</p>
+      <p>
+        <a href="mailto:president@yalemodelau.org">president@yalemodelau.org</a><br />
+        <a href="https://www.instagram.com/yalemodelau/" target="_blank" rel="noreferrer">Instagram</a> · {" "}
+        <a href="https://www.linkedin.com/company/yale-model-african-union-conf/" target="_blank" rel="noreferrer">LinkedIn</a><br />
+        © 2027 YMAU VI
+      </p>
     </footer>
   );
 }

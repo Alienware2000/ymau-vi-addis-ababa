@@ -59,7 +59,7 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
           alt="Yale Model African Union"
           width={752}
           height={185}
-          priority
+          preload
         />
       </Link>
 

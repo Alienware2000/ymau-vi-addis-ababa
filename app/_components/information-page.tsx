@@ -3,18 +3,19 @@ import Link from "next/link";
 import { pageHeroImages } from "../page-hero-images";
 import type { InformationPageData } from "../site-content";
 import { findNavigationGroup } from "../site-navigation";
+import { InnerFooter, LineArrow } from "./editorial-page-parts";
 import { SiteHeader } from "./site-header";
-
-function LineArrow() {
-  return <span className="line-arrow" aria-hidden="true" />;
-}
 
 export function InformationPage({ data, slug }: { data: InformationPageData; slug: string }) {
   const group = findNavigationGroup(slug);
   const heroImage = pageHeroImages[slug] ?? pageHeroImages.about;
+  const currentIndex = group.links.findIndex((link) => link.href === `/${slug}`);
+  const previousPage = currentIndex > 0 ? group.links[currentIndex - 1] : null;
+  const nextPage = currentIndex < group.links.length - 1 ? group.links[currentIndex + 1] : null;
+  const family = group.label.toLowerCase().replaceAll(" ", "-");
 
   return (
-    <div className="information-page">
+    <div className={`information-page information-page--family-${family}`}>
       <SiteHeader />
 
       <main>
@@ -25,7 +26,7 @@ export function InformationPage({ data, slug }: { data: InformationPageData; slu
             alt={heroImage.alt}
             fill
             sizes="100vw"
-            priority
+            preload
             style={{ objectPosition: heroImage.position }}
           />
           <span className="inner-hero__veil" />
@@ -52,6 +53,12 @@ export function InformationPage({ data, slug }: { data: InformationPageData; slu
           </div>
           <span className="inner-hero__glyph" aria-hidden="true">VI</span>
         </section>
+
+        <div className="inner-page-ribbon">
+          <span>{group.label} · YMAU VI</span>
+          <strong>{data.eyebrow}</strong>
+          <span>{String(currentIndex + 1).padStart(2, "0")} / {String(group.links.length).padStart(2, "0")}</span>
+        </div>
 
         <div className="inner-content">
           <aside className="section-sidebar">
@@ -101,22 +108,35 @@ export function InformationPage({ data, slug }: { data: InformationPageData; slu
                   <LineArrow />
                 </Link>
               ) : (
-                <a className="inner-action" href={data.action.href}>
+                <a className="inner-action" href={data.action.href} target="_blank" rel="noreferrer">
                   <span>{data.action.label}</span>
                   <LineArrow />
                 </a>
               )
             )}
+
+            {(previousPage || nextPage) && (
+              <nav className="inner-traverse" aria-label={`More ${group.label} pages`}>
+                {previousPage ? (
+                  <Link href={previousPage.href} className="inner-traverse__previous">
+                    <span>Previous</span>
+                    <strong>{previousPage.label}</strong>
+                  </Link>
+                ) : <span />}
+                {nextPage ? (
+                  <Link href={nextPage.href} className="inner-traverse__next">
+                    <span>Next</span>
+                    <strong>{nextPage.label}</strong>
+                    <LineArrow />
+                  </Link>
+                ) : <span />}
+              </nav>
+            )}
             </article>
           </div>
         </div>
       </main>
-
-      <footer className="inner-footer">
-        <Image src="/ymau-wordmark-white.png" alt="Yale Model African Union" width={752} height={185} />
-        <p>Addis Ababa, Ethiopia<br />15–17 March 2027</p>
-        <p><a href="mailto:president@yalemodelau.org">president@yalemodelau.org</a><br />© 2027 YMAU VI</p>
-      </footer>
+      <InnerFooter />
     </div>
   );
 }

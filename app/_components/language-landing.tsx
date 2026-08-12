@@ -25,7 +25,7 @@ export function LanguageLanding({ data }: { data: LanguageLandingData }) {
     <div className={`locale-page locale-page--${data.locale}`} lang={data.locale}>
       <header className="locale-header">
         <Link href="/" aria-label="YMAU VI home">
-          <Image src="/ymau-wordmark-white.png" alt="Yale Model African Union" width={752} height={185} priority />
+          <Image src="/ymau-wordmark-white.png" alt="Yale Model African Union" width={752} height={185} preload />
         </Link>
         <nav aria-label="Language">
           <Link href="/">EN</Link>

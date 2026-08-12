@@ -93,7 +93,18 @@ export function InformationPage({ data, slug }: { data: InformationPageData; slu
                   {section.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                   {section.items && (
                     <ul>
-                      {section.items.map((item) => <li key={item}>{item}</li>)}
+                      {section.items.map((item) => {
+                        const socialLink = item.startsWith("Instagram")
+                          ? "https://www.instagram.com/yalemodelau/"
+                          : item.startsWith("LinkedIn")
+                            ? "https://www.linkedin.com/company/yale-model-african-union-conf/"
+                            : null;
+                        return (
+                          <li key={item}>
+                            {socialLink ? <a href={socialLink} target="_blank" rel="noreferrer">{item}</a> : item}
+                          </li>
+                        );
+                      })}
                     </ul>
                   )}
                   {section.note && <p className="inner-section__note">{section.note}</p>}
@@ -108,7 +119,7 @@ export function InformationPage({ data, slug }: { data: InformationPageData; slu
                   <LineArrow />
                 </Link>
               ) : (
-                <a className="inner-action" href={data.action.href} target="_blank" rel="noreferrer">
+                <a className="inner-action" href={data.action.href} target={data.action.href.startsWith("http") ? "_blank" : undefined} rel={data.action.href.startsWith("http") ? "noreferrer" : undefined}>
                   <span>{data.action.label}</span>
                   <LineArrow />
                 </a>
@@ -117,19 +128,21 @@ export function InformationPage({ data, slug }: { data: InformationPageData; slu
 
             {(previousPage || nextPage) && (
               <nav className="inner-traverse" aria-label={`More ${group.label} pages`}>
-                {previousPage ? (
-                  <Link href={previousPage.href} className="inner-traverse__previous">
-                    <span>Previous</span>
-                    <strong>{previousPage.label}</strong>
-                  </Link>
-                ) : <span />}
-                {nextPage ? (
-                  <Link href={nextPage.href} className="inner-traverse__next">
-                    <span>Next</span>
-                    <strong>{nextPage.label}</strong>
-                    <LineArrow />
-                  </Link>
-                ) : <span />}
+                <span>Continue in {group.label}</span>
+                <div>
+                  {previousPage && (
+                    <Link href={previousPage.href} className="inner-traverse__previous">
+                      <span aria-hidden="true" className="inner-traverse__back" />
+                      <span><small>Previous</small><strong>{previousPage.label}</strong></span>
+                    </Link>
+                  )}
+                  {nextPage && (
+                    <Link href={nextPage.href} className="inner-traverse__next">
+                      <span><small>Next</small><strong>{nextPage.label}</strong></span>
+                      <LineArrow />
+                    </Link>
+                  )}
+                </div>
               </nav>
             )}
             </article>

@@ -263,6 +263,14 @@ export const informationPages: Record<string, InformationPageData> = {
         ],
       },
       {
+        heading: "The YMAU V record",
+        body: [
+          "The fifth edition included committees spanning trade and industry, health, education and technology, gender equality, peace and security, environmental sustainability, and other African Union policy mandates.",
+          "The verified YMAU V committee archive will remain available as a record of the previous programme; it will not be presented as the final YMAU VI slate.",
+        ],
+        note: "YMAU VI committee names and agendas are still being developed. Final names, delegate levels and background guides will replace this notice when approved.",
+      },
+      {
         heading: "What will be released",
         items: ["Committee names and mandates", "Agenda topics", "Delegate experience levels", "Background guides", "Portfolio allocations"],
       },
@@ -554,6 +562,14 @@ export const informationPages: Record<string, InformationPageData> = {
       {
         heading: "Office of the Secretary-General",
         body: ["president@yalemodelau.org"],
+      },
+      {
+        heading: "Follow the conference",
+        items: [
+          "Instagram — @yalemodelau",
+          "LinkedIn — Yale Model African Union",
+        ],
+        note: "The full on-site enquiry form will be activated after the client confirms the receiving workflow. Until then, direct email remains the reliable contact channel.",
       },
     ],
     action: { label: "Email the Secretary-General", href: "mailto:president@yalemodelau.org" },

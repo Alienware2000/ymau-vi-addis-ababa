@@ -144,8 +144,8 @@ export function AboutPage() {
             rel="noreferrer"
           >
             <span>Conference record</span>
-            <strong>Read the YMAU VI concept note</strong>
-            <LineArrow />
+            <strong>YMAU VI concept note</strong>
+            <span className="about-note__action">Read the document <LineArrow /></span>
           </a>
         </section>
       </main>

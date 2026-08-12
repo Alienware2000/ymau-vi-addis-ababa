@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
+import { Open_Sans } from "next/font/google";
 import "./globals.css";
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  variable: "--font-open-sans",
+  display: "swap",
+});
 
 export async function generateMetadata(): Promise<Metadata> {
   const headerList = await headers();
@@ -13,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
     (host.startsWith("localhost") ? "http" : "https");
   const origin = `${protocol}://${host}`;
   const description =
-    "A fictional concept for the sixth Yale Model African Union conference in Addis Ababa, Ethiopia.";
+    "Yale Model African Union VI convenes in Addis Ababa, Ethiopia, from 15–17 March 2027.";
 
   return {
     metadataBase: new URL(origin),
@@ -29,7 +36,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${origin}/og.png`,
           width: 1640,
           height: 923,
-          alt: "Yale Model African Union VI — Addis Ababa, 11–14 March 2027",
+          alt: "Yale Model African Union VI — Addis Ababa, 15–17 March 2027",
         },
       ],
     },
@@ -48,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={openSans.variable} data-scroll-behavior="smooth">
       <body>{children}</body>
     </html>
   );

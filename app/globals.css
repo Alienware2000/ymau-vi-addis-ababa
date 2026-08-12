@@ -3549,10 +3549,10 @@ video {
   .delegations__details > p { font-size: 23px; }
 
   .interest { grid-template-columns: 1fr; min-height: 0; }
-  .interest__mark { border-bottom: 1px solid rgba(255, 255, 255, 0.35); border-right: 0; min-height: 420px; padding: 72px 28px; }
+  .interest__mark { border-bottom: 1px solid rgba(255, 255, 255, 0.35); border-right: 0; min-height: 330px; padding: 54px 28px; }
   .interest__identity { max-width: 470px; }
   .interest__copy { padding: 75px 22px 85px; }
-  .interest h2 { font-size: 77px; margin-top: 42px; }
+  .interest h2 { font-size: clamp(62px, 19.6vw, 77px); margin-top: 42px; }
 
   .footer { padding: 60px 20px 25px; }
   .footer__top { display: block; min-height: 0; }
@@ -3570,6 +3570,18 @@ video {
 
   .motion-ready [data-reveal="delay-1"] {
     transition-delay: 60ms;
+  }
+}
+
+@media (max-width: 390px) {
+  .interest__brand-meta {
+    gap: 6px 0;
+    grid-template-columns: auto 1fr;
+  }
+
+  .interest__brand-meta span:last-child {
+    grid-column: 2;
+    text-align: left;
   }
 }
 

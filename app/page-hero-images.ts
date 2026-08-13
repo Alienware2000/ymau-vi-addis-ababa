@@ -162,6 +162,7 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
   },
   "addis-ababa": {
     src: "/ymau-media/pages/addis-ababa.webp",
+    mobileSrc: "/ymau-media/city/addis-blue-hour.jpg",
     alt: "Construction cranes and the Addis Ababa skyline at sunset",
     context: "Addis Ababa at dusk · Ethiopia",
     credit: "Jean Rebiffé · CC BY 2.0",

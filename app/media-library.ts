@@ -130,12 +130,13 @@ export const mediaLibrary = {
     credit: ymauVArchiveCredit,
     position: "50% 48%",
   },
-  archiveStageRecognition: {
-    src: "/ymau-media/editorial/ymau-v-stage-recognition.webp",
-    alt: "YMAU V student leaders presenting recognition on the conference stage",
-    context: "Institutional recognition · YMAU V",
-    credit: ymauVArchiveCredit,
-    position: "50% 45%",
+  africanUnionConferenceCentre: {
+    src: "/ymau-media/editorial/african-union-conference-centre.jpg",
+    alt: "The African Union Conference Centre in Addis Ababa at sunset",
+    context: "African Union Conference Centre · Addis Ababa",
+    credit: "Andrew Moore / Wikimedia Commons · CC BY-SA 2.0",
+    creditHref: "https://commons.wikimedia.org/wiki/File:African_Union_Conference_Centre_building.jpg",
+    position: "50% 69%",
   },
   everydayAddis: {
     src: "/ymau-media/editorial/everyday-addis.jpg",
@@ -326,5 +327,5 @@ export const routeEditorialMedia = defineRouteMediaPlan({
   travelGuide: [mediaLibrary.addisOrthodoxCelebration, mediaLibrary.addisBusinessDistrict],
   addisAbaba: [mediaLibrary.addisNightSkyline, mediaLibrary.addisMarket, mediaLibrary.medhaneAlem],
   cityGuide: [mediaLibrary.addisTraditionalMarket, mediaLibrary.coffeeCeremony, mediaLibrary.addisCathedral, mediaLibrary.addisBlueHour],
-  partners: [mediaLibrary.archiveStageRecognition],
+  partners: [mediaLibrary.africanUnionConferenceCentre],
 } as const);

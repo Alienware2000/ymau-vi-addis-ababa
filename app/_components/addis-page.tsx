@@ -25,7 +25,7 @@ export function AddisPage({ data }: { data: InformationPageData }) {
         <h2>A highland capital.<br />A continental address.</h2>
         <p>Home to the African Union and the United Nations Economic Commission for Africa, Addis is where diplomacy sits alongside an everyday city of markets, worship, coffee and constant change.</p>
       </section>
-      <div className="addis-facts">{cityFacts.map(([value, label]) => <div key={label}>{value === "Amharic" ? <CulturalAnnotation term="amharic" variant="fact" tone="light" /> : <strong>{value}</strong>}<span>{label}</span></div>)}</div>
+      <div className="addis-facts">{cityFacts.map(([value, label]) => <div key={label}><div className="addis-facts__value">{value === "Amharic" ? <CulturalAnnotation term="amharic" variant="fact" tone="light" /> : <strong>{value}</strong>}</div><span>{label}</span></div>)}</div>
       <ScrollRevealSection className="addis-institution">
         <EditorialMedia asset={cathedral} />
         <div><span>Diplomatic capital</span><h2>Institutions live inside a city.</h2><p>{data.sections[0]?.body?.[0]}</p></div>

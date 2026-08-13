@@ -25,7 +25,7 @@ export function LanguageLanding({ data }: { data: LanguageLandingData }) {
     <div className={`locale-page locale-page--${data.locale}`} lang={data.locale}>
       <header className="locale-header">
         <Link href="/" aria-label="YMAU VI home">
-          <Image src="/ymau-wordmark-white.png" alt="Yale Model African Union" width={752} height={185} preload />
+          <Image src="/ymau-wordmark-white.png" alt="Yale Model African Union" width={752} height={185} />
         </Link>
         <nav aria-label="Language">
           <Link href="/">EN</Link>
@@ -34,7 +34,7 @@ export function LanguageLanding({ data }: { data: LanguageLandingData }) {
         </nav>
       </header>
 
-      <main>
+      <main id="main-content">
         <section className="locale-hero">
           <video autoPlay loop muted playsInline preload="metadata" poster="/ethiopia-highlands-poster.jpg" aria-hidden="true">
             <source src="/ethiopia-highlands-mobile.mp4" type="video/mp4" media="(max-width: 680px)" />

@@ -1,27 +1,26 @@
 import Image from "next/image";
 import Link from "next/link";
+import { HERO_IMAGE_PLACEHOLDER } from "../image-delivery";
+import { ymauVConferenceMetrics } from "../conference-metrics";
+import { AnimatedStatGrid } from "./animated-stat-grid";
 import { EditorialImageNote, InnerFooter, LineArrow, PageFamilyNav } from "./editorial-page-parts";
 import { SiteHeader } from "./site-header";
-
-const recapStats = [
-  ["350+", "delegates"],
-  ["30+", "nationalities"],
-  ["80%", "received financial aid"],
-  ["22", "workshop and panel speakers"],
-] as const;
 
 export function RecapPage() {
   return (
     <div className="information-page recap-page">
       <SiteHeader />
-      <main>
+      <main id="main-content">
         <section className="recap-hero">
           <Image
-            src="/ymau-media/pages/recap.webp"
-            alt="YMAU V delegates and organizers gathered on stage in Accra"
+            src="/ymau-media/editorial/recap-community-wide.jpg"
+            alt="YMAU V delegates, organizers and guests gathered after the closing assembly in Accra"
             fill
             sizes="100vw"
+            quality={90}
             preload
+            placeholder="blur"
+            blurDataURL={HERO_IMAGE_PLACEHOLDER}
             className="recap-hero__image"
           />
           <span className="recap-hero__veil" />
@@ -48,43 +47,45 @@ export function RecapPage() {
           </p>
         </section>
 
-        <section className="recap-stats" aria-label="YMAU V at a glance">
-          {recapStats.map(([value, label]) => (
-            <div key={label}><strong>{value}</strong><span>{label}</span></div>
-          ))}
-        </section>
+        <AnimatedStatGrid
+          stats={ymauVConferenceMetrics}
+          className="recap-stats"
+          ariaLabel="YMAU V at a glance"
+          itemElement="div"
+          showDetail={false}
+        />
 
         <section className="recap-film">
           <header>
             <span>Extended highlights</span>
             <h2>Inside the room.</h2>
-            <p>The final on-site film presentation will be added after the video edit is complete.</p>
+            <p>The official YMAU V extended-highlights film is preserved in the conference media archive.</p>
           </header>
-          <a
-            className="recap-film__card"
-            href="https://drive.google.com/drive/folders/1eJKTLiy9V1jEdbLdS0hPzU-nkF2pD_sZ"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Open the YMAU V media archive in Google Drive"
-          >
+          <div className="recap-film__card">
             <div className="recap-film__poster">
-              <Image
-                src="/ymau-media/programme-closing.webp"
-                alt="The full YMAU V delegation gathered on stage in Accra"
-                fill
-                sizes="(max-width: 820px) 100vw, 70vw"
+              <iframe
+                className="recap-film__frame"
+                src="https://drive.google.com/file/d/1wbKwU7HAs9EpIa-Iq240-TFVvt5rjWpQ/preview"
+                title="YMAU V extended highlights"
+                allow="autoplay; fullscreen"
+                allowFullScreen
+                loading="lazy"
               />
-              <span className="recap-film__shade" />
-              <span className="recap-film__play" aria-hidden="true" />
               <span className="recap-film__tag">Film · 2026</span>
             </div>
-            <div className="recap-film__details">
+            <a
+              className="recap-film__details"
+              href="https://drive.google.com/file/d/1wbKwU7HAs9EpIa-Iq240-TFVvt5rjWpQ/view"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open the official YMAU V extended-highlights film in Google Drive"
+            >
               <div><span>Yale Model African Union V</span><strong>Extended highlights</strong></div>
               <div><span>Location</span><strong>Accra, Ghana</strong></div>
-              <div><span>Current access</span><strong>Open media archive</strong></div>
+              <div><span>Current access</span><strong>Watch the film</strong></div>
               <LineArrow />
-            </div>
-          </a>
+            </a>
+          </div>
         </section>
 
         <section className="recap-report">

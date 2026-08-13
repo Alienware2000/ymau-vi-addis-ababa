@@ -36,7 +36,6 @@ export function CulturalAnnotation({
   const triggerRef = useRef<HTMLButtonElement>(null);
   const popoverRef = useRef<HTMLSpanElement>(null);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const [position, setPosition] = useState<PopoverPosition | null>(null);
 
@@ -48,7 +47,21 @@ export function CulturalAnnotation({
 
   const scheduleClose = useCallback(() => {
     cancelClose();
-    closeTimerRef.current = setTimeout(() => setOpen(false), 120);
+    closeTimerRef.current = setTimeout(() => {
+      setOpen(false);
+      setPosition(null);
+    }, 120);
+  }, [cancelClose]);
+
+  const openPopover = useCallback(() => {
+    cancelClose();
+    setOpen(true);
+  }, [cancelClose]);
+
+  const closePopover = useCallback(() => {
+    cancelClose();
+    setOpen(false);
+    setPosition(null);
   }, [cancelClose]);
 
   const updatePosition = useCallback(() => {
@@ -87,15 +100,11 @@ export function CulturalAnnotation({
   }, [align]);
 
   useEffect(() => {
-    setMounted(true);
     return () => cancelClose();
   }, [cancelClose]);
 
   useEffect(() => {
-    if (!open) {
-      setPosition(null);
-      return;
-    }
+    if (!open) return;
 
     updatePosition();
     const animationFrame = window.requestAnimationFrame(updatePosition);
@@ -122,15 +131,15 @@ export function CulturalAnnotation({
     };
     const closeOutside = (event: PointerEvent) => {
       if (isInsideAnnotation(event.target)) return;
-      setOpen(false);
+      closePopover();
     };
     const closeOnFocusAway = (event: FocusEvent) => {
       if (isInsideAnnotation(event.target)) return;
-      setOpen(false);
+      closePopover();
     };
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setOpen(false);
+        closePopover();
         triggerRef.current?.focus();
       }
     };
@@ -143,9 +152,9 @@ export function CulturalAnnotation({
       document.removeEventListener("focusin", closeOnFocusAway);
       document.removeEventListener("keydown", closeOnEscape);
     };
-  }, [open]);
+  }, [closePopover, open]);
 
-  const popover = open && mounted && createPortal(
+  const popover = open && typeof document !== "undefined" && createPortal(
     <span
       className="cultural-annotation__popover"
       data-open="true"
@@ -193,8 +202,7 @@ export function CulturalAnnotation({
         data-open={open ? "true" : undefined}
         onPointerEnter={(event) => {
           if (event.pointerType !== "mouse") return;
-          cancelClose();
-          setOpen(true);
+          openPopover();
         }}
         onPointerLeave={(event) => {
           if (event.pointerType === "mouse") scheduleClose();
@@ -207,12 +215,10 @@ export function CulturalAnnotation({
           aria-controls={popoverId}
           aria-label={`${entry.script}. ${entry.transliteration}. ${entry.meaning}. Pronounced approximately ${entry.pronunciation}. Open language note.`}
           onFocus={() => {
-            cancelClose();
-            setOpen(true);
+            openPopover();
           }}
           onClick={() => {
-            cancelClose();
-            setOpen(true);
+            openPopover();
           }}
           ref={triggerRef}
         >

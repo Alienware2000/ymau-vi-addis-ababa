@@ -1,6 +1,6 @@
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import Link from "next/link";
-import { EDITORIAL_IMAGE_PLACEHOLDER, HERO_IMAGE_PLACEHOLDER } from "../image-delivery";
+import { EDITORIAL_IMAGE_PLACEHOLDER } from "../image-delivery";
 import { routeEditorialMedia } from "../media-library";
 import { ymauVIAmbassadorMetrics } from "../conference-metrics";
 import { AnimatedNumber } from "./animated-number";
@@ -43,22 +43,39 @@ const aboutLinks = [
 const [addisMissionImage, committeeMissionImage, networkImage] = routeEditorialMedia.about;
 
 export function AboutPage() {
+  const sharedHeroProps = {
+    alt: "YMAU V delegates gathered for the official conference portrait in Accra",
+    quality: 90,
+    sizes: "100vw",
+  } as const;
+  const { props: { srcSet: aboutDesktopSrcSet } } = getImageProps({
+    ...sharedHeroProps,
+    src: "/ymau-media/pages/about.webp",
+    width: 2400,
+    height: 1350,
+  });
+  const { props: { srcSet: aboutMobileSrcSet, alt: aboutMobileAlt, ...aboutMobileProps } } = getImageProps({
+    ...sharedHeroProps,
+    src: "/ymau-media/editorial/about-mobile-portrait.png",
+    width: 900,
+    height: 1350,
+  });
+
   return (
     <div className="information-page about-page">
       <SiteHeader />
       <main id="main-content">
         <section className="about-hero">
-          <Image
-            src="/ymau-media/pages/about.webp"
-            alt="YMAU V delegates gathered for the official conference portrait in Accra"
-            fill
-            sizes="100vw"
-            quality={90}
-            preload
-            placeholder="blur"
-            blurDataURL={HERO_IMAGE_PLACEHOLDER}
-            className="about-hero__image"
-          />
+          <picture>
+            <source media="(min-width: 701px)" srcSet={aboutDesktopSrcSet} />
+            <source media="(max-width: 700px)" srcSet={aboutMobileSrcSet} />
+            <img
+              {...aboutMobileProps}
+              alt={aboutMobileAlt}
+              className="about-hero__image"
+              fetchPriority="high"
+            />
+          </picture>
           <span className="about-hero__veil" />
           <div className="about-hero__topline">
             <span>01 · About YMAU</span>

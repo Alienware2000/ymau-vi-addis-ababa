@@ -3,26 +3,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { AnimatedStatGrid } from "./_components/animated-stat-grid";
+import { CulturalAnnotation } from "./_components/cultural-annotation";
 import { SiteHeader } from "./_components/site-header";
+import { ymauVConferenceMetrics } from "./conference-metrics";
+import { EDITORIAL_IMAGE_PLACEHOLDER } from "./image-delivery";
 
-const cityPhoto =
-  "https://images.unsplash.com/photo-1686143293611-85158a1a9370?auto=format&fit=crop&fm=jpg&q=86&w=2400";
-const audiencePhoto =
-  "https://images.pexels.com/photos/5940830/pexels-photo-5940830.jpeg?auto=compress&cs=tinysrgb&w=1800";
-const speakerPhoto =
-  "https://images.pexels.com/photos/6949925/pexels-photo-6949925.jpeg?auto=compress&cs=tinysrgb&w=1800";
-const coffeePhoto =
-  "https://images.unsplash.com/photo-1774529233247-d3f34ed11994?auto=format&fit=crop&fm=jpg&q=84&w=1800";
+const cityPhoto = "/ymau-media/home/addis-skyline.jpg";
+const audiencePhoto = "/ymau-media/home/conference-audience.jpg";
+const speakerPhoto = "/ymau-media/home/conference-speaker.jpg";
+const coffeePhoto = "/ymau-media/home/ethiopian-coffee.jpg";
 const ethiopiaFilm = "/ethiopia-highlands.mp4";
 const ethiopiaMobileFilm = "/ethiopia-highlands-mobile.mp4";
 const ethiopiaPoster = "/ethiopia-highlands-poster.jpg";
-
-const historicalStats = [
-  { value: 350, suffix: "+", label: "delegates" },
-  { value: 30, suffix: "+", label: "nationalities" },
-  { value: 80, suffix: "%", label: "received financial aid" },
-  { value: 22, suffix: "", label: "speakers" },
-];
 
 const programmeDays = [
   {
@@ -38,8 +31,8 @@ const programmeDays = [
     day: "Tuesday",
     phase: "Deliberation",
     programme: "A full day of committee work, leadership programming and cultural exchange.",
-    image: "/ymau-media/programme-deliberation.webp",
-    alt: "A YMAU V delegate speaking during a committee session",
+    image: "/ymau-media/editorial/programme-deliberation-room.jpg",
+    alt: "YMAU V delegates debating across a committee room",
   },
   {
     date: "17 MAR",
@@ -51,55 +44,6 @@ const programmeDays = [
   },
 ];
 
-function AnimatedNumber({
-  value,
-  suffix,
-}: {
-  value: number;
-  suffix: string;
-}) {
-  const ref = useRef<HTMLElement>(null);
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-    let frame = 0;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-          setDisplay(value);
-          observer.disconnect();
-          return;
-        }
-
-        const duration = 1200;
-        const startedAt = performance.now();
-        const tick = (now: number) => {
-          const progress = Math.min((now - startedAt) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 4);
-          setDisplay(Math.round(value * eased));
-          if (progress < 1) frame = requestAnimationFrame(tick);
-        };
-        frame = requestAnimationFrame(tick);
-        observer.disconnect();
-      },
-      { threshold: 0.35 },
-    );
-
-    observer.observe(element);
-    return () => {
-      observer.disconnect();
-      cancelAnimationFrame(frame);
-    };
-  }, [value]);
-
-  return <strong ref={ref}>{display}{suffix}</strong>;
-}
-
 function ArrowIcon({
   direction = "north-east",
 }: {
@@ -110,50 +54,6 @@ function ArrowIcon({
       className={`link-arrow link-arrow--${direction}`}
       aria-hidden="true"
     />
-  );
-}
-
-function TranslationTerm({
-  id,
-  amharic,
-  transliteration,
-  meaning,
-  pronunciation,
-  light = false,
-  align = "left",
-}: {
-  id: string;
-  amharic: string;
-  transliteration: string;
-  meaning: string;
-  pronunciation: string;
-  light?: boolean;
-  align?: "left" | "right";
-}) {
-  const tooltipId = `${id}-translation`;
-
-  return (
-    <button
-      type="button"
-      className={`translation-term${light ? " translation-term--light" : ""} translation-term--${align}`}
-      aria-label={`${amharic}, ${transliteration}, meaning ${meaning}, pronounced approximately ${pronunciation}`}
-      aria-describedby={tooltipId}
-    >
-      <span className="translation-term__surface">
-        <span lang="am">{amharic}</span>
-      </span>
-      <span className="translation-term__popover" id={tooltipId} role="tooltip">
-        <span className="translation-term__language">Amharic lexicon</span>
-        <span className="translation-term__definition">
-          <strong>{transliteration}</strong>
-          <em>{meaning}</em>
-        </span>
-        <span className="translation-term__pronunciation">
-          <span>Pronounce</span>
-          <b>{pronunciation}</b>
-        </span>
-      </span>
-    </button>
   );
 }
 
@@ -300,7 +200,7 @@ export default function Home() {
 
       <SiteHeader home />
 
-      <main id="top">
+      <main id="main-content">
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero__media" aria-hidden="true">
             <video
@@ -323,13 +223,10 @@ export default function Home() {
           <div className="hero__content">
             <div className="hero__edition">
               <span>Sixth edition</span>
-              <TranslationTerm
-                id="hero-addis"
-                amharic="አዲስ አበባ"
-                transliteration="Addis Ababa"
-                meaning="New Flower"
-                pronunciation="ad-DEES AH-buh-bah"
-                light
+              <CulturalAnnotation
+                term="addisAbaba"
+                variant="quiet"
+                tone="light"
                 align="right"
               />
             </div>
@@ -353,6 +250,29 @@ export default function Home() {
             <ArrowIcon direction="down" />
           </a>
         </section>
+
+        <nav className="home-map" aria-label="Choose where to begin on the YMAU VI homepage">
+          <div className="home-map__intro">
+            <span>Start here</span>
+            <strong>Choose where to begin.</strong>
+          </div>
+          <a href="#about">
+            <span>01 · Why YMAU</span>
+            <strong>Mission and record</strong>
+          </a>
+          <a href="#field-notes">
+            <span>02 · Meet Addis</span>
+            <strong>Language, place and ritual</strong>
+          </a>
+          <a href="#conference">
+            <span>03 · Conference</span>
+            <strong>Theme, committees and programme</strong>
+          </a>
+          <a href="#delegations">
+            <span>04 · Attend</span>
+            <strong>Registration and delegation guidance</strong>
+          </a>
+        </nav>
 
         <section className="manifesto" id="about">
           <div className="section-kicker" data-reveal>
@@ -384,13 +304,14 @@ export default function Home() {
             <span>YMAU V · Accra 2026</span>
             <span>Our most recent conference, in numbers</span>
           </div>
-          <div className="facts" aria-label="Historical YMAU V conference statistics" data-reveal>
-            {historicalStats.map((stat) => (
-              <div key={stat.label}>
-                <AnimatedNumber value={stat.value} suffix={stat.suffix} />
-                <span>{stat.label}</span>
-              </div>
-            ))}
+          <div data-reveal>
+            <AnimatedStatGrid
+              stats={ymauVConferenceMetrics}
+              className="facts"
+              ariaLabel="Historical YMAU V conference statistics"
+              itemElement="div"
+              showDetail={false}
+            />
           </div>
         </section>
 
@@ -413,39 +334,21 @@ export default function Home() {
           <div className="field-notes__lexicon">
             <article className="field-note" data-reveal>
               <span className="field-note__index">01 · Greeting</span>
-              <TranslationTerm
-                id="field-selam"
-                amharic="ሰላም"
-                transliteration="Selam"
-                meaning="Hello · Peace"
-                pronunciation="seh-LAHM"
-              />
+              <CulturalAnnotation term="selam" variant="display" tone="warm" />
               <h3>Selam</h3>
               <p className="field-note__pronunciation"><span>Say it</span> seh-LAHM</p>
               <p>A greeting and a wish in one word: hello, but also peace.</p>
             </article>
             <article className="field-note" data-reveal="delay-1">
               <span className="field-note__index">02 · The city</span>
-              <TranslationTerm
-                id="field-addis"
-                amharic="አዲስ አበባ"
-                transliteration="Addis Ababa"
-                meaning="New Flower"
-                pronunciation="ad-DEES AH-buh-bah"
-              />
+              <CulturalAnnotation term="addisAbaba" variant="display" tone="warm" />
               <h3>New Flower</h3>
               <p className="field-note__pronunciation"><span>Say it</span> ad-DEES AH-buh-bah</p>
               <p>The city&apos;s Amharic name is an invitation to see Addis anew.</p>
             </article>
             <article className="field-note" data-reveal>
               <span className="field-note__index">03 · Hospitality</span>
-              <TranslationTerm
-                id="field-buna"
-                amharic="ቡና"
-                transliteration="Buna"
-                meaning="Coffee"
-                pronunciation="BOO-nah"
-              />
+              <CulturalAnnotation term="buna" variant="display" tone="warm" align="right" />
               <h3>Buna</h3>
               <p className="field-note__pronunciation"><span>Say it</span> BOO-nah</p>
               <p>
@@ -457,7 +360,7 @@ export default function Home() {
 
           <aside className="journey-phrase" aria-label="Useful Amharic phrase" data-reveal>
             <span className="journey-phrase__label">One phrase to carry</span>
-            <span className="journey-phrase__amharic" lang="am">አመሰግናለሁ</span>
+            <CulturalAnnotation term="ameseginalehu" variant="phrase" tone="warm" />
             <span className="journey-phrase__entry">
               <strong>Ameseginalehu</strong>
               <span>ah-meh-seh-gee-NAH-leh-hoo</span>
@@ -495,6 +398,9 @@ export default function Home() {
               alt="Addis Ababa skyline and Churchill Avenue"
               fill
               sizes="(max-width: 980px) 100vw, 53vw"
+              quality={90}
+              placeholder="blur"
+              blurDataURL={EDITORIAL_IMAGE_PLACEHOLDER}
             />
             <span className="photo-label">Addis Ababa · 2,355 m</span>
             <span className="photo-label photo-label--right">OAU founded here · 1963</span>
@@ -521,7 +427,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="theme-feature" aria-labelledby="theme-title">
+        <section className="theme-feature" id="conference" aria-labelledby="theme-title">
           <div className="section-kicker section-kicker--light" data-reveal>
             <span>03</span>
             <span>Conference theme</span>
@@ -579,7 +485,15 @@ export default function Home() {
             {programmeDays.map((item, index) => (
               <article className="programme-day" key={item.date} data-reveal={`delay-${index % 2}`}>
                 <div className="programme-day__image">
-                  <Image src={item.image} alt={item.alt} fill sizes="(max-width: 680px) 100vw, 33vw" />
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    fill
+                    sizes="(max-width: 980px) 100vw, 33vw"
+                    quality={90}
+                    placeholder="blur"
+                    blurDataURL={EDITORIAL_IMAGE_PLACEHOLDER}
+                  />
                   <span aria-hidden="true" />
                 </div>
                 <div className="programme-day__top">
@@ -597,6 +511,36 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="home-recap" id="recap" aria-labelledby="home-recap-title">
+          <div className="home-recap__media" data-reveal>
+            <iframe
+              className="home-recap__frame"
+              src="https://drive.google.com/file/d/1wbKwU7HAs9EpIa-Iq240-TFVvt5rjWpQ/preview"
+              title="YMAU V extended highlights"
+              allow="autoplay; fullscreen"
+              allowFullScreen
+              loading="lazy"
+            />
+            <span className="home-recap__tag">Film · YMAU V · Accra</span>
+          </div>
+          <div className="home-recap__copy">
+            <div className="section-kicker" data-reveal>
+              <span>Archive</span>
+              <span>YMAU V · Accra</span>
+            </div>
+            <h2 id="home-recap-title" data-reveal>A previous room.<br /><em>A living record.</em></h2>
+            <p data-reveal>The confirmed YMAU V film now lives here on the homepage as a story in its own right—an immediate view into the room before Addis.</p>
+            <div className="home-recap__actions" data-reveal>
+              <a className="text-link" href="https://drive.google.com/file/d/1wbKwU7HAs9EpIa-Iq240-TFVvt5rjWpQ/view" target="_blank" rel="noreferrer">
+                Watch the full film <ArrowIcon />
+              </a>
+              <Link className="text-link" href="/recap">
+                Explore the archive <ArrowIcon />
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <section className="experience" id="experience">
           <div className="experience__image experience__image--audience" data-reveal>
             <Image
@@ -604,6 +548,9 @@ export default function Home() {
               alt="Students engaged in a university conference session"
               fill
               sizes="(max-width: 980px) 100vw, 54vw"
+              quality={90}
+              placeholder="blur"
+              blurDataURL={EDITORIAL_IMAGE_PLACEHOLDER}
             />
           </div>
           <div className="experience__copy">
@@ -627,7 +574,10 @@ export default function Home() {
               src={speakerPhoto}
               alt="A woman delivering a speech at a conference podium"
               fill
-              sizes="46vw"
+              sizes="(max-width: 980px) 100vw, 46vw"
+              quality={90}
+              placeholder="blur"
+              blurDataURL={EDITORIAL_IMAGE_PLACEHOLDER}
             />
           </div>
           <div className="experience__image experience__image--coffee" data-reveal>
@@ -636,16 +586,12 @@ export default function Home() {
               alt="Ethiopian coffee being poured from a traditional pot"
               fill
               sizes="(max-width: 980px) 100vw, 54vw"
+              quality={90}
+              placeholder="blur"
+              blurDataURL={EDITORIAL_IMAGE_PLACEHOLDER}
             />
             <div className="experience__culture-tag">
-              <TranslationTerm
-                id="coffee-buna"
-                amharic="ቡና"
-                transliteration="Buna"
-                meaning="Coffee"
-                pronunciation="BOO-nah"
-                light
-              />
+              <CulturalAnnotation term="buna" variant="image" tone="light" />
             </div>
             <span>Hospitality is part of the programme.</span>
           </div>

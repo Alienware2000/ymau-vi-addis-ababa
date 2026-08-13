@@ -51,7 +51,9 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
   };
 
   return (
-    <header ref={headerRef} className={`site-header site-header--shared${home ? " site-header--home" : " site-header--inner"}${scrolled ? " is-scrolled" : ""}${menuOpen ? " has-open-menu" : ""}`}>
+    <>
+      <a className="skip-link" href="#main-content">Skip to main content</a>
+      <header ref={headerRef} className={`site-header site-header--shared${home ? " site-header--home" : " site-header--inner"}${scrolled ? " is-scrolled" : ""}${menuOpen ? " has-open-menu" : ""}`}>
       <Link className="brand" href="/" aria-label="YMAU VI home" onClick={closeMenu}>
         <Image
           className="brand__wordmark"
@@ -59,7 +61,6 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
           alt="Yale Model African Union"
           width={752}
           height={185}
-          preload
         />
       </Link>
 
@@ -135,6 +136,7 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
 
         <p className="nav-mobile-note">Yale Model African Union · Sixth Edition</p>
       </nav>
-    </header>
+      </header>
+    </>
   );
 }

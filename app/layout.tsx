@@ -33,7 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
       url: origin,
       images: [
         {
-          url: `${origin}/og.png`,
+          url: `${origin}/social-preview-ymau-vi.png`,
           width: 1640,
           height: 923,
           alt: "Yale Model African Union VI — Addis Ababa, 15–17 March 2027",
@@ -44,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "Yale Model African Union VI",
       description,
-      images: [`${origin}/og.png`],
+      images: [`${origin}/social-preview-ymau-vi.png`],
     },
   };
 }

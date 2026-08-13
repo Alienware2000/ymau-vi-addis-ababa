@@ -1,13 +1,9 @@
-export type PageHeroImage = {
-  src: string;
-  alt: string;
-  context: string;
-  credit: string;
-  creditHref?: string;
-  position?: string;
+import type { MediaAsset } from "./media-library";
+import type { CulturalTermKey } from "./cultural-lexicon";
+
+export type PageHeroImage = MediaAsset & {
   nativeLabel?: {
-    text: string;
-    translation: string;
+    term: CulturalTermKey;
   };
 };
 
@@ -28,6 +24,13 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     credit: ymauArchiveCredit,
     position: "50% 46%",
   },
+  founders: {
+    src: "/ymau-media/pages/founders.jpg",
+    alt: "A portrait triptych of YMAU co-founders Ornella Bayigamba and Richard Mbouombouo with inaugural president Francesca Nyakora",
+    context: "YMAU’s founding leadership · 2020–22",
+    credit: "Official YMAU institutional archive",
+    position: "50% 48%",
+  },
   "secretary-general": {
     src: "/ymau-media/pages/secretary-general.webp",
     alt: "A facilitator leading a YMAU V leadership session",
@@ -44,10 +47,19 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
   },
   ambassadors: {
     src: "/ymau-media/pages/ambassadors.webp",
-    alt: "Delegates in coordinated African-print dress on the YMAU V stage",
-    context: "African Soirée · YMAU V",
+    alt: "YMAU V student leaders gathered on stage in Accra",
+    context: "A student network in the room · YMAU V",
     credit: ymauArchiveCredit,
     position: "50% 44%",
+    nativeLabel: { term: "andinet" },
+  },
+  careers: {
+    src: "/ymau-media/pages/careers-yale-campus.jpg",
+    alt: "Students crossing Yale University's Cross Campus toward Sterling Memorial Library",
+    context: "Cross Campus · Yale University",
+    credit: "Carol M. Highsmith / Library of Congress · Public domain",
+    creditHref: "https://commons.wikimedia.org/wiki/File:Cross_Campus_Highsmith.jpg",
+    position: "50% 48%",
   },
   programme: {
     src: "/ymau-media/pages/programme.webp",
@@ -63,7 +75,7 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     credit: "Francesco Bandarin / UNESCO · CC BY-SA 3.0 IGO",
     creditHref: "https://commons.wikimedia.org/wiki/File:Rock-Hewn_Churches,_Lalibela-107575.jpg",
     position: "50% 52%",
-    nativeLabel: { text: "ላሊበላ", translation: "Lalibela" },
+    nativeLabel: { term: "lalibela" },
   },
   "mandate-to-market": {
     src: "/ymau-media/pages/mandate-to-market.webp",
@@ -80,8 +92,8 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     position: "60% 40%",
   },
   recap: {
-    src: "/ymau-media/pages/recap.webp",
-    alt: "YMAU V delegates and organizers gathered on stage in Accra",
+    src: "/ymau-media/editorial/recap-community-wide.jpg",
+    alt: "YMAU V delegates, organizers and guests gathered after the closing assembly in Accra",
     context: "Closing assembly · Accra, Ghana",
     credit: ymauArchiveCredit,
     position: "50% 40%",
@@ -116,19 +128,19 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
   },
   registration: {
     src: "/ymau-media/pages/registration.webp",
-    alt: "A daytime view across central Addis Ababa",
-    context: "Central Addis Ababa · Ethiopia",
-    credit: "Hawi Getachew / Unsplash",
-    creditHref: "https://unsplash.com/photos/r3JBHwlRFMI",
-    position: "50% 52%",
-    nativeLabel: { text: "አዲስ አበባ", translation: "Addis Ababa" },
+    alt: "A student walking through a colourful street in Addis Ababa",
+    context: "Everyday Addis Ababa · Ethiopia",
+    credit: "Tsion Molla / Pexels",
+    creditHref: "https://www.pexels.com/photo/urban-life-in-addis-ababa-with-colorful-scene-36650842/",
+    position: "50% 50%",
+    nativeLabel: { term: "addisAbaba" },
   },
   "financial-aid": {
-    src: "/ymau-media/pages/financial-aid.webp",
-    alt: "A YMAU V delegate receiving a certificate at the awards ceremony",
-    context: "Delegate recognition · YMAU V",
+    src: "/ymau-media/editorial/financial-aid-recipient-community.jpg",
+    alt: "YMAU V delegates and conference leaders celebrating student achievement together",
+    context: "Access, achievement and community · YMAU V",
     credit: ymauArchiveCredit,
-    position: "50% 42%",
+    position: "50% 46%",
   },
   faq: {
     src: "/ymau-media/pages/faq.webp",
@@ -137,7 +149,7 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     credit: "Abenezer Shewaga / Unsplash",
     creditHref: "https://unsplash.com/photos/WMB-Fb5LHeg",
     position: "50% 48%",
-    nativeLabel: { text: "አዲስ አበባ", translation: "Addis Ababa" },
+    nativeLabel: { term: "addisAbaba" },
   },
   "travel-guide": {
     src: "/ymau-media/pages/travel-guide.webp",
@@ -146,7 +158,7 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     credit: "Erik Hathaway / Unsplash",
     creditHref: "https://unsplash.com/photos/eRFC0_U0hGE",
     position: "50% 48%",
-    nativeLabel: { text: "ኢትዮጵያ", translation: "Ethiopia" },
+    nativeLabel: { term: "ethiopia" },
   },
   "addis-ababa": {
     src: "/ymau-media/pages/addis-ababa.webp",
@@ -155,7 +167,7 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     credit: "Jean Rebiffé · CC BY 2.0",
     creditHref: "https://commons.wikimedia.org/wiki/File:Sunset_on_the_rising_city,_Addis_Ababa_-_Flickr_-_jeanotr.jpg",
     position: "50% 48%",
-    nativeLabel: { text: "አዲስ አበባ", translation: "Addis Ababa" },
+    nativeLabel: { term: "addisAbaba" },
   },
   "city-guide": {
     src: "/ymau-media/pages/city-guide.webp",
@@ -164,7 +176,7 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     credit: "Zeynep S. / Unsplash",
     creditHref: "https://unsplash.com/photos/WcWvmyG73yU",
     position: "50% 46%",
-    nativeLabel: { text: "ቡና", translation: "Coffee · buna" },
+    nativeLabel: { term: "buna" },
   },
   partners: {
     src: "/ymau-media/pages/partners.webp",
@@ -173,6 +185,7 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     credit: "Wang Guansen / Xinhua",
     creditHref: "https://commons.wikimedia.org/wiki/File:African_Union_Headquarters_Addis_Ababa.jpg",
     position: "50% 54%",
+    nativeLabel: { term: "andinet" },
   },
   "past-partners": {
     src: "/ymau-media/pages/past-partners.webp",

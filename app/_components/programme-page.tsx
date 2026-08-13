@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { EDITORIAL_IMAGE_PLACEHOLDER, HERO_IMAGE_PLACEHOLDER } from "../image-delivery";
 import { EditorialImageNote, InnerFooter, LineArrow, PageFamilyNav } from "./editorial-page-parts";
 import { SiteHeader } from "./site-header";
 
@@ -20,9 +21,9 @@ const days = [
     date: "16 March",
     title: "Deliberation",
     copy: "A full day of committee work, leadership programming and cultural exchange.",
-    image: "/ymau-media/programme-deliberation.webp",
-    alt: "A delegate speaking during a YMAU V committee session",
-    position: "50% 48%",
+    image: "/ymau-media/editorial/programme-deliberation-room.jpg",
+    alt: "YMAU V delegates debating across a committee room",
+    position: "50% 50%",
   },
   {
     number: "03",
@@ -43,18 +44,36 @@ const programmeLayers = [
   ["Pre-conference webinars", "A digital preparation series introduces the African Union, procedure and the policy context needed before Addis."],
 ] as const;
 
+const programmeRecord = [
+  {
+    title: "Simulate",
+    copy: "African Union-inspired moderated debate has been the intellectual core of YMAU from the beginning.",
+  },
+  {
+    title: "Learn",
+    copy: "Curated speakers and pan-African practitioners connect committee questions to lived institutional work.",
+  },
+  {
+    title: "Build",
+    copy: "Leadership workshops turn negotiation, research and collaboration into skills delegates can carry home.",
+  },
+] as const;
+
 export function ProgrammePage() {
   return (
     <div className="information-page programme-page">
       <SiteHeader />
-      <main>
+      <main id="main-content">
         <section className="programme-hero">
           <Image
             src="/ymau-media/pages/programme.webp"
             alt="A committee chair addressing delegates during YMAU V"
             fill
             sizes="100vw"
+            quality={90}
             preload
+            placeholder="blur"
+            blurDataURL={HERO_IMAGE_PLACEHOLDER}
             className="programme-hero__image"
           />
           <span className="programme-hero__veil" />
@@ -88,6 +107,9 @@ export function ProgrammePage() {
                   alt={item.alt}
                   fill
                   sizes="(max-width: 820px) 100vw, 33vw"
+                  quality={90}
+                  placeholder="blur"
+                  blurDataURL={EDITORIAL_IMAGE_PLACEHOLDER}
                   style={{ objectPosition: item.position }}
                 />
                 <span className="programme-day-card__shade" />
@@ -100,6 +122,28 @@ export function ProgrammePage() {
               </div>
             </article>
           ))}
+        </section>
+
+        <section className="programme-record">
+          <header>
+            <span>The institutional record</span>
+            <h2>What changes each year.<br /><em>What YMAU keeps.</em></h2>
+            <p>
+              Past editions do not determine the 2027 running order, but they do reveal the conference’s recurring educational grammar.
+            </p>
+          </header>
+          <div>
+            {programmeRecord.map((item, index) => (
+              <article key={item.title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
+              </article>
+            ))}
+          </div>
+          <p className="programme-record__note">
+            Final speakers, sessions, committee timings and special programmes will be published once approved by the YMAU VI team.
+          </p>
         </section>
 
         <section className="programme-layers">

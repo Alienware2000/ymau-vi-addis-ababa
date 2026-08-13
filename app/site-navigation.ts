@@ -14,9 +14,11 @@ export const navigationGroups: NavigationGroup[] = [
     links: [
       { label: "Our mission", href: "/about" },
       { label: "Our history", href: "/history" },
+      { label: "Our founders", href: "/founders" },
       { label: "Secretary-General", href: "/secretary-general" },
       { label: "Secretariat", href: "/secretariat" },
       { label: "Ambassadors", href: "/ambassadors" },
+      { label: "Careers for Yale students", href: "/careers" },
     ],
   },
   {
@@ -33,9 +35,6 @@ export const navigationGroups: NavigationGroup[] = [
     label: "Committees",
     links: [
       { label: "Committee overview", href: "/committees" },
-      { label: "Delegate preparation", href: "/committee-preparation" },
-      { label: "Topic guides", href: "/topic-guides" },
-      { label: "Rules and policies", href: "/committee-policies" },
     ],
   },
   {
@@ -70,7 +69,15 @@ const contactGroup: NavigationGroup = {
 };
 
 export function findNavigationGroup(slug: string) {
-  return navigationGroups.find((group) =>
+  const visibleGroup = navigationGroups.find((group) =>
     group.links.some((link) => link.href === `/${slug}`),
-  ) ?? contactGroup;
+  );
+
+  if (visibleGroup) return visibleGroup;
+
+  if (["committee-preparation", "topic-guides", "committee-policies"].includes(slug)) {
+    return navigationGroups.find((group) => group.label === "Committees") ?? contactGroup;
+  }
+
+  return contactGroup;
 }

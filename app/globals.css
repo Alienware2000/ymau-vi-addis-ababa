@@ -33,6 +33,15 @@
   unicode-range: U+030E, U+1200-1399, U+2D80-2DDE, U+AB01-AB2E, U+1E7E0-1E7FE;
 }
 
+@font-face {
+  font-display: swap;
+  font-family: "Noto Serif Ethiopic";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/noto-serif-ethiopic.woff2") format("woff2");
+  unicode-range: U+030E, U+1200-1399, U+2D80-2DDE, U+AB01-AB2E, U+1E7E0-1E7FE;
+}
+
 :root {
   --ink: #061a37;
   --ink-deep: #001126;
@@ -669,7 +678,7 @@ video {
 }
 
 .cultural-annotation__script {
-  font-family: "Noto Sans Ethiopic", "Geeza Pro", sans-serif;
+  font-family: "Noto Serif Ethiopic", "Noto Sans Ethiopic", "Geeza Pro", serif;
   line-height: 1.08;
 }
 
@@ -719,22 +728,23 @@ video {
   color: var(--ink-deep);
   display: grid;
   gap: 0;
-  left: 0;
-  max-width: min(340px, calc(100vw - 32px));
-  min-width: min(320px, calc(100vw - 32px));
+  max-height: calc(100dvh - 28px);
+  max-width: calc(100vw - 28px);
+  min-width: 0;
   opacity: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding: 17px 18px 16px;
   pointer-events: none;
-  position: absolute;
+  position: fixed;
   text-align: left;
   text-transform: none;
-  top: calc(100% + 10px);
   transform: translateY(6px) scale(.985);
   transform-origin: top left;
   transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
   visibility: hidden;
   white-space: normal;
-  z-index: 80;
+  z-index: 10000;
 }
 
 .cultural-annotation__popover::before {
@@ -747,11 +757,7 @@ video {
   width: 52px;
 }
 
-.cultural-annotation--align-right .cultural-annotation__popover {
-  left: auto;
-  right: 0;
-  transform-origin: top right;
-}
+.cultural-annotation__popover[data-placement="above"] { transform: translateY(-6px) scale(.985); transform-origin: bottom left; }
 
 .cultural-annotation__overline {
   color: var(--red);
@@ -826,7 +832,7 @@ video {
 
 .cultural-annotation__approximation { margin-top: 12px; }
 
-.cultural-annotation[data-open="true"] .cultural-annotation__popover {
+.cultural-annotation__popover[data-open="true"][data-positioned="true"] {
   opacity: 1;
   pointer-events: auto;
   transform: none;
@@ -839,13 +845,6 @@ video {
 }
 
 @media (hover: hover) {
-  .cultural-annotation:hover .cultural-annotation__popover {
-    opacity: 1;
-    pointer-events: auto;
-    transform: none;
-    visibility: visible;
-  }
-
   .cultural-annotation:hover .cultural-annotation__trigger::after {
     opacity: .86;
     transform: scaleX(1);
@@ -5934,10 +5933,6 @@ video {
     font-size: 64px;
   }
 
-  .cultural-annotation__popover {
-    min-width: min(285px, calc(100vw - 40px));
-  }
-
   .journey-phrase {
     gap: 18px;
     grid-template-columns: 1fr;
@@ -6467,10 +6462,13 @@ video {
 .addis-opening h2 { font-family: var(--font-display), Georgia, serif; font-size: clamp(58px, 7vw, 110px); font-weight: 400; letter-spacing: -.06em; line-height: .84; margin: 0; }
 .addis-opening > p { font-size: clamp(17px, 1.3vw, 20px); grid-column: 2; line-height: 1.8; margin: 0; max-width: 760px; }
 .addis-facts { background: #9b4c22; color: #fff; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.addis-facts > div { border-right: 1px solid rgba(255,255,255,.28); min-height: 210px; padding: clamp(27px, 4vw, 54px); }
-.addis-facts strong { display: block; font-family: var(--font-display), Georgia, serif; font-size: clamp(48px, 5.2vw, 82px); font-weight: 400; line-height: .9; }
+.addis-facts > div { border-right: 1px solid rgba(255,255,255,.28); display: grid; grid-template-rows: minmax(88px, auto) auto; min-height: 250px; padding: clamp(27px, 4vw, 54px); }
+.addis-facts__value { align-items: end; display: flex; min-height: 88px; }
+.addis-facts strong { display: block; font-family: var(--font-display), Georgia, serif; font-size: clamp(48px, 5.2vw, 82px); font-weight: 400; letter-spacing: -.035em; line-height: .88; }
 .addis-facts .cultural-annotation { display: block; }
-.addis-facts span { display: block; font-size: 9px; font-weight: 700; letter-spacing: .12em; margin-top: 30px; text-transform: uppercase; }
+.addis-facts .cultural-annotation__trigger { align-items: flex-end; padding-bottom: 5px; }
+.addis-facts .cultural-annotation--fact .cultural-annotation__script { font-size: clamp(44px, 4.4vw, 70px); font-weight: 400; letter-spacing: -.035em; line-height: .88; }
+.addis-facts > div > span { align-self: start; display: block; font-size: 9px; font-weight: 700; letter-spacing: .12em; margin-top: 30px; text-transform: uppercase; }
 .addis-institution,
 .addis-street { background: var(--paper-light); display: grid; grid-template-columns: minmax(420px, 1.1fr) minmax(0, .9fr); }
 .addis-street { grid-template-columns: minmax(0, .9fr) minmax(420px, 1.1fr); }
@@ -6700,13 +6698,9 @@ video {
   .editorial-hero__native .cultural-annotation__signal { height: 11px; width: 11px; }
   .editorial-hero__native .cultural-annotation__script { font-size: 20px; }
   .cultural-annotation__popover {
-    left: 0;
-    max-width: min(310px, calc(100vw - 32px));
-    min-width: min(285px, calc(100vw - 32px));
+    max-width: calc(100vw - 28px);
     padding: 15px 16px;
-    right: auto;
   }
-  .cultural-annotation--align-right .cultural-annotation__popover { left: auto; right: 0; }
   .cultural-annotation__definition { align-items: start; flex-direction: column; gap: 5px; }
   .cultural-annotation__definition em { text-align: left; }
 }

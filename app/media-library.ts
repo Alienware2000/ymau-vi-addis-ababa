@@ -1,5 +1,7 @@
 export type MediaAsset = {
   src: string;
+  /** Optional portrait source used when a desktop crop would hide the subject on phones. */
+  mobileSrc?: string;
   alt: string;
   context: string;
   credit: string;

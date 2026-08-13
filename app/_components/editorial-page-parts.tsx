@@ -8,23 +8,34 @@ export function LineArrow() {
 
 export function PageFamilyNav({ slug }: { slug: string }) {
   const group = findNavigationGroup(slug);
+  const activeLink = group.links.find((link) => link.href === `/${slug}`);
+  const activeLabel = activeLink?.label ?? group.label;
+
+  const renderLinks = () => group.links.map((link) => (
+    <Link
+      href={link.href}
+      key={link.href}
+      aria-current={link.href === `/${slug}` ? "page" : undefined}
+    >
+      {link.label}
+    </Link>
+  ));
 
   return (
-    <nav className="page-family-nav" aria-label={`${group.label} pages`}>
-      <span className="page-family-nav__label">Explore {group.label}</span>
-      <div>
-        {group.links.map((link) => (
-          <Link
-            href={link.href}
-            key={link.href}
-            aria-current={link.href === `/${slug}` ? "page" : undefined}
-          >
-            {link.label}
-          </Link>
-        ))}
+    <section className="page-family-nav">
+      <div className="page-family-nav__desktop">
+        <span className="page-family-nav__label">Explore {group.label}</span>
+        <nav aria-label={`${group.label} pages`}>{renderLinks()}</nav>
       </div>
-      <span className="page-family-nav__hint" aria-hidden="true">Swipe to explore</span>
-    </nav>
+      <details className="page-family-nav__mobile">
+        <summary>
+          <span>Explore {group.label}</span>
+          <strong>{activeLabel}</strong>
+          <i aria-hidden="true" />
+        </summary>
+        <nav aria-label={`${group.label} pages`}>{renderLinks()}</nav>
+      </details>
+    </section>
   );
 }
 

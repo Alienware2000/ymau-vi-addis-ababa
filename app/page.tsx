@@ -193,8 +193,8 @@ export default function Home() {
   return (
     <>
       <div className={`announcement${isScrolled ? " is-hidden" : ""}`}>
-        <span>YMAU VI · Addis Ababa · 15–17 March 2027</span>
-        <a href="#delegations">Registration update <ArrowIcon /></a>
+        <span><b>YMAU VI</b><i>Addis Ababa</i><em>15–17 March 2027</em></span>
+        <a href="#delegations"><span>Registration <b>update</b></span><ArrowIcon /></a>
       </div>
       <span className="page-progress" aria-hidden="true"><span ref={progressRef} /></span>
 
@@ -251,28 +251,31 @@ export default function Home() {
           </a>
         </section>
 
-        <nav className="home-map" aria-label="Choose where to begin on the YMAU VI homepage">
-          <div className="home-map__intro">
+        <section className="home-map-section" aria-labelledby="home-map-title">
+          <header className="home-map__intro">
             <span>Start here</span>
-            <strong>Choose where to begin.</strong>
-          </div>
-          <a href="#about">
-            <span>01 · Why YMAU</span>
-            <strong>Mission and record</strong>
-          </a>
-          <a href="#field-notes">
-            <span>02 · Meet Addis</span>
-            <strong>Language, place and ritual</strong>
-          </a>
-          <a href="#conference">
-            <span>03 · Conference</span>
-            <strong>Theme, committees and programme</strong>
-          </a>
-          <a href="#delegations">
-            <span>04 · Attend</span>
-            <strong>Registration and delegation guidance</strong>
-          </a>
-        </nav>
+            <strong id="home-map-title">A guide to this page.</strong>
+            <p>Choose a destination below.</p>
+          </header>
+          <nav className="home-map" aria-label="Choose where to begin on the YMAU VI homepage">
+            <a href="#about">
+              <span>01 · Why YMAU</span>
+              <strong>Mission and record</strong>
+            </a>
+            <a href="#field-notes">
+              <span>02 · Meet Addis</span>
+              <strong>Language, place and ritual</strong>
+            </a>
+            <a href="#conference">
+              <span>03 · Conference</span>
+              <strong>Theme, committees and programme</strong>
+            </a>
+            <a href="#delegations">
+              <span>04 · Attend</span>
+              <strong>Registration and delegation guidance</strong>
+            </a>
+          </nav>
+        </section>
 
         <section className="manifesto" id="about">
           <div className="section-kicker" data-reveal>

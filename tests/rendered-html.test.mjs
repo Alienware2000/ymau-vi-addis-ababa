@@ -55,8 +55,10 @@ test("defines the complete YMAU VI conference homepage", async () => {
   assert.match(page, /CulturalAnnotation/);
   assert.match(page, /One phrase to carry/);
   assert.match(page, /Africa gathered here/);
-  assert.match(page, /ethiopia-highlands-mobile\.mp4/);
-  assert.match(page, /ethiopia-highlands\.mp4/);
+  assert.match(page, /ethiopia-film-mobile\.mp4/);
+  assert.match(page, /ethiopia-film\.mp4/);
+  assert.match(page, /Ethiopia in motion/);
+  assert.doesNotMatch(page, /Source-limited timing proof|UHD masters pending|local design review/);
   assert.match(page, /autoPlay/);
   assert.match(page, /muted/);
   assert.match(page, /playsInline/);

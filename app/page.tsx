@@ -13,9 +13,9 @@ const cityPhoto = "/ymau-media/home/addis-skyline.jpg";
 const audiencePhoto = "/ymau-media/home/conference-audience.jpg";
 const speakerPhoto = "/ymau-media/home/conference-speaker.jpg";
 const coffeePhoto = "/ymau-media/home/ethiopian-coffee.jpg";
-const ethiopiaFilm = "/ethiopia-highlands.mp4";
-const ethiopiaMobileFilm = "/ethiopia-highlands-mobile.mp4";
-const ethiopiaPoster = "/ethiopia-highlands-poster.jpg";
+const ethiopiaFilm = "/ethiopia-film.mp4?v=11";
+const ethiopiaMobileFilm = "/ethiopia-film-mobile.mp4?v=11";
+const ethiopiaPoster = "/ethiopia-film-poster.jpg?v=11";
 
 const programmeDays = [
   {
@@ -62,6 +62,9 @@ export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
   const heroVisibleRef = useRef(true);
+  const filmButtonRef = useRef<HTMLButtonElement>(null);
+  const filmCloseRef = useRef<HTMLButtonElement>(null);
+  const filmWasOpenRef = useRef(false);
   const progressRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -76,6 +79,18 @@ export default function Home() {
       window.removeEventListener("keydown", onKeyDown);
       document.body.classList.remove("no-scroll");
     };
+  }, [filmOpen]);
+
+  useEffect(() => {
+    const wasOpen = filmWasOpenRef.current;
+    filmWasOpenRef.current = filmOpen;
+
+    if (filmOpen) {
+      const frame = window.requestAnimationFrame(() => filmCloseRef.current?.focus());
+      return () => window.cancelAnimationFrame(frame);
+    }
+
+    if (wasOpen) filmButtonRef.current?.focus();
   }, [filmOpen]);
 
   useEffect(() => {
@@ -213,7 +228,7 @@ export default function Home() {
               disablePictureInPicture
               poster={ethiopiaPoster}
             >
-              <source src={ethiopiaMobileFilm} type="video/mp4" media="(max-width: 680px)" />
+              <source src={ethiopiaMobileFilm} type="video/mp4" media="(max-width: 700px)" />
               <source src={ethiopiaFilm} type="video/mp4" />
             </video>
           </div>
@@ -240,11 +255,14 @@ export default function Home() {
               <p>15—17 March 2027</p>
             </div>
           </div>
-          <button className="film-link" type="button" onClick={() => setFilmOpen(true)}>
+          <button ref={filmButtonRef} className="film-link" type="button" onClick={() => setFilmOpen(true)}>
             <span className="film-link__icon" aria-hidden="true" />
             <span>Watch the Ethiopia film</span>
           </button>
-          <p className="hero__scene">Ethiopian Highlands <span>Film · Santhosh Peddi</span></p>
+          <p className="hero__scene">
+            Ethiopia in motion
+            <span>Highlands · heritage · Addis Ababa</span>
+          </p>
           <a className="scroll-cue" href="#about" aria-label="Continue to about the conference">
             <span>Explore</span>
             <ArrowIcon direction="down" />
@@ -678,7 +696,7 @@ export default function Home() {
             <a href="mailto:operations@yalemodelau.org">operations@yalemodelau.org</a>
           </p>
           <p>
-            Film: <a href="https://www.pexels.com/video/lush-forest-and-mountain-scenery-35814373/">Santhosh Peddi</a>. Photography: <a href="https://unsplash.com/@hawi_getachew">Hawi Getachew</a>,
+            Film: <a href="https://www.pexels.com/video/lush-forest-and-mountain-scenery-35814373/">Santhosh Peddi / Pexels</a> and <a href="https://youtu.be/qrRQKW2-HRY">Scenic Relaxation / YouTube</a>. Photography: <a href="https://unsplash.com/@hawi_getachew">Hawi Getachew</a>,
             <a href="https://www.pexels.com/@kampus/"> Kampus Production</a>,
             <a href="https://www.pexels.com/@werner-pfennig-1135354/"> Werner Pfennig</a> &amp;
             <a href="https://unsplash.com/@amen_visuals"> Amanuel Kebede</a>
@@ -694,12 +712,23 @@ export default function Home() {
       </footer>
 
       {filmOpen && (
-        <div className="film-modal" role="dialog" aria-modal="true" aria-label="Ethiopian highlands film">
-          <button className="film-modal__close" type="button" onClick={() => setFilmOpen(false)} aria-label="Close film">×</button>
-          <video src={ethiopiaFilm} poster={ethiopiaPoster} autoPlay controls playsInline muted />
-          <div className="film-modal__caption">
-            <span>The Ethiopian Highlands</span>
-            <span>Film: Santhosh Peddi / Pexels</span>
+        <div
+          className="film-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="film-modal-title"
+          aria-describedby="film-modal-description"
+        >
+          <button ref={filmCloseRef} className="film-modal__close" type="button" onClick={() => setFilmOpen(false)} aria-label="Close film">×</button>
+          <div className="film-modal__content">
+            <video poster={ethiopiaPoster} autoPlay controls playsInline muted preload="metadata">
+              <source src={ethiopiaMobileFilm} type="video/mp4" media="(max-width: 700px)" />
+              <source src={ethiopiaFilm} type="video/mp4" />
+            </video>
+            <div className="film-modal__caption">
+              <span id="film-modal-title">Ethiopia in motion</span>
+              <span id="film-modal-description">Highlands · heritage · Addis Ababa</span>
+            </div>
           </div>
         </div>
       )}

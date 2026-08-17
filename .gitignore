@@ -39,3 +39,6 @@ yarn-error.log*
 /.wrangler/
 /outputs/
 /work/
+/.hero-film-sources/
+/public/hero-film-design-proof.mp4
+/public/hero-film-design-proof-mobile.mp4

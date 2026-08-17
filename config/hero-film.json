@@ -1,0 +1,199 @@
+{
+  "version": 1,
+  "title": "YMAU VI — Ethiopia in five movements",
+  "fps": 25,
+  "transitionSeconds": 0.9,
+  "sourceRoot": ".hero-film-sources",
+  "workRoot": "outputs/hero-film/work",
+  "deliveryRoot": "outputs/hero-film/delivery",
+  "outputs": {
+    "archive": {
+      "file": "ymau-vi-hero-master-4k.mov",
+      "width": 3840,
+      "height": 2160,
+      "codec": "prores"
+    },
+    "desktop": {
+      "file": "ymau-vi-hero-desktop.mp4",
+      "width": 1920,
+      "height": 1080,
+      "codec": "h264",
+      "crf": 15
+    },
+    "mobile": {
+      "file": "ymau-vi-hero-mobile.mp4",
+      "width": 1080,
+      "height": 1920,
+      "codec": "h264",
+      "crf": 15
+    },
+    "poster": {
+      "file": "ymau-vi-hero-poster.jpg",
+      "from": "desktop",
+      "time": 1.8
+    }
+  },
+  "creativeReferences": [
+    {
+      "url": "https://youtu.be/qrRQKW2-HRY",
+      "usage": "visual_reference_only",
+      "sourceMediaAllowed": false,
+      "notes": [
+        "Danakil camel caravan around 00:03:20",
+        "Gheralta Mountains around 00:05:00",
+        "Lalibela around 00:08:00"
+      ]
+    },
+    {
+      "url": "https://youtu.be/kFXH9TeRZJA",
+      "usage": "visual_reference_only",
+      "sourceMediaAllowed": false,
+      "notes": [
+        "Moving Addis Ababa night photography",
+        "Prefer passages where the Commercial Bank of Ethiopia Headquarters tower is legible"
+      ]
+    },
+    {
+      "url": "https://youtu.be/TRC243t3jkc",
+      "usage": "visual_reference_only",
+      "sourceMediaAllowed": false,
+      "notes": [
+        "African Union headquarters near the beginning",
+        "Treat as an optional two-to-three-second diplomatic-capital bridge only if a licensed 4K master improves the edit"
+      ]
+    }
+  ],
+  "creativeRequirements": {
+    "camelsMinimumVisibleSeconds": 5,
+    "gheraltaPersonMinimumVisibleSeconds": 5,
+    "gheraltaLandscapeMinimumVisibleSeconds": 4,
+    "addisNightMinimumVisibleSeconds": 5,
+    "addisNightMustMove": true,
+    "addisNightLandmark": "Commercial Bank of Ethiopia Headquarters",
+    "africanUnionInsertRequired": false
+  },
+  "sources": [
+    {
+      "id": "highlands",
+      "file": "01-highlands-master.mp4",
+      "location": "Ethiopian highlands",
+      "creator": "Santhosh Peddi",
+      "provider": "Pexels",
+      "sourceUrl": "https://www.pexels.com/video/lush-forest-and-mountain-scenery-35814373/",
+      "licenseStatus": "approved",
+      "licenseReference": "Pexels license; locally retained source master",
+      "minimumWidth": 3840,
+      "minimumHeight": 2160,
+      "focal": {
+        "desktop": { "x": 0.5, "y": 0.48 },
+        "mobile": { "x": 0.55, "y": 0.5 }
+      }
+    },
+    {
+      "id": "danakil-camels",
+      "file": "02-danakil-camels-master.mov",
+      "location": "Danakil Depression salt flats, Afar",
+      "creator": "Scenic Relaxation",
+      "provider": "Scenic Footage",
+      "sourceUrl": "https://www.scenicfootage.com/p/camels-walking-on-salt-lake-in-ethiopia/",
+      "preferredTitle": "Camels Walking on Salt Lake in Ethiopia During Sunrise",
+      "licenseStatus": "pending_purchase",
+      "licenseReference": "Commercial license and original 5120×2700 Mavic 3 master required; preserve the caravan composition referenced near 03:20 in Ryan Shirley's Ethiopia film",
+      "minimumWidth": 5120,
+      "minimumHeight": 2700,
+      "focal": {
+        "desktop": { "x": 0.5, "y": 0.58 },
+        "mobile": { "x": 0.58, "y": 0.57 }
+      }
+    },
+    {
+      "id": "gheralta-person",
+      "file": "03-gheralta-person-master.mov",
+      "location": "Abuna Yemata, Gheralta Mountains, Tigray",
+      "creator": "Scenic Relaxation",
+      "provider": "Scenic Footage",
+      "sourceUrl": "https://www.scenicfootage.com/p/abuna-yemata-church-in-ethiopia-sunset-xeh0bf/",
+      "preferredTitle": "Abuna Yemata Church in Ethiopia during Sunset",
+      "licenseStatus": "pending_purchase",
+      "licenseReference": "Commercial license and original 5120×2700 Mavic 3 master required; confirm that the exact person-on-the-ledge take referenced near 05:00 is included before purchase",
+      "minimumWidth": 5120,
+      "minimumHeight": 2700,
+      "focal": {
+        "desktop": { "x": 0.56, "y": 0.52 },
+        "mobile": { "x": 0.62, "y": 0.52 }
+      }
+    },
+    {
+      "id": "gheralta-landscape",
+      "file": "04-gheralta-landscape-master.mov",
+      "location": "Gheralta Mountains, Tigray",
+      "creator": "Scenic Relaxation",
+      "provider": "Scenic Footage",
+      "sourceUrl": "https://www.scenicfootage.com/p/gheralta-mountains-in-tigray-ethiopia-udhgd9/",
+      "preferredTitle": "Gheralta Mountains during Sunrise in Tigray Ethiopia",
+      "licenseStatus": "pending_purchase",
+      "licenseReference": "Commercial license and original 5120×2700 Mavic 3 master required",
+      "minimumWidth": 5120,
+      "minimumHeight": 2700,
+      "focal": {
+        "desktop": { "x": 0.52, "y": 0.5 },
+        "mobile": { "x": 0.56, "y": 0.5 }
+      }
+    },
+    {
+      "id": "addis-night",
+      "file": "05-addis-night-master.mov",
+      "location": "Addis Ababa",
+      "creator": "Commercial contributor",
+      "provider": "Pond5",
+      "sourceUrl": "https://www.pond5.com/stock-footage/item/292010099-high-angle-night-view-addis-ababa-ethiopia",
+      "preferredTitle": "High Angle Night View Of Addis Ababa, Ethiopia",
+      "licenseStatus": "candidate_requires_visual_confirmation",
+      "licenseReference": "Candidate commercial 6144×3456 ProRes master; confirm meaningful traffic or camera movement and a legible CBE Headquarters tower before purchase. Otherwise request the original master from ZeABAY for the time-coded reference shot.",
+      "minimumWidth": 3840,
+      "minimumHeight": 2160,
+      "focal": {
+        "desktop": { "x": 0.5, "y": 0.52 },
+        "mobile": { "x": 0.5, "y": 0.54 }
+      }
+    }
+  ],
+  "timeline": [
+    {
+      "source": "highlands",
+      "in": 4,
+      "duration": 4.8,
+      "purpose": "Open in the calm, green visual world already established by the prototype"
+    },
+    {
+      "source": "danakil-camels",
+      "in": 0,
+      "duration": 6.5,
+      "purpose": "Lateral caravan movement across reflective salt at warm dusk"
+    },
+    {
+      "source": "gheralta-person",
+      "in": 0,
+      "duration": 5.5,
+      "purpose": "Preserve the person-on-the-ledge composition that gives the Gheralta passage human scale"
+    },
+    {
+      "source": "gheralta-landscape",
+      "in": 0,
+      "duration": 4.7,
+      "purpose": "Open from the figure into a wider mountain movement before arriving in Addis"
+    },
+    {
+      "source": "addis-night",
+      "in": 0,
+      "duration": 6,
+      "purpose": "Move from landscape to the diplomatic capital after dark; require real camera or city motion and a legible CBE Headquarters tower"
+    },
+    {
+      "source": "highlands",
+      "in": 12,
+      "duration": 4,
+      "purpose": "Return to green for a quiet, visually coherent loop point"
+    }
+  ]
+}

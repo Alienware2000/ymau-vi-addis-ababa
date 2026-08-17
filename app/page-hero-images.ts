@@ -32,11 +32,11 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
     position: "50% 48%",
   },
   "secretary-general": {
-    src: "/ymau-media/pages/secretary-general.webp",
-    alt: "A facilitator leading a YMAU V leadership session",
-    context: "Leadership in practice · YMAU V",
-    credit: ymauArchiveCredit,
-    position: "72% 42%",
+    src: "/ymau-media/pages/secretary-general-abyssinia.jpg",
+    alt: "Abyssinia Haile addressing the YMAU V plenary in Accra",
+    context: "Abyssinia Haile addresses YMAU V · Accra",
+    credit: "Fred Sebowa / Official YMAU V media archive",
+    position: "22% 38%",
   },
   secretariat: {
     src: "/ymau-media/pages/secretariat.webp",

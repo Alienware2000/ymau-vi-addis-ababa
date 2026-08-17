@@ -5,11 +5,12 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { AnimatedStatGrid } from "./_components/animated-stat-grid";
 import { CulturalAnnotation } from "./_components/cultural-annotation";
+import { SignedLetter } from "./_components/signed-letter";
 import { SiteHeader } from "./_components/site-header";
 import { ymauVConferenceMetrics } from "./conference-metrics";
 import { EDITORIAL_IMAGE_PLACEHOLDER } from "./image-delivery";
+import { secretaryGeneralLetter, secretaryGeneralPortrait } from "./public-directory";
 
-const cityPhoto = "/ymau-media/home/addis-skyline.jpg";
 const audiencePhoto = "/ymau-media/home/conference-audience.jpg";
 const speakerPhoto = "/ymau-media/home/conference-speaker.jpg";
 const coffeePhoto = "/ymau-media/home/ethiopian-coffee.jpg";
@@ -412,38 +413,34 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="city-story" aria-label="A forthcoming message from the Secretary-General">
+        <section className="city-story" aria-label="A welcome from the Secretary-General">
           <div className="city-story__image" data-reveal>
             <Image
-              src={cityPhoto}
-              alt="Addis Ababa skyline and Churchill Avenue"
+              src={secretaryGeneralPortrait.src}
+              alt={secretaryGeneralPortrait.alt}
               fill
               sizes="(max-width: 980px) 100vw, 53vw"
               quality={90}
               placeholder="blur"
               blurDataURL={EDITORIAL_IMAGE_PLACEHOLDER}
+              style={{ objectPosition: secretaryGeneralPortrait.position }}
             />
-            <span className="photo-label">Addis Ababa · 2,355 m</span>
-            <span className="photo-label photo-label--right">OAU founded here · 1963</span>
+            <span className="photo-label">Abyssinia Haile · Secretary-General</span>
+            <span className="photo-label photo-label--right">YMAU VI · Addis Ababa</span>
           </div>
           <div className="city-story__letter">
             <div className="section-kicker section-kicker--light" data-reveal>
               <span>02</span>
               <span>From the Secretariat</span>
             </div>
-            <span className="content-status" data-reveal>Letter forthcoming</span>
             <blockquote data-reveal>
-              A welcome from the Secretary-General of YMAU VI will be published
-              here with the official portrait and biography.
+              {secretaryGeneralLetter.quote}
             </blockquote>
-            <p data-reveal>
-              The final editorial package is being prepared by the Secretariat.
-              This space is intentionally reserved rather than filled with
-              provisional biographical information.
-            </p>
-            <div className="signature" data-reveal>
-              <span>Abyssinia Haile</span>
-              <span>Secretary-General, YMAU VI</span>
+            <div data-reveal>
+              <SignedLetter compact className="signed-letter--home" />
+              <Link className="city-story__letter-link" href="/secretary-general">
+                Read the full welcome letter <ArrowIcon />
+              </Link>
             </div>
           </div>
         </section>

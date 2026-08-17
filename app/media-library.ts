@@ -293,6 +293,34 @@ export const mediaLibrary = {
     credit: "Official YMAU institutional archive",
     position: "50% 34%",
   },
+  portraitAbyssinia: {
+    src: "/ymau-media/portraits/abyssinia.jpg",
+    alt: "Official portrait of Secretary-General Abyssinia Haile",
+    context: "Abyssinia Haile · Secretary-General",
+    credit: "Official YMAU VI portrait",
+    position: "28% 38%",
+  },
+  portraitMeti: {
+    src: "/ymau-media/portraits/meti.webp",
+    alt: "Portrait of Meti Negewo, Director-General of Internal Operations",
+    context: "Meti Negewo · Internal Operations",
+    credit: "Official YMAU VI portrait",
+    position: "50% 22%",
+  },
+  portraitGumana: {
+    src: "/ymau-media/portraits/gumana.webp",
+    alt: "Portrait of Gumana Elrufai, Director-General of External Operations",
+    context: "Gumana Elrufai · External Operations",
+    credit: "Official YMAU VI portrait",
+    position: "50% 22%",
+  },
+  portraitAmin: {
+    src: "/ymau-media/portraits/amin.webp",
+    alt: "Portrait of Amin Abdellatif, Director-General of Conference Programming",
+    context: "Amin Abdellatif · Conference Programming",
+    credit: "Official YMAU VI portrait",
+    position: "50% 22%",
+  },
 } as const satisfies Record<string, MediaAsset>;
 
 function defineRouteMediaPlan<const T extends Record<string, readonly MediaAsset[]>>(plan: T): T {

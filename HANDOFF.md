@@ -1,20 +1,19 @@
 # YMAU VI website handoff
 
-Last updated: 14 August 2026
+Last updated: 16 August 2026
 
-This document is the durable resume point for the Yale Model African Union VI website. Read it before changing the homepage film or deploying a new version.
+This document is the durable resume point for the **homepage film**. For the current public-content pass (careers, portraits, ambassadors, partners), read [`docs/ABY_CONTENT_RESUME.md`](docs/ABY_CONTENT_RESUME.md) instead.
 
 ## Start here
 
 - Repository: <https://github.com/Alienware2000/ymau-vi-addis-ababa>
-- Working branch: `codex/hero-video-design`
-- Open draft PR: <https://github.com/Alienware2000/ymau-vi-addis-ababa/pull/4>
+- `main` includes the Ethiopia hero via merged PR #4 (`6d6050c`)
 - Production site: <https://ymau-vi-addis-ababa.vercel.app>
-- Hero implementation commit: `8f1aa9b` (`Polish Ethiopia hero film and responsive playback`)
+- Hero files: `public/ethiopia-film.mp4` / `ethiopia-film-mobile.mp4` / `ethiopia-film-poster.jpg` (`v=11` in `app/page.tsx`)
 - Vercel project: `alienware2000s-projects/ymau-vi-addis-ababa`
 - Node.js requirement: 22 or newer
 
-The production alias currently points to the manually promoted build from the working branch. The branch has not been merged into `main`; clone or switch to `codex/hero-video-design` until PR #4 is approved and merged.
+Do not change the film unless David explicitly asks. New content work branches from `main`.
 
 ## Restore on another computer
 

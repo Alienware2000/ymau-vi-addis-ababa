@@ -174,29 +174,26 @@ export const informationPages: Record<string, InformationPageData> = {
     eyebrow: "Leadership",
     title: "Abyssinia Haile",
     intro: "Secretary-General, Yale Model African Union VI",
-    portraitPending: true,
-    status: "Official portrait forthcoming",
     template: "profile",
     sections: [
       {
         heading: "Returning to Addis",
         body: [
-          "Abyssinia is a junior at Yale University studying Global Affairs, with a focus on African studies and the study of genocide in Africa. Born in Addis Ababa and now based in the greater Boston area, she brings her Habesha roots into her leadership of YMAU VI.",
+          "Abyssinia Haile is a junior at Yale University studying Global Affairs, with a focus on African studies. Born in Addis Ababa, Ethiopia and now based in the greater Boston area, she carries her Habesha roots — its dancing, food, and music — into everything she leads, including her return to Addis Ababa for YMAU VI.",
         ],
-        image: routeEditorialMedia.secretaryGeneral[0],
       },
       {
         heading: "Built from the inside",
         body: [
-          "Her path through YMAU began as Under-Secretary-General of Branding and Marketing. She later served as Director-General of Internal Operations for YMAU V, working across logistics, sponsorships and communications.",
-          "She now directs strategy and execution alongside a fourteen-member Secretariat.",
+          "Her path through YMAU began as Under-Secretary-General of Branding and Marketing during YMAU IV in Nairobi. She later served as Director-General of Internal Operations for YMAU V, working across logistics, sponsorships and communications.",
+          "She now directs strategy and execution alongside a fourteen-member Secretariat, and has built partnerships with organizations including the African Union Youth Division, TGI Group and Ecobank Ghana.",
         ],
         image: routeEditorialMedia.secretaryGeneral[1],
       },
       {
         heading: "Beyond YMAU",
         body: [
-          "Abyssinia writes across journalism, personal narrative and digital publishing, and is deeply invested in education reform and equal access to opportunity.",
+          "Outside YMAU, Abyssinia writes — blogging, journalism, personal narratives, whatever form the story needs. She is also deeply invested in education reform, believing every student deserves an equal opportunity to learn — a belief that shapes how she thinks about what YMAU should be: a space where opportunity isn’t determined by where you started.",
         ],
       },
     ],
@@ -206,25 +203,14 @@ export const informationPages: Record<string, InformationPageData> = {
     number: "03",
     eyebrow: "Our team",
     title: "The Secretariat leading YMAU VI from concept to conference.",
-    intro: "Based in New Haven, connected across the continent.",
-    status: "Portraits and full biographies forthcoming",
+    intro: "The Yale Model African Union’s Secretariat is based in New Haven, Connecticut.",
     template: "directory",
     sections: [
       {
         heading: "Conference leadership",
-        items: [
-          "Abyssinia Haile — Secretary-General",
-          "Amin Abdellatif — Director-General of Conference Programming",
-          "Meti Negewo — Director-General of Internal Operations",
-          "Gumana Elrufai — Director-General of External Operations",
+        body: [
+          "Programming, operations and external relations move as one conference system. The four officers below are public now; remaining Secretariat portraits and biographies will be released in October 2026.",
         ],
-        note: "The complete fourteen-member Secretariat directory will be published when the official portraits and biographies are approved.",
-        image: routeEditorialMedia.secretariat[0],
-      },
-      {
-        heading: "How the team works",
-        body: ["Programming, operations, external relations and communications move as one conference system. The full directory will make those responsibilities visible when the approved portraits and biographies arrive."],
-        image: routeEditorialMedia.secretariat[1],
       },
     ],
   },
@@ -233,7 +219,6 @@ export const informationPages: Record<string, InformationPageData> = {
     eyebrow: "Across borders",
     title: "Ninety-seven student leaders. More than fifteen countries.",
     intro: "One mission: bringing YMAU VI to campuses and communities across the world.",
-    status: "Ambassador directory forthcoming",
     template: "directory",
     sections: [
       {
@@ -241,14 +226,7 @@ export const informationPages: Record<string, InformationPageData> = {
         body: [
           "The YMAU Ambassador Program extends the conference beyond New Haven. Ambassadors connect prospective delegates to YMAU, organize local outreach and carry the conference’s mission into their own institutions.",
         ],
-        note: "Names, countries, institutions and portraits will be added when the directory is finalized.",
-        image: routeEditorialMedia.ambassadors[0],
         stats: ymauVIAmbassadorMetrics,
-      },
-      {
-        heading: "Recognition across borders",
-        body: ["The final directory will introduce ambassadors by country and institution, turning a number into a visible network of student leadership."],
-        image: routeEditorialMedia.ambassadors[1],
       },
     ],
   },
@@ -257,49 +235,63 @@ export const informationPages: Record<string, InformationPageData> = {
     eyebrow: "Careers for Yale students",
     title: "Help build the next continental room.",
     intro: "Applications to join the YMAU VI Secretariat are due 12 September.",
-    status: "Position descriptions and application link forthcoming",
     template: "guide",
     sections: [
       {
         heading: "Who may apply",
         body: [
-          "This opportunity is for eligible Yale students interested in conference programming, operations, external relations and the work of building an international student conference.",
-          "The final eligibility language will be published with the position descriptions. Prospective applicants should not infer role-specific requirements until that pack is released.",
+          "Yale students of all class years may apply to serve as Under-Secretary-Generals. Expect approximately 8–10 hours a week, rising during recruitment and in the lead-up to the conference.",
+          "If selected, YIRA provides a stipend for your flight and covers conference board — food and accommodation — during the trip. YMAU members who receive financial aid from Yale are eligible for comparable assistance; review YIRA’s financial-aid policy at yira.org/finances.",
         ],
         image: routeEditorialMedia.careers[0],
+      },
+      {
+        heading: "Public timeline",
+        variant: "checklist",
+        items: [
+          "30 August — applications open",
+          "6–14 September — optional coffee chats",
+          "Week of 7 September — YMAU VI information session at AfAm House",
+          "12 September, 11:59pm EST — applications close",
+          "15–19 September — interviews",
+          "24 September — decisions released",
+        ],
       },
       {
         heading: "Application process",
         variant: "checklist",
         items: [
-          "Attend a YMAU information session or watch the Zoom recording — exact dates will be released in September",
-          "Complete the written application",
+          "Attend a YMAU information session or watch the Zoom recording",
+          "Review the position descriptions, copy the application for your role, and complete it as a PDF",
           "Sign up for an optional coffee chat",
+          "Email the PDF to president@yalemodelau.org before the deadline",
           "Interview the following week",
           "Receive a decision by late September",
         ],
-      },
-      {
-        heading: "Positions available",
-        body: [
-          "The role list, descriptions and written application will appear here together once approved. Until then, recruitment questions may be directed to Gumana Elrufai, Director-General of External Operations.",
-        ],
-        image: routeEditorialMedia.careers[1],
+        note: "Name the file “[name]_YMAU VI_[position]”, for example “AbyssiniaHaile_YMAU VI_USG of Committees.” Answers are typically 100–200 words.",
       },
     ],
     resources: [
       {
-        label: "Secretariat position descriptions",
-        detail: "Role scopes, eligibility and selection criteria",
-        status: "Forthcoming",
+        label: "Apply now — application instructions",
+        detail: "Copy the application, save a PDF, and email president@yalemodelau.org by 12 September, 11:59pm EST",
+        href: "https://docs.google.com/document/d/1hCqkFPQTWZ5tCuQQKbAJCVP2CSfQwU92l6ObfiQnTqk/edit",
+        status: "Open instructions",
       },
       {
-        label: "YMAU VI written application",
-        detail: "Applications due 12 September",
-        status: "Link forthcoming",
+        label: "Secretariat position descriptions",
+        detail: "YMAU VI role scopes for the eight Under-Secretary-General posts",
+        href: "https://docs.google.com/document/d/13VV6HPeiqypli2-RNKbu9CjfaigkBcDw8CrOL4vUXt8/edit",
+        status: "Open descriptions",
+      },
+      {
+        label: "Optional coffee chats",
+        detail: "Informal conversations with the Executive Secretariat, 6–14 September",
+        href: "https://forms.gle/U8NhcxmaUyd7kKMC8",
+        status: "Sign up",
       },
     ],
-    action: { label: "Recruitment questions", href: "mailto:gumana.elrufai@yale.edu" },
+    action: { label: "Apply now", href: "https://docs.google.com/document/d/1hCqkFPQTWZ5tCuQQKbAJCVP2CSfQwU92l6ObfiQnTqk/edit" },
   },
   programme: {
     number: "05",
@@ -740,18 +732,27 @@ export const informationPages: Record<string, InformationPageData> = {
     number: "10",
     eyebrow: "Co-organizers and partners",
     title: "Built with institutions that believe in Africa’s next generation.",
-    intro: "YMAU VI recognizes the African Union Commission’s Youth Division, through the Women, Gender and Youth Directorate, as a co-organizer.",
-    status: "Current and past partner archive in preparation",
+    intro: "YMAU VI recognizes the African Union Commission’s Youth Division, through the Women, Gender and Youth Directorate, and Model African Union Ethiopia as co-organizers.",
     template: "archive",
     sections: [
       {
-        heading: "African Union Commission",
-        body: ["The Youth Division advances youth participation, leadership and development within the African Union Commission’s Women, Gender and Youth Directorate."],
+        heading: "African Union Commission Youth Division",
+        body: [
+          "The Youth Division advances youth participation, leadership and development within the African Union Commission’s Women, Gender and Youth Directorate. Africa has the youngest population in the world, with more than 400 million young people aged 15 to 35 years. The Division’s work includes the African Youth Charter, adopted in Banjul on 2 July 2006.",
+        ],
       },
       {
-        heading: "Past sponsors and partners",
-        body: ["The complete historical partner wall will be rebuilt from approved logo assets and the YMAU V executive report."],
+        heading: "Model African Union Ethiopia",
+        body: [
+          "A non-profit youth-led organization that works on agendas affecting Africa, with the goal of increasing youth engagement while educating young people on Agenda 2063, the SDGs, and the AUC Youth Initiative 1 Million Next Level — education, employment, entrepreneurship and inclusive youth engagement.",
+        ],
         image: routeEditorialMedia.partners[0],
+      },
+      {
+        heading: "How the record is labelled",
+        body: [
+          "Current co-organizers appear first. YMAU V partners from Accra follow, then earlier collaborators. Historical support is named without presenting it as a current YMAU VI sponsorship.",
+        ],
       },
     ],
     action: { label: "Partnership enquiries", href: "mailto:operations@yalemodelau.org" },
@@ -760,17 +761,12 @@ export const informationPages: Record<string, InformationPageData> = {
     number: "10.2",
     eyebrow: "Partner archive",
     title: "The institutions that helped each edition happen.",
-    intro: "A verified archive will recognize past sponsors and collaborators without mixing historical support with current commitments.",
-    status: "Logo permissions and edition credits in review",
+    intro: "Past sponsors and collaborators are listed here by edition, so historical support is not confused with current commitments.",
     template: "archive",
     sections: [
       {
-        heading: "Built from the record",
-        body: ["The archive will be reconstructed from approved logo files and the partner acknowledgements in prior executive reports."],
-      },
-      {
         heading: "Clear attribution",
-        body: ["Every organization will be labelled by edition and role so visitors can distinguish current co-organizers, current sponsors and historical partners."],
+        body: ["YMAU V partners from Accra appear first, then earlier collaborators from previous editions. Current co-organizers live on the partners page."],
       },
     ],
     action: { label: "View current co-organizers", href: "/partners" },

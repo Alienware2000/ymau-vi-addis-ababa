@@ -7,7 +7,7 @@ import { EditorialMedia } from "./editorial-media";
 import { PageShell } from "./page-shell";
 import { ScrollRevealSection } from "./scroll-reveal-section";
 
-function PartnerLogo({ partner, sizes = "160px" }: { partner: PartnerRecord; sizes?: string }) {
+function PartnerLogo({ partner, sizes = "280px" }: { partner: PartnerRecord; sizes?: string }) {
   if (!partner.logoSrc) return null;
 
   return (
@@ -35,7 +35,7 @@ function CurrentPartners() {
         {currentPartners.map((partner, index) => (
           <article className="partner-current__item" key={partner.name}>
             <span className="partner-current__number">{String(index + 1).padStart(2, "0")}</span>
-            <PartnerLogo partner={partner} sizes="220px" />
+            <PartnerLogo partner={partner} sizes="(max-width: 560px) 80vw, 320px" />
             <div>
               <span>Co-organizer · YMAU VI</span>
               <h3>{partner.name}</h3>
@@ -98,7 +98,7 @@ function PartnerWall({ partners }: { partners: PartnerRecord[] }) {
                 {groupedPartners.map((partner) => (
                   <article className={partner.logoSrc ? "partner-tile partner-tile--logo" : "partner-tile"} key={partner.name}>
                     <span>YMAU V · Accra</span>
-                    <PartnerLogo partner={partner} sizes="180px" />
+                    <PartnerLogo partner={partner} sizes="(max-width: 560px) 80vw, 280px" />
                     <h4>{partner.name}</h4>
                     <p>{partner.blurb}</p>
                   </article>
@@ -137,7 +137,7 @@ function PartnerIndex({ partners }: { partners: PartnerRecord[] }) {
                   <i aria-hidden="true" />
                 </summary>
                 <div>
-                  <PartnerLogo partner={partner} sizes="130px" />
+                  <PartnerLogo partner={partner} sizes="200px" />
                   <p>{partner.blurb}</p>
                 </div>
               </details>

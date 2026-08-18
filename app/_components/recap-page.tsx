@@ -39,7 +39,7 @@ export function RecapPage() {
 
         <section className="recap-intro">
           <div>
-            <span>13–15 March 2026</span>
+            <span>13-15 March 2026</span>
             <h2>The conference before Addis.</h2>
           </div>
           <p>

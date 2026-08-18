@@ -86,7 +86,7 @@ export function CommitteePage() {
             <span>The institutional record · YMAU V</span>
             <h2 id="committee-record-title">Ten rooms.<br /><em>Ten continental questions.</em></h2>
             <p>
-              The fifth edition’s committees are shown as an archive—not as the final YMAU VI slate. The 2027 names and agendas remain forthcoming.
+              The fifth edition’s committees are shown as an archive, not as the final YMAU VI slate. The 2027 names and agendas remain forthcoming.
             </p>
           </header>
           <ol>

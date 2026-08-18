@@ -83,7 +83,7 @@ export function SiteHeader({ home = false }: { home?: boolean }) {
       <nav className={`primary-nav primary-nav--shared${menuOpen ? " is-open" : ""}`} id="primary-navigation" aria-label="Primary navigation">
         <div className="nav-mobile-intro" aria-hidden="true">
           <span>Explore YMAU VI</span>
-          <p>Addis Ababa · 15–17 March 2027</p>
+          <p>Addis Ababa · 15-17 March 2027</p>
         </div>
 
         <Link className="nav-mobile-home" href="/" aria-current={pathname === "/" ? "page" : undefined} onClick={closeMenu}>

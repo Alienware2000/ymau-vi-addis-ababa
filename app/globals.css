@@ -6346,12 +6346,18 @@ video {
 }
 
 .sg-letter {
+  align-items: start;
   background: var(--cream);
   border-top: 1px solid var(--line);
   display: grid;
-  gap: clamp(42px, 7vw, 110px);
-  grid-template-columns: minmax(220px, .5fr) minmax(0, 1.5fr);
-  padding: clamp(72px, 8vw, 118px) var(--side);
+  gap: clamp(28px, 3.5vw, 56px);
+  grid-template-columns: minmax(16rem, 22rem) minmax(0, 1fr);
+  padding: clamp(72px, 8vw, 118px) max(var(--side), calc((100vw - 1360px) / 2));
+}
+.sg-letter__intro {
+  max-width: 22rem;
+  position: sticky;
+  top: 104px;
 }
 .sg-letter__intro span {
   color: var(--red);
@@ -6362,21 +6368,74 @@ video {
 }
 .sg-letter__intro h2 {
   font-family: var(--font-display), Georgia, serif;
-  font-size: clamp(42px, 5vw, 76px);
+  font-size: clamp(42px, 4.6vw, 64px);
   font-weight: 400;
   letter-spacing: -.05em;
-  line-height: .9;
-  margin: 22px 0 0;
+  line-height: .92;
+  margin: 18px 0 0;
+}
+.sg-letter__intro blockquote {
+  border-top: 1px solid var(--line);
+  margin: 28px 0 0;
+  padding-top: 22px;
+}
+.sg-letter__intro blockquote p {
+  color: var(--blue);
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(20px, 1.55vw, 26px);
+  font-weight: 400;
+  letter-spacing: -.025em;
+  line-height: 1.34;
+  margin: 0;
+}
+.sg-letter__sheet {
+  background: var(--paper-light);
+  border: 1px solid rgba(6, 26, 55, 0.08);
+  box-shadow: 0 24px 48px rgba(6, 26, 55, 0.045);
+  max-width: none;
+  padding: clamp(32px, 4.2vw, 68px) clamp(24px, 4vw, 64px);
+  width: 100%;
 }
 
-.signed-letter { max-width: 680px; }
+.signed-letter {
+  color: inherit;
+  font-family: var(--font-display), Georgia, serif;
+  max-width: none;
+}
 .signed-letter p {
-  font-size: clamp(15px, 1.05vw, 17px);
-  line-height: 1.78;
-  margin: 0 0 1.15em;
+  font-size: clamp(17px, 1.2vw, 19px);
+  letter-spacing: -.01em;
+  line-height: 1.68;
+  margin: 0 0 1.1em;
+}
+.sg-letter .signed-letter {
+  color: var(--ink);
+}
+.sg-letter .signed-letter p {
+  font-size: clamp(18.5px, 1.15vw, 21px);
+  letter-spacing: -.006em;
+  line-height: 1.85;
+  margin: 0 0 1.4em;
 }
 .signed-letter__salutation,
-.signed-letter__closing { font-style: italic; }
+.signed-letter__closing {
+  font-style: italic;
+}
+.signed-letter__salutation { margin-bottom: 1.45em; }
+.signed-letter__closing { margin-top: 1.6em; margin-bottom: .35em; }
+.sg-letter .signed-letter p.signed-letter__salutation {
+  font-size: clamp(19px, 1.2vw, 22px);
+  margin-bottom: 1.7em;
+}
+.sg-letter .signed-letter p.signed-letter__closing {
+  margin-top: 2em;
+  margin-bottom: .45em;
+}
+.sg-letter .signed-letter__mark {
+  margin-top: 4px;
+  max-width: 196px;
+  width: min(196px, 52%);
+}
 .signed-letter blockquote {
   font-family: var(--font-display), Georgia, serif;
   font-size: clamp(28px, 3vw, 42px);
@@ -6389,19 +6448,30 @@ video {
   display: block;
   filter: none;
   height: auto;
-  margin: 4px 0 14px;
-  max-width: 180px;
+  margin: 2px 0 12px;
+  max-width: 168px;
   mix-blend-mode: multiply;
-  width: min(180px, 64%);
+  width: min(168px, 58%);
 }
 .signed-letter__name {
   display: flex;
   flex-direction: column;
   font-family: var(--font-display), Georgia, serif;
-  gap: 2px;
+  gap: 4px;
+  margin-top: 2px;
 }
-.signed-letter__name strong { font-size: 19px; font-weight: 400; }
-.signed-letter__name span { font-family: var(--font-sans), "Open Sans", sans-serif; font-size: 12px; opacity: .68; }
+.signed-letter__name strong {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+}
+.signed-letter__name span {
+  font-size: 15px;
+  letter-spacing: -.015em;
+  line-height: 1.35;
+  opacity: .82;
+}
 
 .directory-ledger {
   background: var(--page-surface);
@@ -6494,13 +6564,16 @@ video {
 .directory-row p:last-child,
 .role-row p:last-child { margin-bottom: 0; }
 .role-row { grid-template-columns: 8rem minmax(0, 1fr); }
+.city-story .signed-letter--home {
+  max-width: 680px;
+}
 .city-story .signed-letter--home p {
   font-size: 14px;
   line-height: 1.72;
   max-width: 680px;
   opacity: .8;
 }
-.city-story .signed-letter--home .signed-letter__name span { opacity: .7; }
+.city-story .signed-letter--home .signed-letter__name span { opacity: .82; }
 .city-story .signed-letter--home .signed-letter__mark {
   filter: invert(1);
   margin-top: 4px;
@@ -6854,13 +6927,19 @@ video {
 }
 .partner-current__list { border-top: 1px solid var(--line); }
 .partner-current__item {
-  align-items: center;
+  align-items: start;
   border-bottom: 1px solid var(--line);
   display: grid;
-  gap: clamp(26px, 4vw, 58px);
-  grid-template-columns: 34px minmax(190px, 260px) minmax(0, 1fr);
-  min-height: 280px;
-  padding: 42px 0;
+  gap: clamp(28px, 4vw, 56px);
+  grid-template-columns: 40px minmax(240px, 320px) minmax(0, 1fr);
+  min-height: 0;
+  padding: 48px 0;
+}
+.partner-current__item .partner-logo {
+  width: 100%;
+}
+.partner-current__item .partner-logo--poster {
+  height: 240px;
 }
 .partner-current__number {
   align-self: start;
@@ -6967,24 +7046,26 @@ video {
   width: 8px;
 }
 .partner-logo {
-  height: 96px;
+  background: #fff;
+  border: 1px solid rgba(25, 62, 118, .14);
+  box-sizing: border-box;
+  height: 148px;
   margin: 0;
   position: relative;
-  width: min(190px, 100%);
+  width: min(300px, 100%);
 }
 .partner-logo img {
+  box-sizing: border-box;
   object-fit: contain;
-  object-position: left center;
+  object-position: center;
+  padding: 18px 20px;
 }
 .partner-logo--poster {
-  background: #fff;
-  border: 1px solid var(--line);
-  height: 168px;
-  width: min(250px, 100%);
+  height: 220px;
+  width: min(300px, 100%);
 }
 .partner-logo--poster img {
-  object-position: center;
-  padding: 8px;
+  padding: 10px;
 }
 .partner-wall__tiers {
   border-bottom: 1px solid var(--line);
@@ -7032,13 +7113,16 @@ video {
   border-right: 1px solid var(--line);
   display: flex;
   flex-direction: column;
-  min-height: 280px;
+  min-height: 320px;
   padding: clamp(22px, 2.2vw, 32px);
 }
 .partner-tile .partner-logo {
-  height: 78px;
-  margin: 34px 0 24px;
-  width: min(170px, 100%);
+  height: 128px;
+  margin: 28px 0 22px;
+  width: 100%;
+}
+.partner-tile .partner-logo--poster {
+  height: 168px;
 }
 .partner-tile:not(.partner-tile--logo) h4 { margin-top: auto; }
 .partner-tile h4 {
@@ -7092,12 +7176,12 @@ video {
 .partner-index__entry > div {
   display: grid;
   gap: 24px;
-  grid-template-columns: 130px minmax(0, 1fr);
+  grid-template-columns: 180px minmax(0, 1fr);
   padding: 0 24px 28px 70px;
 }
 .partner-index__entry > div .partner-logo {
-  height: 70px;
-  width: 120px;
+  height: 104px;
+  width: 180px;
 }
 .partner-index__entry > div p {
   font-size: 13px;
@@ -7129,7 +7213,6 @@ video {
   .editorial-hero__copy { min-height: 360px; }
   .editorial-hero__copy h1 { font-size: clamp(58px, 9vw, 92px); max-width: 880px; }
   .profile-introduction,
-  .sg-letter,
   .about-family-section--media,
   .about-family-section--media:nth-child(even),
   .conference-brief__section--media,
@@ -7156,6 +7239,18 @@ video {
   .committee-page__release { grid-template-columns: minmax(0, 1fr) minmax(310px, .72fr); }
   .committee-page__archive li strong { font-size: 29px; }
   .partner-wall__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 980px) {
+  .sg-letter {
+    gap: 28px;
+    grid-template-columns: 1fr;
+  }
+  .sg-letter__intro {
+    max-width: none;
+    position: static;
+  }
+  .sg-letter__sheet { max-width: none; }
 }
 
 @media (max-width: 820px) {
@@ -7225,7 +7320,7 @@ video {
   .partner-wall > header p,
   .partner-index > header p { align-self: auto; }
   .partner-archive-gateway { grid-template-columns: 1fr; }
-  .partner-current__item { grid-template-columns: 28px 150px minmax(0, 1fr); }
+  .partner-current__item { grid-template-columns: 28px minmax(200px, 240px) minmax(0, 1fr); }
   .partner-tier { grid-template-columns: 1fr; }
   .partner-tier__head { padding-right: 0; }
   .partner-wall__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -7279,12 +7374,12 @@ video {
   }
   .partner-current__item .partner-logo {
     grid-column: 2;
-    height: 72px;
-    margin-bottom: 10px;
-    width: 140px;
+    height: 120px;
+    margin-bottom: 12px;
+    width: min(280px, 100%);
   }
   .partner-current__item .partner-logo--poster {
-    height: 150px;
+    height: 200px;
     width: min(280px, 100%);
   }
   .partner-current__item > div:last-child { grid-column: 2; }

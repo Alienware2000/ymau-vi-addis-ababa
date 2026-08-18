@@ -27,7 +27,7 @@ export const pageHeroImages: Record<string, PageHeroImage> = {
   founders: {
     src: "/ymau-media/pages/founders.jpg",
     alt: "A portrait triptych of YMAU co-founders Ornella Bayigamba and Richard Mbouombouo with inaugural president Francesca Nyakora",
-    context: "YMAU’s founding leadership · 2020–22",
+    context: "YMAU’s founding leadership · 2020-22",
     credit: "Official YMAU institutional archive",
     position: "50% 48%",
   },

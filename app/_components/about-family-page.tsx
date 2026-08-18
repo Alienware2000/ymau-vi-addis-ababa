@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ambassadorDirectory } from "../ambassador-directory";
 import { EDITORIAL_IMAGE_PLACEHOLDER } from "../image-delivery";
-import { careerRoles, secretariatPeople, secretaryGeneralPortrait } from "../public-directory";
+import { careerRoles, secretariatPeople, secretaryGeneralLetter, secretaryGeneralPortrait } from "../public-directory";
 import type { InformationPageData } from "../site-content";
 import { AnimatedStatGrid } from "./animated-stat-grid";
 import { ResourceCards } from "./editorial-content";
@@ -55,8 +55,13 @@ export function AboutFamilyPage({ data, slug }: { data: InformationPageData; slu
           <div className="sg-letter__intro">
             <span>From the Secretariat</span>
             <h2>A welcome to Addis.</h2>
+            <blockquote>
+              <p>{secretaryGeneralLetter.quote}</p>
+            </blockquote>
           </div>
-          <SignedLetter quote />
+          <article className="sg-letter__sheet">
+            <SignedLetter />
+          </article>
         </section>
       )}
 

@@ -83,7 +83,7 @@ export function ProgrammePage() {
           </div>
           <div className="programme-hero__copy">
             <h1>Policy fluency meets <em>practical leadership.</em></h1>
-            <p>15–17 March 2027</p>
+            <p>15-17 March 2027</p>
           </div>
           <EditorialImageNote context="Committee session · YMAU V" />
         </section>
@@ -168,7 +168,7 @@ export function ProgrammePage() {
             <span>Signature programme</span>
             <h2>Mandate<br /><em>to Market</em></h2>
             <p>
-              Participants take an African Union mandate beyond the meeting room and shape it into an actionable, locally grounded proposal. Implementation—not presentation alone—is the measure.
+              Participants take an African Union mandate beyond the meeting room and shape it into an actionable, locally grounded proposal. Implementation, not presentation alone, is the measure.
             </p>
             <Link href="/mandate-to-market" className="text-link text-link--light">Explore the programme <LineArrow /></Link>
           </div>

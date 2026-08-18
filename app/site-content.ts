@@ -70,7 +70,7 @@ export const informationPages: Record<string, InformationPageData> = {
         heading: "What we do",
         body: [
           "Yale Model African Union is a leadership-development conference and student-run simulation of the African Union. It brings young people together to discuss, debate and craft responses to the continent’s most pressing questions.",
-          "YMAU VI convenes from 15–17 March 2027 in Addis Ababa, Ethiopia, in partnership with the African Union Commission’s Youth Division.",
+          "YMAU VI convenes from 15-17 March 2027 in Addis Ababa, Ethiopia, in partnership with the African Union Commission’s Youth Division.",
         ],
       },
       {
@@ -82,13 +82,13 @@ export const informationPages: Record<string, InformationPageData> = {
       {
         heading: "Youth as architects",
         body: [
-          "Delegates are not treated as observers of continental policy, but as its next architects—equipped to translate ideas into institutions.",
+          "Delegates are not treated as observers of continental policy, but as its next architects, equipped to translate ideas into institutions.",
         ],
       },
       {
         heading: "Access is part of the mission",
         body: [
-          "From its founding, YMAU has treated diverse representation, affordability and financial support as part of the educational design—not as an afterthought. Final YMAU VI fees and financial-aid details will be published once confirmed.",
+          "From its founding, YMAU has treated diverse representation, affordability and financial support as part of the educational design, not as an afterthought. Final YMAU VI fees and financial-aid details will be published once confirmed.",
         ],
       },
     ],
@@ -102,14 +102,14 @@ export const informationPages: Record<string, InformationPageData> = {
     template: "story",
     sections: [
       {
-        heading: "The founding idea — 2020",
+        heading: "The founding idea, 2020",
         body: [
           "Ornella Bayigamba and Richard Mbouombouo founded Yale Model African Union while serving as student leaders in the Yale International Relations Association. Their aim was to share Yale’s educational resources with African peers through a conference rooted in the questions facing the continent.",
           "That origin established a durable premise: rigorous international-relations education should be accessible, pan-African and connected to the young people expected to shape the continent’s institutions.",
         ],
       },
       {
-        heading: "The first conference — Kigali, 2022",
+        heading: "The first conference, Kigali, 2022",
         body: [
           "Under inaugural president Francesca Nyakora, YMAU I brought 125 students from around the world to Kigali. Its programme paired African Union simulations with speakers and workshops addressing issues including climate change, gender-based violence, counterterrorism and the Belt and Road Initiative.",
         ],
@@ -140,21 +140,21 @@ export const informationPages: Record<string, InformationPageData> = {
     template: "profile",
     sections: [
       {
-        heading: "Ornella Bayigamba — Co-founder",
+        heading: "Ornella Bayigamba, Co-founder",
         body: [
-          "Born and raised in Rwanda, Ornella studied environmental engineering at Yale and served as Vice President of the Yale International Relations Association in 2019–20. During that tenure, she worked with Richard to establish YMAU as a way to share Yale’s international-relations resources with African peers.",
+          "Born and raised in Rwanda, Ornella studied environmental engineering at Yale and served as Vice President of the Yale International Relations Association in 2019-20. During that tenure, she worked with Richard to establish YMAU as a way to share Yale’s international-relations resources with African peers.",
         ],
         image: routeEditorialMedia.founders[0],
       },
       {
-        heading: "Richard Mbouombouo — Co-founder",
+        heading: "Richard Mbouombouo, Co-founder",
         body: [
           "A first-generation Yale student and the son of Cameroonian immigrants, Richard studied Ethics, Politics and Economics with a focus on inclusive economic development. His work across Yale’s African diaspora community helped ground YMAU in questions of access, identity and continental leadership.",
         ],
         image: routeEditorialMedia.founders[1],
       },
       {
-        heading: "Francesca Nyakora — Inaugural President",
+        heading: "Francesca Nyakora, Inaugural President",
         body: [
           "Francesca led the team that delivered YMAU I in Kigali in 2022. She shaped its programme, built institutional and diplomatic partnerships, raised support for financial access and coordinated the systems required to welcome 125 students from around the world.",
         ],
@@ -179,7 +179,7 @@ export const informationPages: Record<string, InformationPageData> = {
       {
         heading: "Returning to Addis",
         body: [
-          "Abyssinia Haile is a junior at Yale University studying Global Affairs, with a focus on African studies. Born in Addis Ababa, Ethiopia and now based in the greater Boston area, she carries her Habesha roots — its dancing, food, and music — into everything she leads, including her return to Addis Ababa for YMAU VI.",
+          "Abyssinia Haile is a junior at Yale University studying Global Affairs, with a focus on African studies. Born in Addis Ababa, Ethiopia and now based in the greater Boston area, she carries her Habesha roots, its dancing, food, and music, into everything she leads, including her return to Addis Ababa for YMAU VI.",
         ],
       },
       {
@@ -193,7 +193,7 @@ export const informationPages: Record<string, InformationPageData> = {
       {
         heading: "Beyond YMAU",
         body: [
-          "Outside YMAU, Abyssinia writes — blogging, journalism, personal narratives, whatever form the story needs. She is also deeply invested in education reform, believing every student deserves an equal opportunity to learn — a belief that shapes how she thinks about what YMAU should be: a space where opportunity isn’t determined by where you started.",
+          "Outside YMAU, Abyssinia writes: blogging, journalism, personal narratives, whatever form the story needs. She is also deeply invested in education reform, believing every student deserves an equal opportunity to learn, a belief that shapes how she thinks about what YMAU should be: a space where opportunity isn’t determined by where you started.",
         ],
       },
     ],
@@ -240,8 +240,8 @@ export const informationPages: Record<string, InformationPageData> = {
       {
         heading: "Who may apply",
         body: [
-          "Yale students of all class years may apply to serve as Under-Secretary-Generals. Expect approximately 8–10 hours a week, rising during recruitment and in the lead-up to the conference.",
-          "If selected, YIRA provides a stipend for your flight and covers conference board — food and accommodation — during the trip. YMAU members who receive financial aid from Yale are eligible for comparable assistance; review YIRA’s financial-aid policy at yira.org/finances.",
+          "Yale students of all class years may apply to serve as Under-Secretary-Generals. Expect approximately 8-10 hours a week, rising during recruitment and in the lead-up to the conference.",
+          "If selected, YIRA provides a stipend for your flight and covers conference board (food and accommodation) during the trip. YMAU members who receive financial aid from Yale are eligible for comparable assistance; review YIRA’s financial-aid policy at yira.org/finances.",
         ],
         image: routeEditorialMedia.careers[0],
       },
@@ -249,12 +249,12 @@ export const informationPages: Record<string, InformationPageData> = {
         heading: "Public timeline",
         variant: "checklist",
         items: [
-          "30 August — applications open",
-          "6–14 September — optional coffee chats",
-          "Week of 7 September — YMAU VI information session at AfAm House",
-          "12 September, 11:59pm EST — applications close",
-          "15–19 September — interviews",
-          "24 September — decisions released",
+          "30 August: applications open",
+          "6-14 September: optional coffee chats",
+          "Week of 7 September: YMAU VI information session at AfAm House",
+          "12 September, 11:59pm EST: applications close",
+          "15-19 September: interviews",
+          "24 September: decisions released",
         ],
       },
       {
@@ -268,12 +268,12 @@ export const informationPages: Record<string, InformationPageData> = {
           "Interview the following week",
           "Receive a decision by late September",
         ],
-        note: "Name the file “[name]_YMAU VI_[position]”, for example “AbyssiniaHaile_YMAU VI_USG of Committees.” Answers are typically 100–200 words.",
+        note: "Name the file “[name]_YMAU VI_[position]”, for example “AbyssiniaHaile_YMAU VI_USG of Committees.” Answers are typically 100-200 words.",
       },
     ],
     resources: [
       {
-        label: "Apply now — application instructions",
+        label: "Apply now: application instructions",
         detail: "Copy the application, save a PDF, and email president@yalemodelau.org by 12 September, 11:59pm EST",
         href: "https://docs.google.com/document/d/1hCqkFPQTWZ5tCuQQKbAJCVP2CSfQwU92l6ObfiQnTqk/edit",
         status: "Open instructions",
@@ -286,7 +286,7 @@ export const informationPages: Record<string, InformationPageData> = {
       },
       {
         label: "Optional coffee chats",
-        detail: "Informal conversations with the Executive Secretariat, 6–14 September",
+        detail: "Informal conversations with the Executive Secretariat, 6-14 September",
         href: "https://forms.gle/U8NhcxmaUyd7kKMC8",
         status: "Sign up",
       },
@@ -368,7 +368,7 @@ export const informationPages: Record<string, InformationPageData> = {
       {
         heading: "The challenge",
         body: [
-          "Participants will respond to a defined African Union policy mandate by developing an actionable, locally grounded proposal. The exercise is designed to make implementation—not presentation alone—the measure of a strong idea.",
+          "Participants will respond to a defined African Union policy mandate by developing an actionable, locally grounded proposal. The exercise is designed to make implementation, not presentation alone, the measure of a strong idea.",
         ],
         image: routeEditorialMedia.mandateToMarket[0],
       },
@@ -432,7 +432,7 @@ export const informationPages: Record<string, InformationPageData> = {
         body: [
           "The fifth edition convened ten committees. This archive records their names and agenda focus without presenting any of them as the final YMAU VI slate.",
         ],
-        items: committeeArchive.map((item) => `${item.name} — ${item.agenda}`),
+        items: committeeArchive.map((item) => `${item.name}: ${item.agenda}`),
         note: "Historical record verified against the YMAU V Executive Report. YMAU VI names, agendas, delegate levels and background guides remain forthcoming.",
         image: routeEditorialMedia.committees[1],
       },
@@ -517,7 +517,7 @@ export const informationPages: Record<string, InformationPageData> = {
       {
         heading: "Eligibility",
         variant: "checklist",
-        items: ["16–25 years of age", "Enrolled in high school or university", "A demonstrated interest in diplomacy or African affairs"],
+        items: ["16-25 years of age", "Enrolled in high school or university", "A demonstrated interest in diplomacy or African affairs"],
       },
       {
         heading: "Your application checklist",
@@ -599,11 +599,11 @@ export const informationPages: Record<string, InformationPageData> = {
     sections: [
       {
         heading: "Who may apply?",
-        body: ["YMAU VI is intended for students aged 16–25 who are enrolled in high school or university and interested in diplomacy or African affairs."],
+        body: ["YMAU VI is intended for students aged 16-25 who are enrolled in high school or university and interested in diplomacy or African affairs."],
       },
       {
         heading: "When is the conference?",
-        body: ["The conference is scheduled for 15–17 March 2027 in Addis Ababa, Ethiopia. The venue will be announced separately."],
+        body: ["The conference is scheduled for 15-17 March 2027 in Addis Ababa, Ethiopia. The venue will be announced separately."],
       },
       {
         heading: "When does registration open?",
@@ -682,7 +682,7 @@ export const informationPages: Record<string, InformationPageData> = {
       },
       {
         heading: "At a glance",
-        items: ["Elevation — approximately 2,355 metres", "Primary working language — Amharic", "Currency — Ethiopian birr", "Time zone — East Africa Time (UTC+3)"],
+        items: ["Elevation: approximately 2,355 metres", "Primary working language: Amharic", "Currency: Ethiopian birr", "Time zone: East Africa Time (UTC+3)"],
         image: routeEditorialMedia.addisAbaba[0],
       },
       {
@@ -707,7 +707,7 @@ export const informationPages: Record<string, InformationPageData> = {
     sections: [
       {
         heading: "Language for the journey",
-        items: ["Selam — hello and peace", "Ameseginalehu — thank you", "Addis Ababa — new flower"],
+        items: ["Selam: hello and peace", "Ameseginalehu: thank you", "Addis Ababa: new flower"],
         image: routeEditorialMedia.cityGuide[0],
       },
       {
@@ -716,7 +716,7 @@ export const informationPages: Record<string, InformationPageData> = {
         image: routeEditorialMedia.cityGuide[2],
       },
       {
-        heading: "Buna — coffee as welcome",
+        heading: "Buna: coffee as welcome",
         body: ["The Ethiopian coffee ceremony is a social ritual as much as a drink: beans are roasted, ground and brewed in a clay jebena, then shared slowly in conversation."],
         image: routeEditorialMedia.cityGuide[1],
       },
@@ -744,7 +744,7 @@ export const informationPages: Record<string, InformationPageData> = {
       {
         heading: "Model African Union Ethiopia",
         body: [
-          "A non-profit youth-led organization that works on agendas affecting Africa, with the goal of increasing youth engagement while educating young people on Agenda 2063, the SDGs, and the AUC Youth Initiative 1 Million Next Level — education, employment, entrepreneurship and inclusive youth engagement.",
+          "A non-profit youth-led organization that works on agendas affecting Africa, with the goal of increasing youth engagement while educating young people on Agenda 2063, the SDGs, and the AUC Youth Initiative 1 Million Next Level (education, employment, entrepreneurship and inclusive youth engagement).",
         ],
         image: routeEditorialMedia.partners[0],
       },
@@ -825,7 +825,7 @@ export const informationPages: Record<string, InformationPageData> = {
       {
         heading: "Delegate recruitment and external operations",
         body: [
-          "Gumana Elrufai — Director-General of External Operations",
+          "Gumana Elrufai, Director-General of External Operations",
           "gumana.elrufai@yale.edu",
         ],
       },
@@ -840,8 +840,8 @@ export const informationPages: Record<string, InformationPageData> = {
       {
         heading: "Follow the conference",
         items: [
-          "Instagram — @yalemodelau",
-          "LinkedIn — Yale Model African Union",
+          "Instagram: @yalemodelau",
+          "LinkedIn: Yale Model African Union",
         ],
         note: "The full on-site enquiry form will be activated after the client confirms the receiving workflow. Until then, direct email remains the reliable contact channel.",
       },

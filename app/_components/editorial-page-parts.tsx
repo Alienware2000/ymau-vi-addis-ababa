@@ -58,7 +58,7 @@ export function InnerFooter() {
   return (
     <footer className="inner-footer">
       <Image src="/ymau-wordmark-white.png" alt="Yale Model African Union" width={752} height={185} />
-      <p>Addis Ababa, Ethiopia<br />15–17 March 2027</p>
+      <p>Addis Ababa, Ethiopia<br />15-17 March 2027</p>
       <p>
         <a href="mailto:president@yalemodelau.org">president@yalemodelau.org</a><br />
         <a href="https://www.instagram.com/yalemodelau/" target="_blank" rel="noreferrer">Instagram</a> · {" "}

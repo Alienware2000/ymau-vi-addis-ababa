@@ -27,7 +27,7 @@ export async function generateMetadata({
   const data = informationPages[slug];
   if (!data) return {};
   return {
-    title: `${data.eyebrow} — YMAU VI`,
+    title: `${data.eyebrow} · YMAU VI`,
     description: data.intro,
   };
 }

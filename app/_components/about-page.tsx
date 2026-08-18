@@ -12,7 +12,7 @@ const focusAreas = [
   {
     number: "01",
     title: "Diplomacy in practice",
-    copy: "Negotiation, coalition-building and consensus become practised skills—not abstract ideas.",
+    copy: "Negotiation, coalition-building and consensus become practised skills, not abstract ideas.",
   },
   {
     number: "02",
@@ -108,7 +108,7 @@ export function AboutPage() {
                 The experience has always extended beyond debate: curated speakers, leadership training and workshops help delegates find their voices and carry practical skills beyond the conference.
               </p>
               <p>
-                From 15–17 March 2027, the sixth edition convenes in Addis Ababa—the city at the diplomatic centre of the continent—in partnership with the African Union Commission’s Youth Division.
+                From 15-17 March 2027, the sixth edition convenes in Addis Ababa, the city at the diplomatic centre of the continent, in partnership with the African Union Commission’s Youth Division.
               </p>
             </div>
           </div>

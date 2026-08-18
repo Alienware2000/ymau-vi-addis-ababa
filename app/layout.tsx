@@ -20,11 +20,11 @@ export async function generateMetadata(): Promise<Metadata> {
     (host.startsWith("localhost") ? "http" : "https");
   const origin = `${protocol}://${host}`;
   const description =
-    "Yale Model African Union VI convenes in Addis Ababa, Ethiopia, from 15–17 March 2027.";
+    "Yale Model African Union VI convenes in Addis Ababa, Ethiopia, from 15-17 March 2027.";
 
   return {
     metadataBase: new URL(origin),
-    title: "YMAU VI — Addis Ababa 2027",
+    title: "YMAU VI · Addis Ababa 2027",
     description,
     openGraph: {
       title: "Yale Model African Union VI",
@@ -36,7 +36,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${origin}/social-preview-ymau-vi.png`,
           width: 1640,
           height: 923,
-          alt: "Yale Model African Union VI — Addis Ababa, 15–17 March 2027",
+          alt: "Yale Model African Union VI · Addis Ababa, 15-17 March 2027",
         },
       ],
     },

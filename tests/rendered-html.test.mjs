@@ -43,11 +43,11 @@ test("defines the complete YMAU VI conference homepage", async () => {
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
   ]);
 
-  assert.match(layout, /YMAU VI — Addis Ababa 2027/);
+  assert.match(layout, /YMAU VI · Addis Ababa 2027/);
   assert.match(page, /Yale Model/);
   assert.match(page, /African Union VI/);
   assert.match(page, /Addis Ababa, Ethiopia/);
-  assert.match(page, /15—17 March 2027/);
+  assert.match(page, /15-17 March 2027/);
   assert.match(page, /id="committees"/);
   assert.match(page, /id="programme"/);
   assert.match(page, /id="delegations"/);

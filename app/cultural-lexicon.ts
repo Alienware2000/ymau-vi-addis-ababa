@@ -4,7 +4,7 @@ export const culturalLexicon = {
     transliteration: "Addis Abäba",
     meaning: "New flower",
     pronunciation: "ah-DEES ah-BEH-bah",
-    note: "The Amharic name of the host city—a capital founded in the highlands and still read as a city becoming.",
+    note: "The Amharic name of the host city, a capital founded in the highlands and still read as a city becoming.",
   },
   selam: {
     script: "ሰላም",
@@ -32,7 +32,7 @@ export const culturalLexicon = {
     transliteration: "Andinet",
     meaning: "Unity",
     pronunciation: "ahn-dee-NET",
-    note: "Here, unity means shared continental purpose—not sameness.",
+    note: "Here, unity means shared continental purpose, not sameness.",
   },
   lalibela: {
     script: "ላሊበላ",

@@ -209,7 +209,7 @@ export default function Home() {
   return (
     <>
       <div className={`announcement${isScrolled ? " is-hidden" : ""}`}>
-        <span><b>YMAU VI</b><i>Addis Ababa</i><em>15–17 March 2027</em></span>
+        <span><b>YMAU VI</b><i>Addis Ababa</i><em>15-17 March 2027</em></span>
         <a href="#delegations"><span>Registration <b>update</b></span><ArrowIcon /></a>
       </div>
       <span className="page-progress" aria-hidden="true"><span ref={progressRef} /></span>
@@ -253,7 +253,7 @@ export default function Home() {
             <div className="hero__details">
               <p>Addis Ababa, Ethiopia</p>
               <span aria-hidden="true" />
-              <p>15—17 March 2027</p>
+              <p>15-17 March 2027</p>
             </div>
           </div>
           <button ref={filmButtonRef} className="film-link" type="button" onClick={() => setFilmOpen(true)}>
@@ -347,7 +347,7 @@ export default function Home() {
               <h2 id="field-notes-title" data-reveal>A little language<br />for the journey.</h2>
               <p data-reveal="delay-1">
                 Addis reveals itself in small exchanges. Begin with three words
-                that carry more than their literal translation—and one phrase
+                that carry more than their literal translation, and one phrase
                 worth taking with you.
               </p>
             </div>
@@ -374,7 +374,7 @@ export default function Home() {
               <h3>Buna</h3>
               <p className="field-note__pronunciation"><span>Say it</span> BOO-nah</p>
               <p>
-                Coffee as hospitality, conversation and time shared—not simply
+                Coffee as hospitality, conversation and time shared, not simply
                 a drink between meetings.
               </p>
             </article>
@@ -419,7 +419,7 @@ export default function Home() {
               src={secretaryGeneralPortrait.src}
               alt={secretaryGeneralPortrait.alt}
               fill
-              sizes="(max-width: 980px) 100vw, 53vw"
+              sizes="(max-width: 980px) 100vw, 39vw"
               quality={90}
               placeholder="blur"
               blurDataURL={EDITORIAL_IMAGE_PLACEHOLDER}
@@ -455,7 +455,7 @@ export default function Home() {
             <div data-reveal="delay-1">
               <span>Championing African success on African terms</span>
               <p>
-                YMAU VI asks who has historically defined development—and what
+                YMAU VI asks who has historically defined development, and what
                 becomes possible when Africa sets its own measures of progress,
                 prosperity and institutional success.
               </p>
@@ -547,7 +547,7 @@ export default function Home() {
               <span>YMAU V · Accra</span>
             </div>
             <h2 id="home-recap-title" data-reveal>A previous room.<br /><em>A living record.</em></h2>
-            <p data-reveal>The confirmed YMAU V film now lives here on the homepage as a story in its own right—an immediate view into the room before Addis.</p>
+            <p data-reveal>The confirmed YMAU V film now lives here on the homepage as a story in its own right: an immediate view into the room before Addis.</p>
             <div className="home-recap__actions" data-reveal>
               <a className="text-link" href="https://drive.google.com/file/d/1wbKwU7HAs9EpIa-Iq240-TFVvt5rjWpQ/view" target="_blank" rel="noreferrer">
                 Watch the full film <ArrowIcon />
@@ -583,7 +583,7 @@ export default function Home() {
             </p>
             <dl data-reveal>
               <div><dt>Host city</dt><dd>Addis Ababa, Ethiopia</dd></div>
-              <div><dt>Dates</dt><dd>15–17 March 2027</dd></div>
+              <div><dt>Dates</dt><dd>15-17 March 2027</dd></div>
               <div><dt>Venue</dt><dd>To be announced</dd></div>
             </dl>
           </div>
@@ -687,7 +687,7 @@ export default function Home() {
           </div>
         </div>
         <div className="footer__bottom">
-          <p>YMAU VI · Addis Ababa · 15–17 March 2027</p>
+          <p>YMAU VI · Addis Ababa · 15-17 March 2027</p>
           <p>
             <a href="mailto:programs@yalemodelau.org">programs@yalemodelau.org</a> · {" "}
             <a href="mailto:operations@yalemodelau.org">operations@yalemodelau.org</a>

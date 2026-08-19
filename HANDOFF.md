@@ -1,19 +1,80 @@
 # YMAU VI website handoff
 
-Last updated: 16 August 2026
+Last updated: 19 August 2026
 
-This document is the durable resume point for the **homepage film**. For the current public-content pass (careers, portraits, ambassadors, partners), read [`docs/ABY_CONTENT_RESUME.md`](docs/ABY_CONTENT_RESUME.md) instead.
+This is the source of truth for a new Claude Code session. Read this file completely, then [`docs/ABY_CONTENT_RESUME.md`](docs/ABY_CONTENT_RESUME.md). Film-only detail lives in the Film section below and in [`docs/hero-film-treatment.md`](docs/hero-film-treatment.md).
 
 ## Start here
 
-- Repository: <https://github.com/Alienware2000/ymau-vi-addis-ababa>
-- `main` includes the Ethiopia hero via merged PR #4 (`6d6050c`)
-- Production site: <https://ymau-vi-addis-ababa.vercel.app>
-- Hero files: `public/ethiopia-film.mp4` / `ethiopia-film-mobile.mp4` / `ethiopia-film-poster.jpg` (`v=11` in `app/page.tsx`)
+- Repository: https://github.com/Alienware2000/ymau-vi-addis-ababa
+- Production: https://ymau-vi-addis-ababa.vercel.app
 - Vercel project: `alienware2000s-projects/ymau-vi-addis-ababa`
-- Node.js requirement: 22 or newer
+- Stack: Next.js 16.3 App Router. Node 22+.
+- Branch from current `main`. Do not start from `codex/hero-video-design`.
 
-Do not change the film unless David explicitly asks. New content work branches from `main`.
+`main` already includes:
+
+| Merge | What it shipped |
+| --- | --- |
+| PR #4 (`6d6050c`) | Ethiopia homepage film, `v=11` |
+| PR #5 (`357873a`) | Aby public-content pass: careers, letter, secretariat, ambassadors directory, partners, committee archive |
+| PR #6 (`f653050`) | Welcome-letter layout, YaleNew letter typography, AU white lockup, enlarged partner logo wells |
+
+Paste [`docs/RESUME_PROMPT.md`](docs/RESUME_PROMPT.md) into a fresh Claude Code session after cloning.
+
+## Do this first in a new session
+
+1. Read this file and `docs/ABY_CONTENT_RESUME.md`.
+2. Run `git status -sb` and confirm you are on current `main` (or a new branch from it).
+3. `git lfs install && git lfs pull`. Confirm `public/ethiopia-film.mp4` and `public/ethiopia-film-mobile.mp4` are real MP4s, not Git LFS pointer files.
+4. `npm install && npm run dev`. Open http://localhost:3000.
+5. Report git, production, and remaining-work state. Wait for David’s next instruction.
+
+Do not invent the next feature. Do not start parked work.
+
+## Guardrails
+
+- Film stays `v=11` in `app/page.tsx`. Do not run `npm run hero:build`.
+- Public contact is `president@yalemodelau.org`. Do not publish personal phone numbers.
+- Ambassadors: name, institution, bio, photo only. No email, phone, or date of birth.
+- Do not present YMAU V committees as the YMAU VI slate. The VI rooms stay forthcoming.
+- Do not invent unreleased copy. Forthcoming pages stay forthcoming.
+- Conference dates stay **15-17 March 2027** until Aby confirms otherwise.
+- African Union logo on the site is the opaque white official lockup: `public/ymau-media/partners/african-union-lockup.png`. Do not restore a black plate behind it.
+- Homepage letter uses production spatial measurements (see Letter). Do not “improve” them by tightening padding or shrinking the quote.
+- Do not commit `next-env.d.ts` when `next dev` rewrites it to `.next/dev/types/`.
+- Do not commit, push, or deploy unless David asks.
+
+## Letter
+
+Homepage `.city-story` matches the approved production layout:
+
+- Grid: `minmax(360px, 0.78fr) minmax(0, 1.22fr)`
+- Padding: `clamp(72px, 7vw, 108px) clamp(46px, 7vw, 112px)`
+- Quote: `clamp(34px, 3.4vw, 54px)`, `line-height: 1.04`, `margin: 58px 0 30px`, `max-width: 760px`
+- Home letter + CTA: `max-width: 680px`, body `14px` / `1.72` / `opacity: .8`
+
+Full letter `/secretary-general`: two-column sticky intro (title + quote stay; letter scrolls). Sheet color is `var(--paper-light)` (`#f7f4ed`), matching the following section. Sign-off titles use the same serif as the name. Public copy uses hyphens and middots, not em dashes.
+
+Key files: `app/globals.css` (`.city-story*`, `.sg-letter*`, `.signed-letter*`), `app/page.tsx`, `app/_components/signed-letter.tsx`, `app/public-directory.ts`.
+
+## Partners
+
+Current co-organizers live on `/partners`. The YMAU V archive and earlier collaborators live on `/past-partners`.
+
+KCB Group and Model Conferences Ghana LBG were removed from `ymauVPartners` in `app/public-directory.ts`. Unused logos `kcb-group.png` and `model-conferences-ghana.png` were deleted.
+
+Archive ledger layout in `app/_components/institutional-page.tsx` and `app/globals.css`:
+
+- One organization: `.partner-wall__grid--solo` (narrow tile, not a stretched banner and not an empty 3-column hole).
+- Two or four organizations: `.partner-wall__grid--pair` (complete 2-column / 2×2 ledger).
+- Other counts keep the 3-column grid. Below 560px every grid is one column.
+
+Current YMAU V counts after the removal: Platinum 1, Gold 8, Silver 4, Bronze 4, Strategic 2, Conference 1 (Kenya Airways). Gateway copy on `/partners` uses `ymauVPartners.length`.
+
+## Ambassadors
+
+`app/ambassador-directory.ts` holds the public names, institutions, and supplied bios. `photoSrc` is still unpublished; Drive headshots returned “not found” to the connected account. Do not add photos until the folder is shared and David asks. Do not rewrite supplied bios.
 
 ## Restore on another computer
 
@@ -23,13 +84,12 @@ Install Git LFS before pulling the media files.
 git lfs install
 git clone https://github.com/Alienware2000/ymau-vi-addis-ababa.git
 cd ymau-vi-addis-ababa
-git switch codex/hero-video-design
 git lfs pull
 npm install
 npm run dev
 ```
 
-Open <http://localhost:3000>. The old proof query parameters are no longer needed; the current film is the default homepage hero.
+Open http://localhost:3000. The current film is the default homepage hero.
 
 To reconnect the Vercel CLI, sign into the `alienware2000` account and run:
 
@@ -37,13 +97,37 @@ To reconnect the Vercel CLI, sign into the `alienware2000` account and run:
 vercel link --project ymau-vi-addis-ababa
 ```
 
-The app has no required application secrets at this stage. Do not copy `.vercel`, shell credentials, GitHub tokens, or the old machine's entire `.codex` directory.
+The app has no required application secrets at this stage. Do not copy `.vercel`, shell credentials, GitHub tokens, or another machine’s agent directory.
 
-## Current approved-for-now experience
+## Parked (do not start unless asked)
 
-The team has not given final media approval. The current selection is a polished review version that David considered good enough to redeploy, subject to later feedback.
+**French and Amharic as the real site.** English stays `/about`. French `/fr`, `/fr/about`, … Amharic `/am`, `/am/about`, … Language switch stays on the matching page. Same `v=11` film. Forthcoming English pages stay forthcoming, translated. Hidden committee routes stay hidden. First translation marked for native review.
 
-The visual sequence is:
+**Knack replacement, quiet operations layer.** Hidden `/apply` and `/review`, not in the nav (same pattern as `/topic-guides`). Public `/registration` stays editorial. Magic-link login; reviewers are an email allowlist. No payments in v1. Visual language matches the conference site, not a dashboard.
+
+**Domain:** yalemodelau.org later; archive the V Squarespace site first.
+
+## Verification
+
+After code changes:
+
+```bash
+npm run lint
+node --test tests/*.test.mjs
+npm run build
+```
+
+Do not merge or deploy until David asks.
+
+## Film
+
+Do not change the film unless David explicitly asks.
+
+Hero files: `public/ethiopia-film.mp4` / `ethiopia-film-mobile.mp4` / `ethiopia-film-poster.jpg` (`v=11` in `app/page.tsx`).
+
+The team has not given final media approval. The current selection is a polished review version, subject to later feedback.
+
+Visual sequence:
 
 1. Lush Ethiopian highlands, beginning near the crisp green portion rather than the earlier grey-blue foliage.
 2. The original camel shot requested from approximately `00:00:11–00:00:20` of the downloaded 1080p Ethiopia film.
@@ -56,109 +140,45 @@ The visual sequence is:
 Editorial decisions already made:
 
 - Use fades, never hard cuts.
-- Current dissolves are about 1.2 seconds: noticeable and smooth without the earlier abruptness.
+- Current dissolves are about 1.2 seconds.
 - Keep an original-film pace; the earlier `transitions=slow` experiment felt too slow.
 - Let the longer Gheralta passage breathe before Lalibela.
-- Preserve distinct desktop and portrait renders so mobile does not simply crop the desktop delivery at runtime.
-- Keep the homepage overlay restrained because the earlier blue-grey tint made mobile footage appear softer and flatter.
-- The old “WATCH THE ETHIOPIA FILM” interaction now opens the stitched film rather than the former highlands-only clip.
-- Temporary proof labels were removed from the promoted experience.
+- Preserve distinct desktop and portrait renders.
+- Keep the homepage overlay restrained.
+- The old “WATCH THE ETHIOPIA FILM” interaction now opens the stitched film.
 
-## Current media delivery
-
-The exact reviewed files are committed through Git LFS:
+Current media delivery (Git LFS):
 
 | File | Dimensions | Duration | Approximate bitrate | Size |
-| --- | ---: | ---: | ---: | ---: |
+| --- | ---: | ---: | --- | ---: |
 | `public/ethiopia-film.mp4` | 1920×1080 | 89.0 s | 9.92 Mbps | 110,386,401 bytes |
 | `public/ethiopia-film-mobile.mp4` | 1080×1920 | 89.0 s | 13.68 Mbps | 152,211,527 bytes |
 | `public/ethiopia-film-poster.jpg` | desktop poster | — | — | 688,833 bytes |
 
-The homepage references these as media version `v=11` in `app/page.tsx`. Vercel serves the committed MP4 bytes and supports HTTP range requests; it is not resizing or transcoding them.
+Vercel serves the committed MP4 bytes and supports HTTP range requests; it is not resizing or transcoding them.
 
-Quality limitation: several requested shots originated in an already-compressed 1920×1080 landscape file. A 9:16 crop uses only about 608×1080 of that frame and then enlarges it to 1080×1920. The mobile delivery has a high bitrate, but encoding cannot restore detail absent from the source. The 4K highlands holds up better because its portrait crop is reduced rather than enlarged.
+Quality limitation: several requested shots originated in an already-compressed 1920×1080 landscape file. A 9:16 crop uses only about 608×1080 of that frame and then enlarges it to 1080×1920. Encoding cannot restore detail absent from the source.
 
-The next quality/performance exploration should be a landscape-and-portrait adaptive streaming ladder (HLS or DASH) from licensed high-resolution masters. Keep a high-quality archive master, then generate several resolutions and bitrates instead of making every visitor load one very large MP4.
+The next quality/performance exploration should be a landscape-and-portrait adaptive streaming ladder (HLS or DASH) from licensed high-resolution masters.
 
-## Proof edit versus production-master workflow
+`config/hero-film.json`, `scripts/hero-film.mjs`, `docs/hero-film-treatment.md`, and `docs/hero-film-source-register.md` describe a stricter future workflow for licensed UHD masters. They do **not** currently reproduce the 89-second `v=11` proof edit. Do not run `npm run hero:build` expecting it to recreate the live film.
 
-The checked-in web MP4s are the exact live proof edit. They are recoverable from Git LFS on a new machine.
+Local-only material that is not backed up by the repository:
 
-`config/hero-film.json`, `scripts/hero-film.mjs`, `docs/hero-film-treatment.md`, and `docs/hero-film-source-register.md` describe the stricter future workflow for licensed UHD masters. They do **not** currently reproduce the 89-second `v=11` proof edit:
+- `.hero-film-sources/01-highlands-master.mp4` — ignored 4K Pexels source. It can be downloaded again from the source URL in `config/hero-film.json`.
+- Downloaded source film in `~/Downloads` — not committed and not a production-licensed asset.
+- `.vercel/` — machine-specific project link.
+- `node_modules`, `.next`, `dist`, and `outputs`.
 
-- Only the approved highlands master exists locally in `.hero-film-sources/`.
-- The remaining manifest sources are purchase/licensing candidates.
-- The build intentionally fails until every configured source is licensed, present, and meets its native-resolution requirement.
-- The manifest currently describes a shorter future treatment, not the exact proof timeline.
+Do not place raw third-party footage, credentials, or licenses containing personal billing details in the public repository.
 
-Do not run `npm run hero:build` expecting it to recreate the live film. First update the manifest and acquire approved production masters.
-
-## Local-only material that is not backed up by the repository
-
-- `.hero-film-sources/01-highlands-master.mp4` — ignored 4K Pexels source, approximately 83.5 MB. It can be downloaded again from the source URL recorded in `config/hero-film.json`.
-- The downloaded source film in `~/Downloads` — approximately 1.44 GB, not committed and not a production-licensed asset. The requested timestamps and public reference URL are documented, so it should be reacquired only if its intended use is legally authorized.
-- `.vercel/` — machine-specific project link, intentionally ignored and recreated with `vercel link`.
-- Build outputs and dependencies (`node_modules`, `.next`, `dist`, and `outputs`) — intentionally disposable.
-
-Do not place raw third-party footage, credentials, or licenses containing personal billing details in the public repository. Keep licensed masters and receipts in an access-controlled client asset store.
-
-## Verification performed
-
-The current branch passed:
-
-```bash
-npm run lint
-node --test tests/*.test.mjs
-npm run build
-```
-
-At the time of handoff:
-
-- 12 Node tests passed.
-- The Next.js production build passed.
-- Desktop and mobile files returned `206 Partial Content` with `video/mp4` from production.
-- The poster returned `200 OK`.
-- Black-frame, transition, loop, and responsive visual checks passed.
-- PR #4's Vercel checks passed.
-
-Re-run the three commands above after any code or media change. For media changes, also inspect the opening, every dissolve, the Gheralta-to-Lalibela handoff, the final-to-opening loop, and portrait crops on a real phone-sized viewport.
-
-## Deployment procedure
-
-Normal path after approval:
-
-1. Review and merge PR #4 into `main`.
-2. Confirm the Vercel Git integration deploys `main` successfully.
-3. Verify the production homepage, desktop MP4, mobile MP4, and poster.
-
-For an intentionally staged manual deployment:
-
-```bash
-vercel deploy --prod --skip-domain --yes
-vercel inspect <deployment-url>
-vercel promote <deployment-url> --yes
-```
-
-Do not promote an unverified build. Git LFS support is already enabled for the Vercel project.
-
-## Remaining decisions
+Film remaining decisions:
 
 1. Collect team feedback on the current live sequence and pacing.
 2. Decide whether the Addis night shot stays or is replaced with a clearer moving view featuring the CBE Headquarters tower.
 3. Confirm commercial reuse rights for every non-Pexels proof shot before treating the media as final.
 4. Obtain native UHD masters for the camel, Gheralta, Lalibela, and Addis scenes.
 5. Reconcile `config/hero-film.json` with the final approved timeline.
-6. Consider HLS/DASH adaptive streaming and a delivery CDN to reduce the current large initial transfer while retaining high-quality portrait and landscape variants.
-7. Merge PR #4 only after the design/media owner accepts the current state or after the licensed replacements are ready.
+6. Consider HLS/DASH adaptive streaming.
 
-## Design guardrails
-
-- Professional, editorial, restrained and culturally grounded—not a generic tourism montage.
-- Maintain excellent legibility and composition on both wide desktop and narrow mobile screens.
-- Avoid excessive navy/grey overlays, crushed blacks, over-saturation, whip pans, hard cuts and fast montage pacing.
-- Keep authentic attribution and credits accurate.
-- Never silently swap footage or lower source quality to reduce file size.
-
-## Copy/paste resume instruction
-
-The shorter prompt in `docs/RESUME_PROMPT.md` can be pasted into a fresh Codex task after cloning the repository.
+Design guardrails for film work: professional, editorial, restrained and culturally grounded. Maintain legibility on desktop and mobile. Avoid excessive navy overlays, crushed blacks, over-saturation, whip pans, hard cuts and fast montage. Never silently swap footage or lower source quality to reduce file size.

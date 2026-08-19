@@ -156,7 +156,6 @@ export const ymauVPartners: PartnerRecord[] = [
   { name: "TGI Group", archiveGroup: "Gold sponsor", logoSrc: "/ymau-media/partners/tgi.png", logoAlt: "TGI Group logo", blurb: "Gold sponsor of YMAU V in Accra." },
   { name: "Deloitte", archiveGroup: "Gold sponsor", logoSrc: "/ymau-media/partners/deloitte.png", logoAlt: "Deloitte logo", blurb: "Gold sponsor of YMAU V in Accra." },
   { name: "MTN Pulse", archiveGroup: "Gold sponsor", logoSrc: "/ymau-media/partners/mtn-pulse.png", logoAlt: "MTN Pulse logo", logoFormat: "poster", blurb: "Gold sponsor of YMAU V in Accra." },
-  { name: "KCB Group", archiveGroup: "Silver sponsor", logoSrc: "/ymau-media/partners/kcb-group.png", logoAlt: "KCB Group logo", logoFormat: "poster", blurb: "Silver sponsor of YMAU V in Accra." },
   { name: "Alexis Miranda Foundation", archiveGroup: "Silver sponsor", logoSrc: "/ymau-media/partners/alexis-miranda-foundation.png", logoAlt: "Alexis Miranda Foundation logo", blurb: "Silver sponsor of YMAU V in Accra." },
   { name: "African Allied Health Summit", archiveGroup: "Silver sponsor", logoSrc: "/ymau-media/partners/african-allied-health.jpg", logoAlt: "African Allied Health Summit logo", blurb: "Silver sponsor of YMAU V in Accra." },
   { name: "African Renaissance Village", archiveGroup: "Silver sponsor", logoSrc: "/ymau-media/partners/african-renaissance-village.jpg", logoAlt: "African Renaissance Village logo", blurb: "Silver sponsor of YMAU V in Accra." },
@@ -168,7 +167,6 @@ export const ymauVPartners: PartnerRecord[] = [
   { name: "Ghana Ministry of Youth Development and Empowerment", archiveGroup: "Strategic partner", logoSrc: "/ymau-media/partners/ghana-ministry-of-youth.png", logoAlt: "Ghana Ministry of Youth Development and Empowerment emblem", blurb: "Strategic public-sector partner of YMAU V." },
   { name: "Council on Foreign Relations-Ghana", archiveGroup: "Strategic partner", logoSrc: "/ymau-media/partners/cfr-ghana.png", logoAlt: "CFR-Ghana logo", blurb: "Strategic institutional partner of YMAU V." },
   { name: "Kenya Airways", archiveGroup: "Conference partner", logoSrc: "/ymau-media/partners/kenya-airways.png", logoAlt: "Kenya Airways logo", blurb: "The Pride of Africa connected YMAU V to regional travel and supported Mandate to Market." },
-  { name: "Model Conferences Ghana LBG", archiveGroup: "Conference partner", logoSrc: "/ymau-media/partners/model-conferences-ghana.png", logoAlt: "Model Conferences Ghana logo", blurb: "Ghana’s leading organizer of academic simulations collaborated on YMAU V in Accra." },
 ];
 
 export const pastPartners: PartnerRecord[] = [

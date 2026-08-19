@@ -64,6 +64,12 @@ function PartnerArchiveGateway() {
   );
 }
 
+function partnerWallGridClass(count: number) {
+  if (count === 1) return " partner-wall__grid--solo";
+  if (count === 2 || count === 4) return " partner-wall__grid--pair";
+  return "";
+}
+
 function PartnerWall({ partners }: { partners: PartnerRecord[] }) {
   const archiveGroups = [
     "Platinum sponsor",
@@ -94,7 +100,7 @@ function PartnerWall({ partners }: { partners: PartnerRecord[] }) {
                 <h3>{groupLabel}</h3>
                 <p>{groupedPartners.length} {groupedPartners.length === 1 ? "organization" : "organizations"}</p>
               </header>
-              <div className="partner-wall__grid">
+              <div className={`partner-wall__grid${partnerWallGridClass(groupedPartners.length)}`}>
                 {groupedPartners.map((partner) => (
                   <article className={partner.logoSrc ? "partner-tile partner-tile--logo" : "partner-tile"} key={partner.name}>
                     <span>YMAU V · Accra</span>

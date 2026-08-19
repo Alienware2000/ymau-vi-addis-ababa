@@ -364,3 +364,20 @@ test("ships the local cinematic assets and responsive design system", async () =
   assert.doesNotMatch(css, /min-height:\s*max\(680px/, "the hero must not force short laptop viewports to scroll");
   assert.doesNotMatch(css, /backdrop-filter/, "fixed navigation should not force blurred scroll repaints");
 });
+
+test("keeps the YMAU V partner archive without KCB Group or Model Conferences Ghana", async () => {
+  const [directory, institutionalPage, css] = await Promise.all([
+    readFile(new URL("../app/public-directory.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/_components/institutional-page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
+  ]);
+
+  assert.doesNotMatch(directory, /KCB Group/);
+  assert.doesNotMatch(directory, /Model Conferences Ghana/);
+  assert.match(directory, /Kenya Airways/);
+  assert.match(directory, /Ecobank/);
+  assert.match(institutionalPage, /partner-wall__grid--solo/);
+  assert.match(institutionalPage, /partner-wall__grid--pair/);
+  assert.match(css, /\.partner-wall__grid--solo/);
+  assert.match(css, /\.partner-wall__grid--pair/);
+});

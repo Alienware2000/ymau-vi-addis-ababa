@@ -7108,6 +7108,13 @@ video {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
+.partner-wall__grid--solo {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: min(100%, 22.5rem);
+}
+.partner-wall__grid--pair {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
 .partner-tile {
   border-top: 1px solid var(--line);
   border-right: 1px solid var(--line);
@@ -7383,7 +7390,9 @@ video {
     width: min(280px, 100%);
   }
   .partner-current__item > div:last-child { grid-column: 2; }
-  .partner-wall__grid { grid-template-columns: 1fr; }
+  .partner-wall__grid,
+  .partner-wall__grid--pair { grid-template-columns: 1fr; }
+  .partner-wall__grid--solo { max-width: none; }
   .partner-tile { min-height: 240px; }
   .partner-index__entry > div {
     grid-template-columns: 1fr;

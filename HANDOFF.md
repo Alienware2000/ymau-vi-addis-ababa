@@ -1,13 +1,13 @@
 # YMAU VI website handoff
 
-Last updated: 21 August 2026
+Last updated: 21 August 2026 (late)
 
 This is the source of truth for a new Claude Code session. Read this file completely, then [`docs/ABY_CONTENT_RESUME.md`](docs/ABY_CONTENT_RESUME.md). Film-only detail lives in the Film section below and in [`docs/hero-film-treatment.md`](docs/hero-film-treatment.md).
 
 ## Start here
 
 - Repository: https://github.com/Alienware2000/ymau-vi-addis-ababa
-- Production: https://ymau-vi-addis-ababa.vercel.app
+- Production: https://www.yalemodelau.org (custom domain live since 21 Aug 2026; apex 308s to www; ymau-vi-addis-ababa.vercel.app remains an alias)
 - Vercel project: `alienware2000s-projects/ymau-vi-addis-ababa`
 - Stack: Next.js 16.3 App Router. Node 22+.
 - Branch from current `main`. Do not start from `codex/hero-video-design`.
@@ -104,6 +104,15 @@ Known mismatch awaiting David/Aby: the site copy and stats say 97 ambassadors bu
 
 Homepage experience photos are real YMAU V shots from Fred Sebowa's Drive folder (537 photos: https://drive.google.com/drive/folders/19V4efY8SdfE4cPwEfpfnlqYjMK5Hzr-V): `home/ymau-v-plenary-applause.jpg` and `home/ymau-v-committee-negotiation.jpg`, optimized to 2400px. The test suite's perceptual-hash guard blocks re-using the same scene twice — and a human reads two frames of one session as "the same photo", so pick visually distinct scenes, not just distinct files. The generic Pexels conference stock is deleted.
 
+## Domain and search (completed 21 Aug 2026)
+
+- `yalemodelau.org` is registered at Squarespace (Tucows backend, renews 26 Mar 2027, auto-renew on). DNS is edited in the Squarespace Domains panel (account.squarespace.com/domains → yalemodelau.org → DNS); the panel warns about "custom nameservers" because the delegation lists both squarespacedns.com and nsone.net sets — both serve the same zone, ignore the warning. Editing records prompts for the Squarespace account password, which only David can type.
+- Live records: `A @ 216.150.1.1`, `CNAME www 5647f5925ea4dc65.vercel-dns-016.com`, Google Workspace MX preset (email — never touch), Google Workspace verification TXT, a second TXT `google-site-verification=3-qZFhO-…` for Search Console (keep), plus legacy `training`/`regadmin`/`registration` CNAMEs still pointing at Squarespace (harmless). Pre-change snapshot and a full crawl of the old site live in `~/Dev/ymau-v-squarespace-archive/` on David's Mac.
+- Vercel: both domains added to the project; `www` is primary, apex redirects 308. Vercel auto-deploys pushes to `main`.
+- Legacy Squarespace paths 308 to their successors via `redirects()` in `next.config.ts`; `app/sitemap.ts` and `app/robots.ts` target `https://www.yalemodelau.org`.
+- Google Search Console: domain property `yalemodelau.org` verified under antwidavid389@gmail.com; sitemap submitted; homepage queued for priority recrawl on 21 Aug. Google's cached results (old Squarespace titles/snippets, Audrey-era text) refresh over the following days to two weeks — no action needed.
+- Favicon: `app/icon.png`, `app/apple-icon.png`, `app/favicon.ico` are built from the round emblem cropped out of `public/ymau-wordmark-white.png` (no spikes). The official crest with spikes exists as a Canva design (https://www.canva.com/design/DAGoyhPgoNI/zOewhm6xJL739-A0hYUWDQ/edit, "YMAU Crest - Logo", 1600px transparent PNG) — David was going to download it so the icon set and social card can be rebuilt from it. Pending.
+
 ## Known backlog (small, low severity)
 
 - History page ledger: YMAU III · Johannesburg · 2024 and IV · Nairobi · 2025 are inferred from the annual sequence, not sourced — confirm the years.
@@ -141,7 +150,7 @@ The app has no required application secrets at this stage. Do not copy `.vercel`
 
 **Knack replacement, quiet operations layer.** Hidden `/apply` and `/review`, not in the nav (same pattern as `/topic-guides`). Public `/registration` stays editorial. Magic-link login; reviewers are an email allowlist. No payments in v1. Visual language matches the conference site, not a dashboard.
 
-**Domain:** yalemodelau.org later; archive the V Squarespace site first.
+**Domain:** done on 21 Aug 2026 (see Domain and search section). The Squarespace *website* subscription (renews 29 Mar 2027) can be cancelled once the transition has settled; keep the domain registration and DNS at Squarespace.
 
 ## Verification
 

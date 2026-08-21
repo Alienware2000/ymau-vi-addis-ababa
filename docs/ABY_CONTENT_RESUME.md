@@ -7,7 +7,7 @@ Work in a **new chat**. Read `HANDOFF.md` first, then this file. Do not continue
 ## Git and preview
 
 - Repo: https://github.com/Alienware2000/ymau-vi-addis-ababa
-- Production: https://ymau-vi-addis-ababa.vercel.app
+- Production: https://www.yalemodelau.org (vercel.app URL remains an alias)
 - `main` includes the Ethiopia hero (`ethiopia-film.mp4?v=11`) via PR #4, the public-content pass via PR #5, and the letter/lockup pass via PR #6.
 - Create a **new branch from `main`** for new work. Do not start from `codex/hero-video-design`.
 - Local: `npm install` if needed, `git lfs pull`, `npm run dev`, watch http://localhost:3000
@@ -54,7 +54,7 @@ The original public-content pass is on `main`. Do not re-implement it.
 
 **Knack replacement, quiet operations layer.** Hidden `/apply` and `/review`, not in the nav (same pattern as `/topic-guides`). Public `/registration` stays editorial. Magic-link login for everyone; reviewers are an email allowlist. Key people by email so Google or Yale CAS can be added later. No payments in v1. Rubric: five 1–5 scores; example bands (10–15 housing, 15+ flights) are a **raw sum** (5–25), not a weighted average (max 5) — store raw scores, keep a `sum | weighted` flag. Visual language same as the conference site, not a dashboard.
 
-**Domain:** yalemodelau.org later; archive the V Squarespace site first.
+**Domain:** done 21 Aug 2026; see HANDOFF.md.
 
 ## Paste into a new session
 

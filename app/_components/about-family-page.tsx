@@ -5,7 +5,7 @@ import { EDITORIAL_IMAGE_PLACEHOLDER } from "../image-delivery";
 import { careerRoles, secretariatPeople, secretaryGeneralLetter, secretaryGeneralPortrait } from "../public-directory";
 import type { InformationPageData } from "../site-content";
 import { AnimatedStatGrid } from "./animated-stat-grid";
-import { ResourceCards } from "./editorial-content";
+import { NumberedList, ResourceCards, ScheduleLedger } from "./editorial-content";
 import { LineArrow } from "./editorial-page-parts";
 import { EditorialMedia } from "./editorial-media";
 import { PageShell } from "./page-shell";
@@ -72,7 +72,8 @@ export function AboutFamilyPage({ data, slug }: { data: InformationPageData; slu
               <span>{String(index + (isSecretaryGeneral ? 2 : 1)).padStart(2, "0")}</span>
               <h2>{section.heading}</h2>
               {section.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-              {section.items && <ul>{section.items.map((item) => <li key={item}>{item}</li>)}</ul>}
+              {section.items && (section.variant === "checklist" ? <NumberedList items={section.items} /> : <ul>{section.items.map((item) => <li key={item}>{item}</li>)}</ul>)}
+              {section.schedule && <ScheduleLedger rows={section.schedule} />}
               {section.note && <p className="about-family-section__note">{section.note}</p>}
               {section.stats && <AnimatedStatGrid stats={section.stats} />}
             </div>

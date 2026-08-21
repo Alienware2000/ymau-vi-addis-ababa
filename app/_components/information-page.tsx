@@ -6,25 +6,12 @@ import type { InformationPageData } from "../site-content";
 import { findNavigationGroup } from "../site-navigation";
 import { AnimatedStatGrid } from "./animated-stat-grid";
 import { CulturalAnnotation } from "./cultural-annotation";
+import { LinkedParagraph } from "./editorial-content";
 import { InnerFooter, LineArrow } from "./editorial-page-parts";
 import { ScrollRevealSection } from "./scroll-reveal-section";
 import { SiteHeader } from "./site-header";
 import { VisaPathwayChecker } from "./visa-pathway-checker";
 
-function LinkedParagraph({ children }: { children: string }) {
-  const emailMatch = children.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
-  if (!emailMatch) return <p>{children}</p>;
-
-  const email = emailMatch[0];
-  const [before, after] = children.split(email);
-  return (
-    <p>
-      {before}
-      <a className="inline-email" href={`mailto:${email}`}>{email}</a>
-      {after}
-    </p>
-  );
-}
 
 export function InformationPage({ data, slug }: { data: InformationPageData; slug: string }) {
   const group = findNavigationGroup(slug);

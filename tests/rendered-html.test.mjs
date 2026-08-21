@@ -62,7 +62,8 @@ test("defines the complete YMAU VI conference homepage", async () => {
   assert.match(page, /autoPlay/);
   assert.match(page, /muted/);
   assert.match(page, /playsInline/);
-  assert.match(page, /Registration timetable/);
+  assert.match(page, /Registration opens 5 October 2026/);
+  assert.match(page, /1 February 2027/);
   assert.match(page, /interest__wordmark/);
   assert.match(page, /ymau-wordmark-white\.png/);
   assert.match(page, /Sixth edition/);

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { currentPartners, pastPartners, ymauVPartners, type PartnerRecord } from "../public-directory";
 import type { InformationPageData } from "../site-content";
-import { EditorialAction, NumberedList } from "./editorial-content";
+import { EditorialAction, LinkedParagraph, NumberedList } from "./editorial-content";
 import { EditorialMedia } from "./editorial-media";
 import { PageShell } from "./page-shell";
 import { ScrollRevealSection } from "./scroll-reveal-section";
@@ -179,7 +179,7 @@ export function InstitutionalPage({ data, slug }: { data: InformationPageData; s
         <div className={`institutional-flow institutional-flow--${slug}`}>
           {data.sections.map((section, index) => (
             <ScrollRevealSection className={`institutional-section${section.image ? " institutional-section--media" : ""}`} key={section.heading}>
-              <div><span>{String(index + 1).padStart(2, "0")}</span><h2>{section.heading}</h2>{section.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.items && <NumberedList items={section.items} />}{section.note && <p className="institutional-note">{section.note}</p>}</div>
+              <div><span>{String(index + 1).padStart(2, "0")}</span><h2>{section.heading}</h2>{section.body?.map((paragraph) => <LinkedParagraph key={paragraph}>{paragraph}</LinkedParagraph>)}{section.items && <NumberedList items={section.items} />}{section.note && <p className="institutional-note">{section.note}</p>}</div>
               {section.image && <EditorialMedia asset={section.image} />}
             </ScrollRevealSection>
           ))}

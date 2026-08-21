@@ -7,6 +7,13 @@ import {
 } from "./conference-metrics";
 import type { ConferenceMetric } from "./conference-metrics";
 
+export type ScheduleRow = {
+  label: string;
+  primary: string;
+  secondary?: string;
+  value?: string;
+};
+
 export type ContentSection = {
   heading: string;
   body?: string[];
@@ -16,6 +23,7 @@ export type ContentSection = {
   presentation?: "standard" | "feature" | "compact";
   image?: MediaAsset;
   stats?: readonly ConferenceMetric[];
+  schedule?: ScheduleRow[];
 };
 
 export type ContentResource = {
@@ -52,11 +60,53 @@ export const committeeArchive = [
 ] as const;
 
 export const committeeReleaseItems = [
-  "Committee names and mandates",
   "Agenda topics",
   "Delegate experience levels",
   "Background guides",
   "Portfolio allocations",
+] as const;
+
+export const ymauVICommittees = [
+  {
+    name: "Economic, Social and Cultural Council (ECOSOCC)",
+    description: "Delegates in ECOSOCC will focus on strengthening civil society participation in governance by enhancing collaboration between the African Union and non-state actors in AU countries to ensure inclusive policy-making, with particular attention to empowering marginalised voices and increasing transparency and accountability in development processes.",
+  },
+  {
+    name: "Peace and Security Council (PSC)",
+    description: "Delegates in the PSC will focus on stabilising political institutions to prevent uprisings by strengthening governance, promoting credible and inclusive elections, encouraging political participation, and supporting peaceful conflict resolution mechanisms.",
+  },
+  {
+    name: "African Commission on Human and Peoples’ Rights",
+    description: "Delegates in the ACHPR will focus on the promotion and protection of human and peoples’ rights across the continent, engaging with mechanisms such as state reporting, urgent appeals, friendly settlement of disputes, and missions by special rapporteurs and working groups. Delegates will also interpret and expound upon the provisions of the African Charter on Human and Peoples’ Rights.",
+  },
+  {
+    name: "STC on Health, Population and Drug Control",
+    description: "Delegates in the STC on Health, Population and Drug Control will focus on capacity building for healthcare systems, with an emphasis on affordability and quality of care, discussing healthcare infrastructure, equitable access, and the financing of public health.",
+  },
+  {
+    name: "STC on Agriculture, Rural Development, Water and Environment",
+    description: "Delegates in the STC on Agriculture, Rural Development, Water and Environment will focus on enhancing agricultural systems and improving market access for farmers through sustainable practices, infrastructure development, and rural support mechanisms.",
+  },
+  {
+    name: "STC on Gender and Women’s Empowerment",
+    description: "Delegates in the STC on Gender and Women’s Empowerment will focus on advancing gender equality across the continent by strengthening legal protections, increasing women’s participation in leadership and peacebuilding, and promoting economic and educational empowerment, with an emphasis on implementation of the Maputo Protocol, addressing gender-based violence, and integrating gender-responsive policies into all levels of governance and development.",
+  },
+  {
+    name: "STC on Transport, Infrastructure, Intercontinental and Interregional Infrastructure, Energy and Tourism",
+    description: "Delegates in this committee will focus on expanding continental energy corridors for sustainable and reliable power in order to achieve energy independence, while boosting sustainable tourism by improving infrastructure and promoting Africa’s cultural heritage for economic growth.",
+  },
+  {
+    name: "STC on Migration, Refugees and Internally Displaced Persons (IDPs)",
+    description: "Delegates in the STC on Migration, Refugees and IDPs will focus on strengthening Africa’s humanitarian response to displacement, improving protection and assistance for refugees, IDPs, and other vulnerable populations, and advancing continental frameworks for disaster management and epidemic response, alongside the free movement of people across the continent.",
+  },
+  {
+    name: "STC on Education, Science and Technology",
+    description: "Delegates in the STC on Education, Science and Technology will focus on advancing continental education strategy and technical and vocational training, alongside implementation of Africa’s science, technology, and innovation agenda, discussing curriculum development, research capacity, and resource mobilisation to strengthen African-led education and innovation systems.",
+  },
+  {
+    name: "STC on Communication and Information Communications Technology",
+    description: "Delegates in the STC on Communication and ICT will focus on expanding digital infrastructure and access across the continent, strengthening the capacity and independence of African media, and harmonising ICT policy and regulation, with attention to freedom of expression and information access as pillars of Africa’s knowledge economy.",
+  },
 ] as const;
 
 export const informationPages: Record<string, InformationPageData> = {
@@ -117,8 +167,15 @@ export const informationPages: Record<string, InformationPageData> = {
       {
         heading: "A travelling continental classroom",
         body: [
-          "The conference returned to Kigali for YMAU II in 2023, then convened YMAU III in Johannesburg, YMAU IV in Nairobi and YMAU V in Accra. Across those editions, committees, practitioner conversations, leadership training and cultural exchange remained recurring parts of the experience.",
-          "YMAU VI now comes to Addis Ababa, home of the African Union headquarters. This places the conference closer than ever to the institution its simulations are designed to help delegates understand.",
+          "Across every edition, committees, practitioner conversations, leadership training and cultural exchange remained recurring parts of the experience. YMAU VI now comes to Addis Ababa, home of the African Union headquarters, placing the conference closer than ever to the institution its simulations are designed to help delegates understand.",
+        ],
+        schedule: [
+          { label: "2022", primary: "YMAU I · Kigali" },
+          { label: "2023", primary: "YMAU II · Kigali" },
+          { label: "2024", primary: "YMAU III · Johannesburg" },
+          { label: "2025", primary: "YMAU IV · Nairobi" },
+          { label: "2026", primary: "YMAU V · Accra" },
+          { label: "2027", primary: "YMAU VI · Addis Ababa", secondary: "15-17 March" },
         ],
         image: routeEditorialMedia.history[0],
       },
@@ -247,14 +304,13 @@ export const informationPages: Record<string, InformationPageData> = {
       },
       {
         heading: "Public timeline",
-        variant: "checklist",
-        items: [
-          "30 August: applications open",
-          "6-14 September: optional coffee chats",
-          "Week of 7 September: YMAU VI information session at AfAm House",
-          "12 September, 11:59pm EST: applications close",
-          "15-19 September: interviews",
-          "24 September: decisions released",
+        schedule: [
+          { label: "30 August", primary: "Applications open" },
+          { label: "6-14 September", primary: "Optional coffee chats" },
+          { label: "Week of 7 Sept", primary: "YMAU VI information session", secondary: "AfAm House" },
+          { label: "12 September", primary: "Applications close", secondary: "11:59 PM EST" },
+          { label: "15-19 September", primary: "Interviews" },
+          { label: "24 September", primary: "Decisions released" },
         ],
       },
       {
@@ -276,7 +332,7 @@ export const informationPages: Record<string, InformationPageData> = {
         label: "Apply now: application instructions",
         detail: "Copy the application, save a PDF, and email president@yalemodelau.org by 12 September, 11:59pm EST",
         href: "https://docs.google.com/document/d/1hCqkFPQTWZ5tCuQQKbAJCVP2CSfQwU92l6ObfiQnTqk/edit",
-        status: "Open instructions",
+        status: "Due 12 Sept · 11:59 PM EST",
       },
       {
         label: "Secretariat position descriptions",
@@ -415,8 +471,8 @@ export const informationPages: Record<string, InformationPageData> = {
     number: "06",
     eyebrow: "Committee work",
     title: "A continental agenda, being shaped with care.",
-    intro: "The YMAU VI committee list and agendas are in development.",
-    status: "Final committee slate forthcoming",
+    intro: "Ten rooms in service of Our Vision, Our Victory: championing African success on African terms.",
+    status: "YMAU VI slate · ten committees",
     template: "story",
     sections: [
       {
@@ -510,14 +566,67 @@ export const informationPages: Record<string, InformationPageData> = {
     number: "07",
     eyebrow: "Attend YMAU VI",
     title: "Bring your perspective to Addis.",
-    intro: "Registration is expected to open in late September. Final dates will be announced here.",
-    status: "Registration timetable forthcoming",
+    intro: "Registration opens 5 October 2026 at 9:00 AM EAT. Early bird, regular and late windows run to 1 February 2027.",
+    status: "Registration opens 5 October 2026",
     template: "guide",
     sections: [
       {
         heading: "Eligibility",
         variant: "checklist",
-        items: ["16-25 years of age", "Enrolled in high school or university", "A demonstrated interest in diplomacy or African affairs"],
+        items: [
+          "16-25 years of age",
+          "High school and university students",
+          "Recent graduates and young professionals",
+          "International students from across Africa and the diaspora, and Ethiopian students",
+          "Delegates under 18 register with an advisor or chaperone over the age of 21 and complete the Parent or Guardian Consent and Participation Form",
+        ],
+      },
+      {
+        heading: "Registration windows and fees",
+        schedule: [
+          {
+            label: "Early bird",
+            primary: "5 October - 15 November 2026",
+            secondary: "Opens 9:00 AM EAT · closes 11:59 PM EAT",
+            value: "$60",
+          },
+          {
+            label: "Regular",
+            primary: "16 November 2026 - 10 January 2027",
+            secondary: "Closes 11:59 PM EAT",
+            value: "$80",
+          },
+          {
+            label: "Late",
+            primary: "11 January - 1 February 2027",
+            secondary: "Closes 11:59 PM EAT",
+            value: "$100",
+          },
+          {
+            label: "Financial aid",
+            primary: "Priority by 16 November · regular by 31 December",
+            secondary: "Flight and visa support is limited to the priority window · full detail on the financial aid page",
+          },
+        ],
+      },
+      {
+        heading: "Ways to register",
+        schedule: [
+          {
+            label: "Individual",
+            primary: "One delegate, traveling independently",
+          },
+          {
+            label: "Delegation",
+            primary: "2 to 25 delegates from one institution",
+            secondary: "A school, university or organization · the delegation leader may serve as chaperone if over 21",
+          },
+          {
+            label: "Advisor",
+            primary: "A trusted adult over 21 supervising minors",
+            secondary: "No registration fee · advisors cover their own travel and accommodation",
+          },
+        ],
       },
       {
         heading: "Your application checklist",
@@ -529,7 +638,7 @@ export const informationPages: Record<string, InformationPageData> = {
           "Indicate whether you will apply for financial aid",
           "Submit only through the official YMAU application link",
         ],
-        note: "The form, registration fees and dated windows will be confirmed in the official pack. Travel and accommodation should not be assumed to be included.",
+        note: "The form and remaining registration guidance will be confirmed in the official pack. Travel and accommodation should not be assumed to be included.",
         image: routeEditorialMedia.registration[1],
       },
       {
@@ -551,8 +660,8 @@ export const informationPages: Record<string, InformationPageData> = {
     number: "08",
     eyebrow: "Access",
     title: "Opportunity should not be determined by where you started.",
-    intro: "YMAU is building a financial-aid process for delegates travelling to Addis Ababa.",
-    status: "Application deadline forthcoming",
+    intro: "Financial aid applications open with registration on 5 October 2026 and are reviewed in two batches.",
+    status: "Priority deadline · 16 November 2026",
     template: "guide",
     sections: [
       {
@@ -566,19 +675,56 @@ export const informationPages: Record<string, InformationPageData> = {
       },
       {
         heading: "Deadlines",
-        body: ["The opening date, submission deadline and decision window are forthcoming. Every date will appear together so applicants can plan without piecing a timeline together across pages."],
-      },
-      {
-        heading: "Who is eligible",
-        body: ["The final eligibility standard will state which applicants and costs may be considered. No nationality, institution type or income threshold is being presented as final before approval."],
-      },
-      {
-        heading: "How applications are reviewed",
-        body: ["The review method, evidence considered and notification process will be published before the application opens. Any response deadline will be stated on the individual decision notice."],
+        schedule: [
+          {
+            label: "Applications open",
+            primary: "5 October 2026",
+            secondary: "Opens alongside registration",
+          },
+          {
+            label: "Priority review",
+            primary: "Submit by 16 November 2026",
+            secondary: "The only window for flight and visa support · decisions released by 5 December 2026",
+          },
+          {
+            label: "Regular review",
+            primary: "Submit by 31 December 2026",
+            secondary: "Fee waivers and accommodation support · decisions released by 15 January 2027",
+          },
+        ],
+        note: "Flight and visa support is available only to priority-window applicants. To be considered for it, submit your financial aid application by 16 November 2026.",
       },
       {
         heading: "Types of packages",
-        body: ["The pack will distinguish the forms of support available and the expenses each package covers. Applicants should not assume that registration, travel or accommodation is included unless the award letter states it explicitly."],
+        body: ["Applicants specify the package they are requesting within the financial aid application. Each component is reviewed independently, and an applicant may receive any combination of the three."],
+        schedule: [
+          {
+            label: "Fee waiver",
+            primary: "Participation fee waived",
+            secondary: "For delegates who can arrange their own travel and lodging",
+          },
+          {
+            label: "Accommodation",
+            primary: "Fee waiver and accommodation bundle",
+            secondary: "Room, breakfast, airport transfer and ground transportation to and from the conference venue",
+          },
+          {
+            label: "Full package",
+            primary: "Fee waiver, accommodation, flight and visa support",
+            secondary: "For delegates for whom airfare is the binding constraint · priority-window applicants only",
+          },
+        ],
+      },
+      {
+        heading: "Who is eligible",
+        body: ["Financial aid is open only to applicants based in Africa."],
+      },
+      {
+        heading: "How applications are reviewed",
+        body: [
+          "Financial aid is awarded through competitive batch review and is based on demonstrated financial need and the availability of funds. Submission of an application does not guarantee an award.",
+          "All financial aid decisions are final and cannot be appealed.",
+        ],
       },
     ],
     resources: [
@@ -599,7 +745,7 @@ export const informationPages: Record<string, InformationPageData> = {
     sections: [
       {
         heading: "Who may apply?",
-        body: ["YMAU VI is intended for students aged 16-25 who are enrolled in high school or university and interested in diplomacy or African affairs."],
+        body: ["YMAU VI is intended for delegates aged 16-25: high school students, university students, and recent graduates and young professionals interested in diplomacy or African affairs. Delegates under 18 register with an advisor or chaperone over the age of 21."],
       },
       {
         heading: "When is the conference?",
@@ -607,11 +753,11 @@ export const informationPages: Record<string, InformationPageData> = {
       },
       {
         heading: "When does registration open?",
-        body: ["Registration is expected to open in late September. The exact opening date and every registration deadline remain forthcoming."],
+        body: ["Registration opens 5 October 2026 at 9:00 AM EAT. Early bird registration ($60) closes 15 November 2026, regular registration ($80) closes 10 January 2027, and late registration ($100) closes 1 February 2027."],
       },
       {
         heading: "Are travel and accommodation included?",
-        body: ["No travel or accommodation inclusion should be assumed until it is stated in the final registration pack. Financial-aid eligibility and covered costs will be published with the application."],
+        body: ["Registration fees do not include travel or accommodation. Delegates based in Africa may apply for financial aid, which ranges from a participation fee waiver to an accommodation bundle to full flight and visa support; the covered costs are stated on each award letter."],
       },
       {
         heading: "Can I attend without prior Model AU experience?",
@@ -784,7 +930,8 @@ export const informationPages: Record<string, InformationPageData> = {
       },
       {
         heading: "A tailored conversation",
-        body: ["The operations team can provide the current sponsorship brief, audience profile and recognition framework. No benefits or exclusivity should be assumed before a written agreement is complete."],
+        body: ["The operations team can provide the current sponsorship brief, audience profile and recognition framework."],
+        note: "No benefits or exclusivity should be assumed before a written agreement is complete.",
       },
     ],
     action: { label: "Start a partnership conversation", href: "mailto:operations@yalemodelau.org" },
@@ -819,19 +966,16 @@ export const informationPages: Record<string, InformationPageData> = {
     template: "contact",
     sections: [
       {
-        heading: "Conference and registration",
+        heading: "Registration and financial aid",
         body: ["programs@yalemodelau.org"],
       },
       {
-        heading: "Delegate recruitment and external operations",
-        body: [
-          "Gumana Elrufai, Director-General of External Operations",
-          "gumana.elrufai@yale.edu",
-        ],
+        heading: "Marketing and partnership inquiries",
+        body: ["operations@yalemodelau.org"],
       },
       {
-        heading: "Operations, finance and partnerships",
-        body: ["operations@yalemodelau.org"],
+        heading: "Conference programming and committees logistics",
+        body: ["committees@yalemodelau.org"],
       },
       {
         heading: "Office of the Secretary-General",

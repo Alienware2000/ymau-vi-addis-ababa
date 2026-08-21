@@ -170,12 +170,11 @@ export const informationPages: Record<string, InformationPageData> = {
           "Across every edition, committees, practitioner conversations, leadership training and cultural exchange remained recurring parts of the experience. YMAU VI now comes to Addis Ababa, home of the African Union headquarters, placing the conference closer than ever to the institution its simulations are designed to help delegates understand.",
         ],
         schedule: [
-          { label: "2022", primary: "YMAU I · Kigali" },
-          { label: "2023", primary: "YMAU II · Kigali" },
-          { label: "2024", primary: "YMAU III · Johannesburg" },
-          { label: "2025", primary: "YMAU IV · Nairobi" },
-          { label: "2026", primary: "YMAU V · Accra" },
-          { label: "2027", primary: "YMAU VI · Addis Ababa", secondary: "15-17 March" },
+          { label: "YMAU I · II", primary: "Kigali · 2022 and 2023", secondary: "276 students across the first two editions · the first Ivy League-hosted Model African Union on the continent" },
+          { label: "YMAU III", primary: "Johannesburg", secondary: "151 students · the conference's first expansion beyond Kigali" },
+          { label: "YMAU IV", primary: "Nairobi", secondary: "325 students · first partnership with an African Union-affiliated body" },
+          { label: "YMAU V", primary: "Accra · 2026", secondary: "350+ students from 30+ countries · first major corporate partnership" },
+          { label: "YMAU VI", primary: "Addis Ababa · 15-17 March 2027" },
         ],
         image: routeEditorialMedia.history[0],
       },
@@ -307,7 +306,7 @@ export const informationPages: Record<string, InformationPageData> = {
         schedule: [
           { label: "30 August", primary: "Applications open" },
           { label: "6-14 September", primary: "Optional coffee chats" },
-          { label: "Week of 7 Sept", primary: "YMAU VI information session", secondary: "AfAm House" },
+          { label: "Week of 7 Sept", primary: "YMAU VI information session" },
           { label: "12 September", primary: "Applications close", secondary: "11:59 PM EST" },
           { label: "15-19 September", primary: "Interviews" },
           { label: "24 September", primary: "Decisions released" },
@@ -578,7 +577,7 @@ export const informationPages: Record<string, InformationPageData> = {
           "High school and university students",
           "Recent graduates and young professionals",
           "International students from across Africa and the diaspora, and Ethiopian students",
-          "Delegates under 18 register with an advisor or chaperone over the age of 21 and complete the Parent or Guardian Consent and Participation Form",
+          "Delegates under 18 register with an advisor or chaperone over the age of 21 and complete the Parent or Guardian Consent and Participation Form, included in the registration platform",
         ],
       },
       {
@@ -638,7 +637,7 @@ export const informationPages: Record<string, InformationPageData> = {
           "Indicate whether you will apply for financial aid",
           "Submit only through the official YMAU application link",
         ],
-        note: "The form and remaining registration guidance will be confirmed in the official pack. Travel and accommodation should not be assumed to be included.",
+        note: "The registration application will be available here on the website when it opens. Travel and accommodation should not be assumed to be included.",
         image: routeEditorialMedia.registration[1],
       },
       {
@@ -649,9 +648,10 @@ export const informationPages: Record<string, InformationPageData> = {
     ],
     resources: [
       {
-        label: "Delegate Registration and Financial Aid Information Pack",
-        detail: "Eligibility, application steps, fee schedule and aid timeline",
-        status: "Forthcoming",
+        label: "2026-27 Registration Guide",
+        detail: "The official pack: programmes, committees, host city, registration windows and financial aid",
+        href: "/ymau-vi-registration-guide.pdf",
+        status: "August 2026 edition",
       },
     ],
     action: { label: "Contact the programmes team", href: "mailto:programs@yalemodelau.org" },
@@ -729,9 +729,10 @@ export const informationPages: Record<string, InformationPageData> = {
     ],
     resources: [
       {
-        label: "Financial aid information and application pack",
-        detail: "Requirements, deadlines, review process and package types",
-        status: "Forthcoming",
+        label: "2026-27 Registration Guide",
+        detail: "The official pack: registration windows, financial aid deadlines, packages and review process",
+        href: "/ymau-vi-registration-guide.pdf",
+        status: "August 2026 edition",
       },
     ],
     action: { label: "Ask about financial aid", href: "mailto:operations@yalemodelau.org" },
@@ -749,11 +750,11 @@ export const informationPages: Record<string, InformationPageData> = {
       },
       {
         heading: "When is the conference?",
-        body: ["The conference is scheduled for 15-17 March 2027 in Addis Ababa, Ethiopia. The venue will be announced separately."],
+        body: ["The conference is scheduled for 15-17 March 2027 in Addis Ababa, Ethiopia. The venue will be announced on this website by mid-November 2026."],
       },
       {
         heading: "When does registration open?",
-        body: ["Registration opens 5 October 2026 at 9:00 AM EAT. Early bird registration ($60) closes 15 November 2026, regular registration ($80) closes 10 January 2027, and late registration ($100) closes 1 February 2027."],
+        body: ["Registration opens 5 October 2026 at 9:00 AM EAT, and the application will be available on this website. Early bird registration ($60) closes 15 November 2026, regular registration ($80) closes 10 January 2027, and late registration ($100) closes 1 February 2027."],
       },
       {
         heading: "Are travel and accommodation included?",
@@ -761,7 +762,7 @@ export const informationPages: Record<string, InformationPageData> = {
       },
       {
         heading: "Can I attend without prior Model AU experience?",
-        body: ["Committee experience levels and preparation requirements will be published with the final slate so applicants can make an informed choice."],
+        body: ["Yes. You do not have to be African or have prior Model AU experience to belong at YMAU; what matters most is a genuine interest in African affairs, a willingness to learn, and the leadership to bring a fresh perspective to the table. First-time delegates and returning veterans are equally welcome."],
       },
     ],
     action: { label: "Ask a registration question", href: "mailto:programs@yalemodelau.org" },

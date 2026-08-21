@@ -131,6 +131,12 @@ video {
   color: var(--ink-deep);
 }
 
+body:has(.site-header.has-open-menu) .announcement {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
 .announcement {
   align-items: center;
   background: var(--red);
@@ -546,7 +552,7 @@ video {
 
 .menu-toggle span {
   background: currentColor;
-  height: 1px;
+  height: 1.5px;
   left: 5px;
   position: absolute;
   transition: transform 220ms ease, top 220ms ease;
@@ -5369,10 +5375,9 @@ video {
 
   .nav-group__menu a {
     border-color: var(--white-line);
-    font-family: var(--font-sans), Arial, sans-serif;
-    font-size: 14px;
-    letter-spacing: 0;
-    min-height: 43px;
+    font-size: 19px;
+    letter-spacing: -.01em;
+    min-height: 48px;
     padding: 12px 0 10px;
   }
 
@@ -5399,9 +5404,10 @@ video {
     background: var(--red);
     border-color: var(--red);
     display: inline-flex;
+    font-size: 19px;
     justify-content: center;
-    min-width: 118px;
-    padding: 14px 18px;
+    min-width: 138px;
+    padding: 14px 22px 15px;
     text-align: center;
   }
 

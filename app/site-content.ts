@@ -966,19 +966,16 @@ export const informationPages: Record<string, InformationPageData> = {
     template: "contact",
     sections: [
       {
-        heading: "Conference and registration",
+        heading: "Registration and financial aid",
         body: ["programs@yalemodelau.org"],
       },
       {
-        heading: "Delegate recruitment and external operations",
-        body: [
-          "Gumana Elrufai, Director-General of External Operations",
-          "gumana.elrufai@yale.edu",
-        ],
+        heading: "Marketing and partnership inquiries",
+        body: ["operations@yalemodelau.org"],
       },
       {
-        heading: "Operations, finance and partnerships",
-        body: ["operations@yalemodelau.org"],
+        heading: "Conference programming and committees logistics",
+        body: ["committees@yalemodelau.org"],
       },
       {
         heading: "Office of the Secretary-General",

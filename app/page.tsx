@@ -11,8 +11,8 @@ import { ymauVConferenceMetrics } from "./conference-metrics";
 import { EDITORIAL_IMAGE_PLACEHOLDER } from "./image-delivery";
 import { secretaryGeneralLetter, secretaryGeneralPortrait } from "./public-directory";
 
-const audiencePhoto = "/ymau-media/home/conference-audience.jpg";
-const speakerPhoto = "/ymau-media/home/conference-speaker.jpg";
+const audiencePhoto = "/ymau-media/home/ymau-v-plenary-applause.jpg";
+const speakerPhoto = "/ymau-media/home/ymau-v-committee-negotiation.jpg";
 const coffeePhoto = "/ymau-media/home/ethiopian-coffee.jpg";
 const ethiopiaFilm = "/ethiopia-film.mp4?v=11";
 const ethiopiaMobileFilm = "/ethiopia-film-mobile.mp4?v=11";
@@ -474,19 +474,19 @@ export default function Home() {
           <div className="committees__intro">
             <h2 data-reveal>A continental agenda,<br />being shaped with care.</h2>
             <p data-reveal="delay-1">
-              The final YMAU VI committee slate and agendas are still under
-              development. They will be published with delegate levels and
-              background guides once confirmed.
+              The YMAU VI slate is confirmed: ten committees in service of Our
+              Vision, Our Victory. Agendas, delegate levels and background
+              guides will follow.
             </p>
           </div>
           <div className="committee-release" data-reveal>
             <span className="committee-release__number">VI</span>
             <div>
-              <span className="eyebrow">Release in preparation</span>
-              <h3>Committee list forthcoming</h3>
-              <p>No provisional committee names are being presented as final.</p>
+              <span className="eyebrow">Slate released</span>
+              <h3>Ten committees confirmed</h3>
+              <p>From the Peace and Security Council to the STC on Education, Science and Technology.</p>
             </div>
-            <Link className="text-link" href="/committees">What to expect <ArrowIcon /></Link>
+            <Link className="text-link" href="/committees">See the slate <ArrowIcon /></Link>
           </div>
         </section>
 
@@ -563,7 +563,7 @@ export default function Home() {
           <div className="experience__image experience__image--audience" data-reveal>
             <Image
               src={audiencePhoto}
-              alt="Students engaged in a university conference session"
+              alt="YMAU V delegates applauding together during the plenary programme"
               fill
               sizes="(max-width: 980px) 100vw, 54vw"
               quality={90}
@@ -590,7 +590,7 @@ export default function Home() {
           <div className="experience__image experience__image--speaker" data-reveal>
             <Image
               src={speakerPhoto}
-              alt="A woman delivering a speech at a conference podium"
+              alt="YMAU V delegates on their feet negotiating across a committee-room table"
               fill
               sizes="(max-width: 980px) 100vw, 46vw"
               quality={90}
@@ -621,18 +621,18 @@ export default function Home() {
               <span>07</span>
               <span>Delegations</span>
             </div>
-            <p>Registration schedule forthcoming</p>
+            <p>Registration opens 5 October 2026</p>
           </div>
           <div className="delegations__main">
             <h2 data-reveal>Bring your<br />delegation to<br /><em>Addis.</em></h2>
             <div className="delegations__details" data-reveal="delay-1">
               <p>
-                Registration details, eligibility guidance and the final
-                application timetable are being prepared by the YMAU team.
+                Individual and delegation registration opens 5 October 2026.
+                Early bird, regular and late windows run to 1 February 2027.
               </p>
               <div className="deadlines">
-                <div><span>Early registration</span><strong>TBA</strong></div>
-                <div><span>Final deadline</span><strong>TBA</strong></div>
+                <div><span>Registration opens</span><strong>5 October 2026</strong></div>
+                <div><span>Final deadline</span><strong>1 February 2027</strong></div>
               </div>
               <a className="button-link" href="mailto:programs@yalemodelau.org">Ask the programmes team <ArrowIcon /></a>
             </div>
@@ -660,12 +660,12 @@ export default function Home() {
             <span className="eyebrow">Addis Ababa · 2027</span>
             <h2>Be in the room.</h2>
             <p>
-              Registration dates and committee releases will be posted here as
-              soon as they are confirmed.
+              Registration opens 5 October 2026. Committee releases will be
+              posted here as soon as they are confirmed.
             </p>
-            <div className="interest__status" aria-label="Registration timetable forthcoming">
-              <span>Registration timetable</span>
-              <strong>Forthcoming</strong>
+            <div className="interest__status" aria-label="Registration opens 5 October 2026">
+              <span>Registration opens</span>
+              <strong>5 October 2026</strong>
             </div>
           </div>
         </section>

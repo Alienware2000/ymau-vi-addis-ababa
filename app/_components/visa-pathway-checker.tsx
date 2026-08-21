@@ -55,7 +55,10 @@ export function VisaPathwayChecker() {
         <span>Travel tool · official-source pathway</span>
         <h2 id="visa-checker-title">Check your Ethiopian visa pathway.</h2>
         <p>
-          Choose the nationality on the passport you will travel with. The result is a planning aid, not an entry guarantee.
+          Choose the nationality on the passport you will travel with.
+        </p>
+        <p className="visa-checker__disclaimer">
+          The result is a planning aid, not an entry guarantee. Always verify your pathway on the official Ethiopian Immigration and Citizenship Service portal before booking travel.
         </p>
       </div>
       <div className="visa-checker__tool">

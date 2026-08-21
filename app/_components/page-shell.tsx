@@ -54,7 +54,7 @@ export function PageShell({
   })() : null;
 
   return (
-    <div className={`information-page editorial-page editorial-page--${slug} editorial-page--${group.label.toLowerCase().replaceAll(" ", "-")}`}>
+    <div className={`information-page information-page--family-${group.label.toLowerCase().replaceAll(" ", "-")} editorial-page editorial-page--${slug} editorial-page--${group.label.toLowerCase().replaceAll(" ", "-")}`}>
       <SiteHeader />
       <main id="main-content">
         <section className={`editorial-hero editorial-hero--${heroVariant}`}>

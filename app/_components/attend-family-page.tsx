@@ -1,6 +1,6 @@
 import type { InformationPageData } from "../site-content";
 import { AnimatedStatGrid } from "./animated-stat-grid";
-import { EditorialAction, NumberedList, ResourceCards } from "./editorial-content";
+import { EditorialAction, NumberedList, ResourceCards, ScheduleLedger } from "./editorial-content";
 import { EditorialMedia } from "./editorial-media";
 import { PageShell } from "./page-shell";
 import { ScrollRevealSection } from "./scroll-reveal-section";
@@ -18,7 +18,7 @@ export function AttendFamilyPage({ data, slug }: { data: InformationPageData; sl
 
       {isFaq ? (
         <section className="attend-faq">
-          {data.sections.map((section, index) => <details key={section.heading}><summary><span>{String(index + 1).padStart(2, "0")}</span><strong>{section.heading}</strong><i /></summary><div>{section.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div></details>)}
+          {data.sections.map((section, index) => <details key={section.heading}><summary><span>{String(index + 1).padStart(2, "0")}</span><strong>{section.heading}</strong><i /></summary><div>{section.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.items && <NumberedList items={section.items} />}{section.schedule && <ScheduleLedger rows={section.schedule} />}{section.note && <p className="attend-section__note">{section.note}</p>}</div></details>)}
         </section>
       ) : (
         <div className={`attend-flow attend-flow--${slug}`}>
@@ -28,6 +28,7 @@ export function AttendFamilyPage({ data, slug }: { data: InformationPageData; sl
                 <span>{String(index + 1).padStart(2, "0")}</span><h2>{section.heading}</h2>
                 {section.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
                 {section.items && <NumberedList items={section.items} />}
+                {section.schedule && <ScheduleLedger rows={section.schedule} />}
                 {section.stats && <AnimatedStatGrid stats={section.stats} className="attend-metrics" />}
                 {section.note && <p className="attend-section__note">{section.note}</p>}
               </div>

@@ -179,6 +179,7 @@ export function AboutPage() {
               </ScrollRevealSection>
             ))}
           </div>
+          <p className="about-family-section__note">Final YMAU VI fees and financial-aid details will be published once confirmed.</p>
         </section>
 
         <section className="about-network">

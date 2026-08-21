@@ -3,7 +3,7 @@ import Link from "next/link";
 import { EDITORIAL_IMAGE_PLACEHOLDER, HERO_IMAGE_PLACEHOLDER } from "../image-delivery";
 import { pageHeroImages } from "../page-hero-images";
 import { routeEditorialMedia } from "../media-library";
-import { committeeArchive, committeeReleaseItems } from "../site-content";
+import { committeeArchive, committeeReleaseItems, ymauVICommittees } from "../site-content";
 import { InnerFooter, LineArrow } from "./editorial-page-parts";
 import { ScrollRevealSection } from "./scroll-reveal-section";
 import { SiteHeader } from "./site-header";
@@ -51,8 +51,8 @@ export function CommitteePage() {
           <span className="inner-hero__veil" />
           <div className="inner-hero__meta"><span>06</span><span>Committee work</span></div>
           <h1>A continental agenda,<br />being shaped with care.</h1>
-          <p>The YMAU VI committee list and agendas are in development.</p>
-          <span className="inner-status">Final committee slate forthcoming</span>
+          <p>Ten rooms in service of Our Vision, Our Victory: championing African success on African terms.</p>
+          <span className="inner-status">YMAU VI slate · ten committees</span>
           <div className="inner-hero__image-note"><span>{heroImage.context}</span><span>{heroImage.credit}</span></div>
           <span className="inner-hero__glyph" aria-hidden="true">VI</span>
         </section>
@@ -60,7 +60,7 @@ export function CommitteePage() {
         <div className="inner-page-ribbon">
           <span>Committees · YMAU VI</span>
           <strong>Committee work</strong>
-          <span>2027 slate in development</span>
+          <span>Ten committees · 2027</span>
         </div>
 
         <section className="committee-page__premise">
@@ -69,8 +69,26 @@ export function CommitteePage() {
             <h2>Research becomes representation. Representation becomes negotiation.</h2>
           </div>
           <p>
-            Each committee asks delegates to represent a member state or stakeholder, work within a specific African Union mandate and negotiate a written resolution with their peers. Background guides, experience levels and portfolio allocations will be published only after the final slate is confirmed.
+            Each committee asks delegates to represent a member state or stakeholder, work within a specific African Union mandate and negotiate a written resolution with their peers. Agendas, background guides, experience levels and portfolio allocations will follow the slate below.
           </p>
+        </section>
+
+        <section className="committee-page__archive committee-page__archive--current" aria-labelledby="committee-slate-title">
+          <header>
+            <span>The sixth edition · Addis Ababa 2027</span>
+            <h2 id="committee-slate-title">The YMAU VI slate.<br /><em>Ten rooms, one theme.</em></h2>
+            <p>
+              Every room serves the conference theme: Our Vision, Our Victory · championing African success on African terms.
+            </p>
+          </header>
+          <ol>
+            {ymauVICommittees.map((item, index) => (
+              <li key={item.name}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <div><strong>{item.name}</strong><p>{item.description}</p></div>
+              </li>
+            ))}
+          </ol>
         </section>
 
         <ScrollRevealSection as="div" className="committee-page__visual-pair">
@@ -86,7 +104,7 @@ export function CommitteePage() {
             <span>The institutional record · YMAU V</span>
             <h2 id="committee-record-title">Ten rooms.<br /><em>Ten continental questions.</em></h2>
             <p>
-              The fifth edition’s committees are shown as an archive, not as the final YMAU VI slate. The 2027 names and agendas remain forthcoming.
+              The fifth edition’s committees are preserved as an archive of the questions the conference has already argued.
             </p>
           </header>
           <ol>
@@ -106,8 +124,8 @@ export function CommitteePage() {
 
         <section className="committee-page__release">
           <div>
-            <span>What will be released</span>
-            <h2>One complete slate,<br />published together.</h2>
+            <span>Still to come</span>
+            <h2>The slate is set.<br />The detail follows.</h2>
             <ul>
               {committeeReleaseItems.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, "0")}</span>{item}</li>)}
             </ul>

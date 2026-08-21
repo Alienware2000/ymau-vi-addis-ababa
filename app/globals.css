@@ -5254,6 +5254,18 @@ body:has(.site-header.has-open-menu) .announcement {
     transform: none;
   }
 
+  .primary-nav::before {
+    background: var(--ink-deep);
+    border-bottom: 1px solid var(--white-line);
+    content: "";
+    height: 78px;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1;
+  }
+
   .site-header.has-open-menu {
     background: var(--ink-deep);
     border-bottom: 1px solid var(--white-line);

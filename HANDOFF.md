@@ -1,6 +1,6 @@
 # YMAU VI website handoff
 
-Last updated: 21 August 2026 (late)
+Last updated: 22 August 2026
 
 This is the source of truth for a new Claude Code session. Read this file completely, then [`docs/ABY_CONTENT_RESUME.md`](docs/ABY_CONTENT_RESUME.md). Film-only detail lives in the Film section below and in [`docs/hero-film-treatment.md`](docs/hero-film-treatment.md).
 
@@ -21,6 +21,7 @@ This is the source of truth for a new Claude Code session. Read this file comple
 | PR #6 (`f653050`) | Welcome-letter layout, YaleNew letter typography, AU white lockup, enlarged partner logo wells |
 | PR #7 (`661ef2a`) | Partner archive trim: KCB Group and Model Conferences Ghana removed |
 | Merge `0782334` (20 Aug 2026, deployed) | Recruitment-brief content pass (registration windows and fees, financial aid deadlines and packages, careers timeline ledger), the ten-committee YMAU VI slate, the serif-by-default typography system, real YMAU V homepage photos, sitewide UX/QA fixes, contact-desk routing |
+| `7652597` (22 Aug 2026, deployed) | Ambassador directory rebuilt from the sheet (90 people, contact emails, A-Z), Meti's majors, contact social links, FAQ fee cross-links, contact placeholder note removed |
 
 Paste [`docs/RESUME_PROMPT.md`](docs/RESUME_PROMPT.md) into a fresh Claude Code session after cloning.
 
@@ -38,7 +39,7 @@ Do not invent the next feature. Do not start parked work.
 
 - Film stays `v=11` in `app/page.tsx`. Do not run `npm run hero:build`.
 - Contact desks (all clickable mailto links on `/contact`): registration and financial aid → `programs@yalemodelau.org`; marketing and partnership inquiries → `operations@yalemodelau.org`; conference programming and committees logistics → `committees@yalemodelau.org`; Office of the Secretary-General → `president@yalemodelau.org`. Do not publish personal phone numbers or personal email addresses.
-- Ambassadors: name, institution, bio, photo only. No email, phone, or date of birth.
+- Ambassadors: name, institution, contact email, bio, photo only. No phone or date of birth. Ambassador emails are the one exception to the personal-email rule above (published at David's direction on 22 Aug 2026; Aby asked to confirm).
 - The YMAU VI committee slate (ten rooms) is published; only the bolded "Description (for website)" text from the committees doc is public. Agendas, delegate levels, background guides and portfolio allocations remain forthcoming — do not invent them. The internal "link to theme" notes in the doc stay off the site.
 - Do not invent unreleased copy. Forthcoming pages stay forthcoming.
 - Conference dates stay **15-17 March 2027** until Aby confirms otherwise. Registration: opens 5 October 2026 (9:00 AM EAT); early bird $60 to 15 Nov; regular $80 to 10 Jan 2027; late $100 to 1 Feb 2027. Financial aid: Africa-based applicants only; priority review by 16 Nov 2026 (only window for flight/visa support); regular by 31 Dec 2026.
@@ -96,9 +97,11 @@ Current YMAU V counts after the removal: Platinum 1, Gold 8, Silver 4, Bronze 4,
 
 ## Ambassadors
 
-`app/ambassador-directory.ts` holds the public names, institutions, and supplied bios. `photoSrc` is still unpublished; Drive headshots returned “not found” to the connected account. Do not add photos until the folder is shared and David asks. Do not rewrite supplied bios.
+`app/ambassador-directory.ts` holds the public names, institutions, contact emails, and supplied bios, sorted A-Z with all-caps/lowercase names normalised to title case. It is generated from the sheet, not hand-edited: source spreadsheet https://docs.google.com/spreadsheets/d/1q93jh2avBCb-w2dWb-GRWvy5AyW8gxBVeq_pLjAyBWo/ ("Form Responses 1" tab; the CSV export URL works without login; the sheet contains phone numbers and DOBs — never publish those). The second tab is a stale copy.
 
-Known mismatch awaiting David/Aby: the site copy and stats say 97 ambassadors but the directory lists 91, unsorted with mixed name casing. Source spreadsheet: https://docs.google.com/spreadsheets/d/1q93jh2avBCb-w2dWb-GRWvy5AyW8gxBVeq_pLjAyBWo/ (contains phone numbers and DOBs — publish name/institution/bio/photo only).
+Count (22 Aug 2026): 94 submissions, **90 distinct people** — Daniel Byiringiro, Baang Riek Nhial, Fridaous Laleye and Uwase Diane (first submitted as "UWASE") each submitted twice; the latest submission is used. Site copy and `ymauVIAmbassadorMetrics` say 90. Email = the address typed in the "Email" column (the login "Email Address" differs for nine people). When new submissions arrive, regenerate with the same rules: dedupe by normalised name, latest row wins, verbatim bios and institutions.
+
+`photoSrc` is still unpublished; Drive headshots returned “not found” to the connected account. Do not add photos until the folder is shared and David asks. Do not rewrite supplied bios. Open with Aby: "Benjamin" (University of Rwanda) gave a first name only; some bios are a single rough sentence (e.g. Mbabazi Justine Tasha).
 
 ## Photography
 
@@ -116,9 +119,9 @@ Homepage experience photos are real YMAU V shots from Fred Sebowa's Drive folder
 ## Known backlog (small, low severity)
 
 - History page ledger: YMAU III · Johannesburg · 2024 and IV · Nairobi · 2025 are inferred from the annual sequence, not sourced — confirm the years.
-- `/contact` social rows (Instagram/LinkedIn) are plain text, not links.
+- `/contact` social rows and the FAQ fee cross-links were fixed on 22 Aug 2026 (`NumberedList` auto-links Instagram/LinkedIn items; `ContentSection.link` renders in the FAQ).
 - Several site-content.ts entries are silently unrendered because their pages are hand-built components (`/recap`, `/programme`, `/addis-ababa`, `/city-guide`, partner pages) — a content-drift trap for editors.
-- FAQ fee answer could cross-link the registration ledger.
+- Tooling quirks seen 22 Aug 2026: `next dev` stopped picking up `app/globals.css` edits once (served stale CSS until restart), and the in-app browser screenshot stalls on scrolled pages — headless Chrome over CDP works for captures.
 - The old "Delegate recruitment and external operations" contact desk (Gumana's personal Yale email) was removed in the 20 Aug contact routing; restore only if David asks.
 
 ## Restore on another computer

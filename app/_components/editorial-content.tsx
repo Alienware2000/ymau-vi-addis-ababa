@@ -41,8 +41,30 @@ export function LinkedParagraph({ children, className }: { children: string; cla
   );
 }
 
+const SOCIAL_LINKS: Record<string, string> = {
+  "Instagram:": "https://www.instagram.com/yalemodelau/",
+  "LinkedIn:": "https://www.linkedin.com/company/yale-model-african-union-conf/",
+};
+
+function socialHref(item: string) {
+  const prefix = Object.keys(SOCIAL_LINKS).find((key) => item.startsWith(key));
+  return prefix ? SOCIAL_LINKS[prefix] : null;
+}
+
 export function NumberedList({ items }: { items: string[] }) {
-  return <ol className="editorial-numbered-list">{items.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, "0")}</span><p>{item}</p></li>)}</ol>;
+  return (
+    <ol className="editorial-numbered-list">
+      {items.map((item, index) => {
+        const href = socialHref(item);
+        return (
+          <li key={item}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <p>{href ? <a href={href} target="_blank" rel="noreferrer">{item}</a> : item}</p>
+          </li>
+        );
+      })}
+    </ol>
+  );
 }
 
 export function ScheduleLedger({ rows }: { rows: ScheduleRow[] }) {

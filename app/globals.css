@@ -6723,6 +6723,12 @@ body:has(.site-header.has-open-menu) .announcement {
   letter-spacing: .1em;
   text-transform: uppercase;
 }
+.ambassador-entry__email {
+  color: var(--red);
+  display: inline-block;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
 .ambassador-entry__body p {
   font-size: 15.5px;
   line-height: 1.72;
@@ -6818,6 +6824,9 @@ body:has(.site-header.has-open-menu) .announcement {
 .attend-metrics strong { display: block; font-family: var(--font-display), Georgia, serif; font-size: clamp(52px, 12cqi, 86px); font-variant-numeric: lining-nums tabular-nums; font-weight: 400; letter-spacing: -.055em; line-height: .82; white-space: nowrap; }
 .attend-metrics span { display: block; font-size: 10px; font-weight: 700; letter-spacing: .11em; margin-top: 30px; text-transform: uppercase; }
 .attend-metrics small { display: block; font-size: 12px; margin-top: 9px; opacity: .65; }
+.attend-section__link { font-size: 15px; margin: 18px 0 0; }
+.attend-section__link a { color: var(--red); text-decoration: underline; text-underline-offset: .18em; }
+.editorial-numbered-list a { color: var(--red); text-decoration: underline; text-underline-offset: .18em; }
 .attend-faq { background: var(--paper-light); padding: clamp(70px, 8vw, 120px) var(--side); }
 .attend-faq details { border-top: 1px solid var(--line); }
 .attend-faq details:last-child { border-bottom: 1px solid var(--line); }

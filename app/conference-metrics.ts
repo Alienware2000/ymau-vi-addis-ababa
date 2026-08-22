@@ -17,7 +17,7 @@ export const ymauVConferenceMetrics: readonly ConferenceMetric[] = [
 export const ymauVIAmbassadorMetrics: readonly ConferenceMetric[] = [
   {
     id: "ambassadors",
-    value: 97,
+    value: 90,
     label: "YMAU VI ambassadors",
     detail: "Current programme figure",
   },

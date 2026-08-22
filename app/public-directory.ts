@@ -58,7 +58,7 @@ export const secretariatPeople: SecretariatPerson[] = [
     role: "Director-General of Internal Operations",
     email: "operations@yalemodelau.org",
     bio: [
-      "Meti Negewo is a junior in Ezra Stiles College, majoring in Anthropology, with a Certificate in Education Studies. Originally from Ethiopia and now based in Minnesota, she leads sponsorship outreach as well as branding and communications for YMAU VI.",
+      "Meti Negewo is a junior in Ezra Stiles College, double majoring in Global Affairs and Anthropology, with a Certificate in Education Studies. Originally from Ethiopia and now based in Minnesota, she leads sponsorship outreach as well as branding and communications for YMAU VI.",
       "During YMAU V in Accra, she served as Co-USG of Branding and Marketing and chaired ECOSOCC. Beyond YMAU, Meti is Head Choreographer of Yale’s Ethiopian and Eritrean Dance Team, Desta, preserving and sharing her culture through performance, and Co-Vice President of the Yale African Students Association.",
     ],
     image: mediaLibrary.portraitMeti,

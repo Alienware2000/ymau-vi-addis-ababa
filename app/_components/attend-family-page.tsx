@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { InformationPageData } from "../site-content";
 import { AnimatedStatGrid } from "./animated-stat-grid";
 import { EditorialAction, NumberedList, ResourceCards, ScheduleLedger } from "./editorial-content";
@@ -18,7 +19,7 @@ export function AttendFamilyPage({ data, slug }: { data: InformationPageData; sl
 
       {isFaq ? (
         <section className="attend-faq">
-          {data.sections.map((section, index) => <details key={section.heading}><summary><span>{String(index + 1).padStart(2, "0")}</span><strong>{section.heading}</strong><i /></summary><div>{section.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.items && <NumberedList items={section.items} />}{section.schedule && <ScheduleLedger rows={section.schedule} />}{section.note && <p className="attend-section__note">{section.note}</p>}</div></details>)}
+          {data.sections.map((section, index) => <details key={section.heading}><summary><span>{String(index + 1).padStart(2, "0")}</span><strong>{section.heading}</strong><i /></summary><div>{section.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.items && <NumberedList items={section.items} />}{section.schedule && <ScheduleLedger rows={section.schedule} />}{section.note && <p className="attend-section__note">{section.note}</p>}{section.link && <p className="attend-section__link"><Link href={section.link.href}>{section.link.label}</Link></p>}</div></details>)}
         </section>
       ) : (
         <div className={`attend-flow attend-flow--${slug}`}>

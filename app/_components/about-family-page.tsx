@@ -175,6 +175,7 @@ export function AboutFamilyPage({ data, slug }: { data: InformationPageData; slu
                           </figure>
                         )}
                         <span>{ambassador.institution}</span>
+                        <a className="ambassador-entry__email" href={`mailto:${ambassador.email}`}>{ambassador.email}</a>
                         <p>{ambassador.bio}</p>
                       </div>
                     </details>

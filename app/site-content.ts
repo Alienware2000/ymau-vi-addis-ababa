@@ -19,6 +19,7 @@ export type ContentSection = {
   body?: string[];
   items?: string[];
   note?: string;
+  link?: { label: string; href: string };
   variant?: "standard" | "checklist";
   presentation?: "standard" | "feature" | "compact";
   image?: MediaAsset;
@@ -273,7 +274,7 @@ export const informationPages: Record<string, InformationPageData> = {
   ambassadors: {
     number: "04",
     eyebrow: "Across borders",
-    title: "Ninety-seven student leaders. More than fifteen countries.",
+    title: "Ninety student leaders. More than fifteen countries.",
     intro: "One mission: bringing YMAU VI to campuses and communities across the world.",
     template: "directory",
     sections: [
@@ -755,10 +756,12 @@ export const informationPages: Record<string, InformationPageData> = {
       {
         heading: "When does registration open?",
         body: ["Registration opens 5 October 2026 at 9:00 AM EAT, and the application will be available on this website. Early bird registration ($60) closes 15 November 2026, regular registration ($80) closes 10 January 2027, and late registration ($100) closes 1 February 2027."],
+        link: { label: "See the full fee schedule on the registration page", href: "/registration" },
       },
       {
         heading: "Are travel and accommodation included?",
         body: ["Registration fees do not include travel or accommodation. Delegates based in Africa may apply for financial aid, which ranges from a participation fee waiver to an accommodation bundle to full flight and visa support; the covered costs are stated on each award letter."],
+        link: { label: "Read the financial aid deadlines and packages", href: "/financial-aid" },
       },
       {
         heading: "Can I attend without prior Model AU experience?",
@@ -988,7 +991,6 @@ export const informationPages: Record<string, InformationPageData> = {
           "Instagram: @yalemodelau",
           "LinkedIn: Yale Model African Union",
         ],
-        note: "The full on-site enquiry form will be activated after the client confirms the receiving workflow. Until then, direct email remains the reliable contact channel.",
       },
     ],
     action: { label: "Email the Secretary-General", href: "mailto:president@yalemodelau.org" },
